@@ -41,14 +41,22 @@ function getSub(elementValue, subValue) {
 
 $(document).ready(function() {
 	$('.line1').click(function() {
-		alert("Hi");
 		  $('.line2').checked('reset');
 		  
 	});
 		
 	$(".line2").click(function() {
 		  $(".line1").checked('reset');
-		  alert("Hi");
+	});
+	
+	$(".movementtype-move").click(function() {
+		$("#section_movement").removeClass("hidden");
+		$("#section_nonmovement").addClass("hidden");
+	});
+	
+	$(".movementtype-none").click(function() {
+		$("#section_nonmovement").removeClass("hidden");
+		$("#section_movement").addClass("hidden");
 	});
 	
 	$("#id_element").change(function() {
@@ -64,6 +72,44 @@ $(document).ready(function() {
 			$("#id_subelement").html(s);
 			$("#id_element_option").html("Subelement");
 		}
+	});
+	
+	$(".no-whitespace").focusout(function() {
+		if ($(this).val().indexOf(" ") > -1) {
+			$(this).parent().addClass("has-error");
+			$(this).parent().next("i").addClass("glyphicon-remove");
+			$(this).parent().next("i").addClass("form-control-feedback");
+			//$(this).addClass("miniminitooltop");
+			//$(this).attr("data-toggle", "tooltip");
+			//$(this).attr("data-placement", "down");
+			$(this).attr("title", "Cannot have a whitespace character!");
+			
+		}
+	});
+	
+	$(".not-empty").focusout(function() {
+		if ($(this).val() == "") {
+			$(this).parent().addClass("has-error");
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).next("span").addClass("form-control-feedback");
+			//$(this).addClass("miniminitooltop");
+			//$(this).attr("data-toggle", "tooltip");
+			//$(this).attr("data-placement", "down");
+			$(this).attr("title", "Cannot be empty!");;
+		}
+	});
+	
+	$(".not-empty, .no-whitespace").focusout(function() {
+		if ($(this).val() == "") return;
+		if ($(this).val().indexOf(" ") > -1) return;
+		$(this).parent().removeClass("has-error");
+		$(this).removeClass("glyphicon-remove");
+		$(this).removeClass("form-control-feedback");
+		
+		//$(this).removeClass("miniminitooltip");
+		//$(this).removeAttr("data-toggle");
+		//$(this).removeAttr("data-placement");
+		$(this).removeAttr("title");
 	});
 	
 	$('[data-toggle="tooltip"]').tooltip(); 
