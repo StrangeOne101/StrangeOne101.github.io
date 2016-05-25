@@ -7,6 +7,12 @@ function btnSelect(element) {
 	$(element).addClass("btn-primary");
 }
 
+var error = "border-color: #b94a48;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);background-color:#FF6666 "
+
+var particles = ["smoke", "hearts", "explode", "largeexplode", "hugeexplosion", "fireworkSpark", "bubble", "splash", "wake", "suspended", "depthsuspend", "crit", "magicCrit", "largesmoke", "spell", "instantSpell", "mobSpell", "mobSpellAmbient", "witchMagic", "dripWater", "dripLava", "angryVillager", "happyVillager", "townaura", "note", "portal", "enchantmenttable", "flame", "lava", "footstep", "reddust", "snowballpoof", "slime", "barrier", "cloud", "snowshovel", "droplet", "take"];
+var warnParticles = ["endRod", "dragonbreath", "damageIndicator", "sweepAttack"];
+var customParticles = ["iconcrack", "blockcrack", "blockdust"];	
+
 function getSubs(elementValue) {
 	if (elementValue == "0") return ["None", "Flight", "Spiritual Projection"];
 	if (elementValue == "1") return ["None", "Sand", "Metal", "Lava"];
@@ -61,24 +67,68 @@ $(document).ready(function() {
 		$(".sourceselection").addClass("disabled");
 	});
 	
-	$(".trigger-click").click(function() {
+	$(".trigger-click").mouseup(function() {
 		if ($(".trigger-click.active").length > 1) {
 			$(".trigger-click.active").each(function() {
-				$(this).addClass("has-error");
+				$(this).attr("style", error);
 			});
-		} else {
-			$(".trigger-click").removeClass("has-error");
 		}
 	});
 	
-	$(".trigger-sneak").click(function() {
+	$(".trigger-sneak").mouseup(function() {
 		if ($(".trigger-sneak.active").length > 1) {
 			$(".trigger-sneak.active").each(function() {
-				$(this).addClass("has-error");
+				$(this).attr("style", error);
 			});
-		} else {
-			$(".trigger-sneak").removeClass("has-error");
 		}
+	});
+	
+	$(".trigger-click, .trigger-sneak").mouseup(function() {
+		if ($(".trigger-sneak.active").length <= 1) {
+			$(".trigger-sneak").removeAttr("style");
+		}
+		if ($(".trigger-click.active").length <= 1) {
+			$(".trigger-click").removeAttr("style");
+		}
+	});
+	
+	
+	//Disables the paticles names field when the 'other particle' button isn't selected
+	$("#particles_other").click(function() {
+		$("#id_particlescustom").removeAttr("disabled");
+	});
+	
+	$(".btn-particles").click(function() {
+		$("#id_particlescustom").attr("disabled", "disabled");
+	});
+	
+	//Changes the hidden content based on the display option selected
+	$("#block_none").mouseup(function() {
+		$(".section_display").each(function() {
+			$(this).addClass("hidden");
+		});
+		$("#section_particles").removeClass("hidden");
+	});
+	
+	$("#block_waterbending").mouseup(function() {
+		$(".section_display").each(function() {
+			$(this).addClass("hidden");
+		});
+		$("#section_waterbending").removeClass("hidden");
+	});
+	
+	$("#block_earthbending").mouseup(function() {
+		$(".section_display").each(function() {
+			$(this).addClass("hidden");
+		});
+		$("#section_earthbending").removeClass("hidden");
+	});
+	
+	$("#block_other").mouseup(function() {
+		$(".section_display").each(function() {
+			$(this).addClass("hidden");
+		});
+		$("#section_blocks_").removeClass("hidden");
 	});
 	
 	$("#id_element").change(function() {
@@ -93,6 +143,45 @@ $(document).ready(function() {
 			}
 			$("#id_subelement").html(s);
 			$("#id_element_option").html("Subelement");
+		}
+	});
+	
+	$("#id_particlescustom").change(function() {
+		var b = 2;
+		if ($("#id_particlescustom")[0].value != "") {
+			for (var p in particles) {
+				if ($("#id_particlescustom")[0].value == particles[p]) {
+					b = 0;
+					break;
+				}
+			}
+			for (var p in warnParticles) {
+				if ($("#id_particlescustom")[0].value == warnParticles[p]) {
+					b = 1;
+					break;
+				}
+			}
+			for (var p in customParticles) {
+				if ($("#id_particlescustom")[0].value == customParticles[p]) {
+					b = 0;
+					break;
+				}
+			}
+		}
+		
+		
+		if (b == 2) {
+			$("#id_particlescustom").parent().addClass("has-error");
+			$("#id_particlescustom").attr("title", "Invalid particle name!")
+		}
+		else if (b == 1) {
+			$("#id_particlescustom").parent().addClass("has-warning");
+			$("#id_particlescustom").attr("title", "Particle requires MC 1.9")
+		}
+		else {
+			$("#id_particlescustom").parent().removeClass("has-error");
+			$("#id_particlescustom").parent().removeClass("has-warning");
+			$("#id_particlescustom").removeAttr("title");
 		}
 	});
 	

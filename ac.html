@@ -11,6 +11,7 @@
   <!-- <script src='http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js' type='text/javascript'></script>-->
   <script src="code.js" type='text/javascript'></script>
   <script src="save.js" type='text/javascript'></script>
+  <title>Strange's PK Ability Creator | Strange's Website</title>
   <style>
   .tooltip-inner {
   white-space:nowrap;
@@ -29,10 +30,18 @@ span.input-group-addon:hover {
 cursor: pointer;
 }
 
-.btn-block {
+.btn-error {
+    border-color: #b94a48;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+
+.btn-blockbtn {
 width: 96px;
 height: 96px;
 display: inline-block;
+padding-left: -5px;
+padding-right: -5px;
 }
   </style>
 </head>
@@ -50,7 +59,7 @@ display: inline-block;
            	<div class='form-group has-feedback'>
            	  <label class="control-label col-lg-3" for="id_move_name">Name</label>
            	  <div class="col-lg-9 has-feedback input-group">
-           	    <input class='form-control no-whitespace not-empty' id='id_move_name' placeholder='MagicBlast' type='text'>
+           	    <input class='form-control input-group no-whitespace not-empty' id='id_move_name' placeholder='MagicBlast' type='text'>
            	  	<span class="glyphicon form-control-feedback hidden"></span>
            	  </div>
           	</div> 
@@ -145,7 +154,7 @@ display: inline-block;
         	  <label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
            	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
            	    <label class="btn btn-default radio-inline-btn active col-lg-4 trigger-click" id="abilityMovement_Click">
-           	      <input type="radio" value="1" required="required" checked="checked">
+           	      <input type="radio" value="1" required="required">
            	      Click
            	    </label>
            	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak" id="abilityMovement_Sneak" >
@@ -255,9 +264,9 @@ display: inline-block;
         	<hr>
         	
         	<div class='form-group' id="section_blocks">
-           	  <label class="control-label col-lg-3" for="id_blockdisplay">Block</label>
+           	  <label class="control-label col-lg-3" for="id_blockdisplay">Display</label>
            	  <div class="input-group col-lg-9">
-           	    <input class='form-control' id='id_blockdisplay' style="" placeholder="Bedrock" type="text" value="Bedrock">
+           	    <input class='form-control' id='id_blockdisplay' style="" placeholder="block=bedrock" type="text" value="block=stone">
         	  	<span class="input-group-addon" data-toggle="modal" data-target="#modal_blocks"><span class="glyphicon glyphicon-list"></span></span>
         	  </div>
         	</div>
@@ -308,32 +317,178 @@ display: inline-block;
         <div class="modal-body">
           <p>Select a block that should be used when the ability is moving.</p>
           <div class='btn-group control-label' data-toggle="buttons">
-            <label class="btn btn-default btn-block radio-inline-btn active" id="block_none">
-           	  <input type="radio" value="1" class="btn">
+            <label class="btn btn-default btn-blockbtn radio-inline-btn active" id="block_none">
+           	  <input type="radio" value="1" class="btn btn-default">
            	  <img src="AbilityCreator/img/blocks/blank.png" width="64px" height="64px"><br>
            	  None
            	</label>
-           	<label class="btn btn-default btn-block radio-inline-btn" id="block_waterbending" >
-           	  <input type="radio" value="2" class="btn">
+           	<label class="btn btn-default btn-blockbtn radio-inline-btn" id="block_waterbending" >
+           	  <input type="radio" value="2" class="btn btn-default">
            	  <img src="AbilityCreator/img/blocks/water.png" width="64px" height="64px"><br>
            	  Water Source
            	</label>
-           	<label class="btn btn-default btn-block radio-inline-btn" id="block_earthbending" >
-           	  <input type="radio" value="3" class="btn">
+           	<label class="btn btn-default btn-blockbtn radio-inline-btn" id="block_earthbending" >
+           	  <input type="radio" value="3" class="btn btn-default">
            	  <img src="AbilityCreator/img/blocks/grass.png" width="64px" height="64px"><br>
            	  Earth Source
            	</label>
-           	<label class="btn btn-default btn-block radio-inline-btn" id="block_other" >
-           	  <input type="radio" value="3" class="btn">
+           	<label class="btn btn-default btn-blockbtn radio-inline-btn" id="block_other" >
+           	  <input type="radio" value="4" class="btn btn-default">
            	  <img src="AbilityCreator/img/blocks/glass.png" width="64px" height="64px"><br>
            	  Other Block
            	</label>
           </div>
           <hr>
           
+          <div id="section_particles" class="section_display container row">
+            <p>Select the particles that should be displayed instead of a block</p>
+            <div class='form-group'>
+              <div class="btn-group control-label" data-toggle="buttons">
+                <label class="btn btn-default btn-blockbtn radio-inline-btn active" id="particles_fire">
+           	      <input type="radio" value="1" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/textures/flame.png" width="64px" height="64px"><br>
+           	      Firebending
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn" id="particles_air" >
+           	      <input type="radio" value="2" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/textures/cloud.png" width="64px" height="64px"><br>
+           	      Airbending
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn" id="particles_other" >
+           	      <input type="radio" value="3" class="btn btn-default">
+           	      <img src="AbilityCreator/img/textures/none.png" width="64px" height="64px"><br>
+           	      Other...
+           	    </label>
+              </div>
+            </div>
+            <div class='form-group'>
+           	  <label class="control-label col-lg-3" for="id_maxhits">Particles <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="How many particles shown each second">?</a></label>
+           	  <div class="col-lg-9">
+           	    <input class='form-control not-empty' id='id_particlecount' placeholder='40' type='number' min="0" step="1" max="120" value="40">
+        	  </div>
+        	</div>
+        	<div class='form-group' id="section_particlecustom">
+           	  <label class="control-label col-lg-3" for="id_particlescustom">Particles Name</label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control has-feedback' id='id_particlescustom' disabled placeholder='happyVillager' type='text' value="">
+        	  </div>
+        	</div>
+          </div>
           
+          <div id="section_waterbending" class="section_display hidden">
+          	<p>Stuff for waterbending goes here</p>
+          </div>
           
+          <div id="section_earthbending" class="section_display hidden">
+          	<p>Stuff for earthbending goes here</p>
+          </div>
           
+          <div id="section_blocks_" class="section_display hidden" style="overflow:scroll;height:338px">
+          	<p>Select a block type to be used...</p>
+          	<div class="btn-group control-label" data-toggle="buttons">
+             
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn active">
+           	      <input type="radio" value="grass" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/blocks/grass.png" width="64px" height="64px"><br>
+           	      Grass
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="dirt:0" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/dirt.png" width="64px" height="64px"><br>
+           	      Dirt
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="clay" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/blocks/clay.png" width="64px" height="64px"><br>
+           	      Clay
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="log:0" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/blocks/log_oak.png" width="64px" height="64px"><br>
+           	      Wood
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="wood" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/blocks/planksoak.png" width="64px" height="64px"><br>
+           	      Planks
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="stone" class="btn btn-default btn-particles">
+           	      <img src="AbilityCreator/img/blocks/stone.png" width="64px" height="64px"><br>
+           	      Stone
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="smooth_brick:0" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/stonebricks.png" width="64px" height="64px"><br>
+           	      Stone Bricks
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="stone_slab2:0" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/stoneslab.png" width="64px" height="64px"><br>
+           	      Stoneslab
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="cobblestone" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/cobblestone.png" width="64px" height="64px"><br>
+           	      Cobblestone
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="mossy_cobblestone" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/mossycobblestone.png" width="64px" height="64px"><br>
+           	      Mossstone
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="melon_block" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/melon.png" width="64px" height="64px"><br>
+           	      Melon
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="pumpkin" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/pumpkin.png" width="64px" height="64px"><br>
+           	      Pumpkin
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="ender_stone" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/endstone.png" width="64px" height="64px"><br>
+           	      Endstone
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="cobble_wall:0" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/wall_cobblestone.png" width="64px" height="64px"><br>
+           	      Cobble Wall
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="cobble_wall:1" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/wall_mossy_cobblestone.png" width="64px" height="64px"><br>
+           	      Mossy Wall
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="glowstone" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/glowstone.png" width="64px" height="64px"><br>
+           	      Glowstone
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="netherrack" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/netherrack.png" width="64px" height="64px"><br>
+           	      Netherrack
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="soul_sand" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/soulsand.png" width="64px" height="64px"><br>
+           	      Soulsand
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="nether_brick" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/netherbrick.png" width="64px" height="64px"><br>
+           	      Netherbrick
+           	    </label>
+           	    <label class="btn btn-default btn-blockbtn radio-inline-btn">
+           	      <input type="radio" value="obsidian" class="btn btn-default">
+           	      <img src="AbilityCreator/img/blocks/obsidian.png" width="64px" height="64px"><br>
+           	      Obsidian
+           	    </label>
+              </div>
+          </div>
           
         </div>
         <div class="modal-footer">
