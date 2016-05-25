@@ -20,6 +20,20 @@
 margin-right:-17px;
 padding-left:4px
 }
+
+span.glyphicon {
+display: inline;
+}
+
+span.input-group-addon:hover {
+cursor: pointer;
+}
+
+.btn-block {
+width: 96px;
+height: 96px;
+display: inline-block;
+}
   </style>
 </head>
 <body>
@@ -37,11 +51,7 @@ padding-left:4px
            	  <label class="control-label col-lg-3" for="id_move_name">Name</label>
            	  <div class="col-lg-9 has-feedback input-group">
            	    <input class='form-control no-whitespace not-empty' id='id_move_name' placeholder='MagicBlast' type='text'>
-           	  	<div class="alert alert-danger hidden" role="alert">
-                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                  <span class="sr-only">Error:</span>
-                  Cannot contain whitespaces!
-                </div>
+           	  	<span class="glyphicon form-control-feedback hidden"></span>
            	  </div>
           	</div> 
           	<div class='form-group'>
@@ -95,7 +105,7 @@ padding-left:4px
            	    <input class='form-control not-empty' id='id_cooldown' placeholder='Seconds' type='number' min="0" step="1" max="3600" >
         	  </div>
         	</div>
-        	<div class='form-group'>
+        	<!--  <div class='form-group'>
            	  <label class="control-label col-lg-3">Function</label>
            	    <div class="btn-group col-lg-9" data-toggle="buttons" >
            	      <label class="btn btn-default radio-inline-btn active col-lg-3" id="abilityFunction_Move">
@@ -109,30 +119,12 @@ padding-left:4px
            	    
            	    <label class="col-lg-offset-1" style="padding-top:6px;color:#AAA;font-weight:normal">More coming soon!</label>
         	</div>
-        	</div>
-        	
+        	</div>-->
         	<hr>
         	
         	<!-- <h4>Movement</h4> -->
         	<div class='form-group'>
-        	  <label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
-           	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
-           	    <label class="btn btn-default radio-inline-btn active col-lg-4" id="abilityMovement_Click">
-           	      <input type="radio" value="1" required="required" checked="checked">
-           	      Click
-           	    </label>
-           	    <label class="btn btn-default radio-inline-btn col-lg-4" id="abilityMovement_Sneak" >
-           	      <input type="radio" value="2" required="required">
-           	      Sneak
-           	    </label>
-           	    <label class="btn btn-default radio-inline-btn col-lg-4" id="abilityMovement_Both" >
-           	      <input type="radio" value="3" required="required">
-           	      Sneak + Click
-           	    </label>
-           	  </div>
-        	</div>
-        	<div class='form-group'>
-        	  <label class="control-label col-lg-3" for="id_movementtype2">Movement Type</label>
+        	  <label class="control-label col-lg-3" for="id_movementtype2">Move Type</label>
            	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype2">
            	    <label class="btn btn-default radio-inline-btn col-lg-4 movementtype-none" id="abilityMovement2_None">
            	      <input type="radio" value="1" required="required">
@@ -145,6 +137,42 @@ padding-left:4px
            	    <label class="btn btn-default radio-inline-btn col-lg-4 movementtype-move" id="abilityMovement2_Particles" >
            	      <input type="radio" value="3" required="required">
            	      Particles
+           	    </label>
+           	  </div>
+        	</div>
+        	
+        	<div class='form-group'>
+        	  <label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
+           	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
+           	    <label class="btn btn-default radio-inline-btn active col-lg-4 trigger-click" id="abilityMovement_Click">
+           	      <input type="radio" value="1" required="required" checked="checked">
+           	      Click
+           	    </label>
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak" id="abilityMovement_Sneak" >
+           	      <input type="radio" value="2" required="required">
+           	      Sneak
+           	    </label>
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-click trigger-sneak" id="abilityMovement_Both" >
+           	      <input type="radio" value="3" required="required">
+           	      Sneak + Click
+           	    </label>
+           	  </div>
+        	</div>
+        	
+        	<div class='form-group'>
+        	  <label class="control-label col-lg-3" for="id_sourceselection">Source Selection</label>
+           	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_sourceselection">
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 form-control-feedback active sourceselection" id="sourceNone">
+           	      <input type="radio" value="1" required="required">
+           	      None
+           	    </label>
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 form-control-feedback sourceselection trigger-sneak" id="sourceShift" >
+           	      <input type="radio" value="2" required="required"">
+           	      Sneak
+           	    </label>
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 form-control-feedback sourceselection trigger-click" id="sourceClick" >
+           	      <input type="radio" value="3" required="required">
+           	      Click
            	    </label>
            	  </div>
         	</div>
@@ -228,27 +256,9 @@ padding-left:4px
         	
         	<div class='form-group' id="section_blocks">
            	  <label class="control-label col-lg-3" for="id_blockdisplay">Block</label>
-           	  <div class=" input-group col-lg-9" style="padding-top:1px">
-           	    <input class='form-control' id='id_blockdisplay' placeholder="Bedrock" type='text' value="Bedrock">
-        	  	<span class="input-group-addon glyphicon glyphicon-list"></span>
-        	  </div>
-        	</div>
-        	
-        	<div class="modal fade" id="modal_damageeffects">
-        	  <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Hit Effects (Mobs &#38; Players)</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
+           	  <div class="input-group col-lg-9">
+           	    <input class='form-control' id='id_blockdisplay' style="" placeholder="Bedrock" type="text" value="Bedrock">
+        	  	<span class="input-group-addon" data-toggle="modal" data-target="#modal_blocks"><span class="glyphicon glyphicon-list"></span></span>
         	  </div>
         	</div>
         	
@@ -264,6 +274,73 @@ padding-left:4px
         </div> <!-- Row end -->
             <br><br><br><br><br><br><br><br><br><br><br>
       </form>
+    </div>
+  </div>
+  
+  <!-- ** Modals ** -->
+  
+  <!-- Hit effects -->
+  <div class="modal fade" id="modal_damageeffects">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Hit Effects (Mobs &#38; Players)</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Block selection -->
+  <div class="modal fade" id="modal_blocks">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Block Selection</h4>
+        </div>
+        <div class="modal-body">
+          <p>Select a block that should be used when the ability is moving.</p>
+          <div class='btn-group control-label' data-toggle="buttons">
+            <label class="btn btn-default btn-block radio-inline-btn active" id="block_none">
+           	  <input type="radio" value="1" class="btn">
+           	  <img src="AbilityCreator/img/blocks/blank.png" width="64px" height="64px"><br>
+           	  None
+           	</label>
+           	<label class="btn btn-default btn-block radio-inline-btn" id="block_waterbending" >
+           	  <input type="radio" value="2" class="btn">
+           	  <img src="AbilityCreator/img/blocks/water.png" width="64px" height="64px"><br>
+           	  Water Source
+           	</label>
+           	<label class="btn btn-default btn-block radio-inline-btn" id="block_earthbending" >
+           	  <input type="radio" value="3" class="btn">
+           	  <img src="AbilityCreator/img/blocks/grass.png" width="64px" height="64px"><br>
+           	  Earth Source
+           	</label>
+           	<label class="btn btn-default btn-block radio-inline-btn" id="block_other" >
+           	  <input type="radio" value="3" class="btn">
+           	  <img src="AbilityCreator/img/blocks/glass.png" width="64px" height="64px"><br>
+           	  Other Block
+           	</label>
+          </div>
+          <hr>
+          
+          
+          
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Select</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
     </div>
   </div>
 </body>

@@ -52,11 +52,33 @@ $(document).ready(function() {
 	$(".movementtype-move").click(function() {
 		$("#section_movement").removeClass("hidden");
 		$("#section_nonmovement").addClass("hidden");
+		$(".sourceselection").removeClass("disabled");
 	});
 	
 	$(".movementtype-none").click(function() {
 		$("#section_nonmovement").removeClass("hidden");
 		$("#section_movement").addClass("hidden");
+		$(".sourceselection").addClass("disabled");
+	});
+	
+	$(".trigger-click").click(function() {
+		if ($(".trigger-click.active").length > 1) {
+			$(".trigger-click.active").each(function() {
+				$(this).addClass("has-error");
+			});
+		} else {
+			$(".trigger-click").removeClass("has-error");
+		}
+	});
+	
+	$(".trigger-sneak").click(function() {
+		if ($(".trigger-sneak.active").length > 1) {
+			$(".trigger-sneak.active").each(function() {
+				$(this).addClass("has-error");
+			});
+		} else {
+			$(".trigger-sneak").removeClass("has-error");
+		}
 	});
 	
 	$("#id_element").change(function() {
@@ -77,8 +99,9 @@ $(document).ready(function() {
 	$(".no-whitespace").focusout(function() {
 		if ($(this).val().indexOf(" ") > -1) {
 			$(this).parent().addClass("has-error");
-			$(this).parent().next("i").addClass("glyphicon-remove");
-			$(this).parent().next("i").addClass("form-control-feedback");
+			$(this).parent().next("span").addClass("glyphicon-remove");
+			$(this).parent().next("span").addClass("form-control-feedback");
+			$(this).parent().next("span").removeClass("hidden");
 			//$(this).addClass("miniminitooltop");
 			//$(this).attr("data-toggle", "tooltip");
 			//$(this).attr("data-placement", "down");
@@ -92,6 +115,7 @@ $(document).ready(function() {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
 			$(this).next("span").addClass("form-control-feedback");
+			$(this).next("span").removeClass("hidden");
 			//$(this).addClass("miniminitooltop");
 			//$(this).attr("data-toggle", "tooltip");
 			//$(this).attr("data-placement", "down");
@@ -105,6 +129,7 @@ $(document).ready(function() {
 		$(this).parent().removeClass("has-error");
 		$(this).removeClass("glyphicon-remove");
 		$(this).removeClass("form-control-feedback");
+		$(this).parent().next("span").addClass("hidden");
 		
 		//$(this).removeClass("miniminitooltip");
 		//$(this).removeAttr("data-toggle");
