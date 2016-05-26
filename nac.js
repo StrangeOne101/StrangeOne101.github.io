@@ -18,9 +18,9 @@ Game.mouseY = 0;
 
 Game.winsX = 0;                
 Game.winsO = 0;                
-               		       //      |      |
+               		           //      |      |
 Game.draws = 0;                //   0  |   1  |  2
-                	       //--------------------
+                	           //--------------------
 Game.whosTurn = "X";           //      |      |
                                //   3  |   4  |  5
 Game.slots = [];               //--------------------

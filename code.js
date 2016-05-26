@@ -21,7 +21,36 @@ function getSubs(elementValue) {
 	if (elementValue == "4") return ["None"];
 	if (elementValue == "5") return ["Yes", "No"];
 	return null;
-	
+}
+
+function saveDisplay() {
+	console.log("Hey");
+	if ($("#block_none").hasClass("active")) {
+		if ($("#particles_other").hasClass("active")) {
+			$("#id_blockdisplay")[0].value = "particle="+ $("#id_particlecount")[0].value + "," + $("#id_particlescustom")[0].value;
+		} else {
+			var v = "";
+			$("#particlesgroup").children("label").each(function() {
+				if ($(this).hasClass("active")) {
+					v = $(this).children("input")[0].value;
+				}
+			});
+			$("#id_blockdisplay")[0].value = "particle="+ v + "," + $("#id_particlecount")[0].value;
+		}
+	} else if ($("#block_earthbending").hasClass("active")) {
+		
+	} else if ($("#block_waterbending").hasClass("active")) {
+		
+	} else if ($("#block_other").hasClass("active")) {
+		console.log("Heyyyy");
+		var v = "";
+		$("#blockother_select").children("label").each(function() {
+			if ($(this).hasClass("active")) {
+				v = $(this).children("input")[0].value;
+			}
+		});
+		$("#id_blockdisplay")[0].value = "block=" + v;
+	}
 }
 
 function getCodeElement(elementValue, subValue) {
