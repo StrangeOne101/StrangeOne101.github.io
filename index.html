@@ -13,5 +13,9 @@ function getChunks(thing) {
 	}
 }
 </script>
+<script src="nac.js"></script>
 <br><br><button onclick='getChunks(prompt("Render distance?", "10"));'>Chunks within Render Distance Calculator</button><br>
 <h4 id='chunkSize'></h4>
+<br><br>
+<canvas id="canvas" onmousedown="Game.Click();" onmouseup="Game.Release();"></canvas>
+
