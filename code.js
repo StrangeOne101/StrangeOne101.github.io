@@ -1,3 +1,6 @@
+
+
+
 function btnSelect(element) {
 	$(".radio-inline-btn").each(function() {
 		$(this).removeClass("btn-primary");
@@ -13,6 +16,8 @@ var particles = ["smoke", "hearts", "explode", "largeexplode", "hugeexplosion", 
 var warnParticles = ["endRod", "dragonbreath", "damageIndicator", "sweepAttack"];
 var customParticles = ["iconcrack", "blockcrack", "blockdust"];	
 
+
+
 function getSubs(elementValue) {
 	if (elementValue == "0") return ["None", "Flight", "Spiritual Projection"];
 	if (elementValue == "1") return ["None", "Sand", "Metal", "Lava"];
@@ -27,7 +32,7 @@ function saveDisplay() {
 	console.log("Hey");
 	if ($("#block_none").hasClass("active")) {
 		if ($("#particles_other").hasClass("active")) {
-			$("#id_blockdisplay")[0].value = "particle="+ $("#id_particlecount")[0].value + "," + $("#id_particlescustom")[0].value;
+			$("#id_displayfield")[0].value = "particle="+ $("#id_particlecount")[0].value + "," + $("#id_particlescustom")[0].value;
 		} else {
 			var v = "";
 			$("#particlesgroup").children("label").each(function() {
@@ -35,7 +40,7 @@ function saveDisplay() {
 					v = $(this).children("input")[0].value;
 				}
 			});
-			$("#id_blockdisplay")[0].value = "particle="+ v + "," + $("#id_particlecount")[0].value;
+			$("#id_displayfield")[0].value = "particle="+ v + "," + $("#id_particlecount")[0].value;
 		}
 	} else if ($("#block_earthbending").hasClass("active")) {
 		
@@ -49,7 +54,7 @@ function saveDisplay() {
 				v = $(this).children("input")[0].value;
 			}
 		});
-		$("#id_blockdisplay")[0].value = "block=" + v;
+		$("#id_displayfield")[0].value = "block=" + v;
 	}
 }
 
@@ -121,6 +126,12 @@ $(document).ready(function() {
 		}
 	});
 	
+	$("#id_displayfield").change(function() {
+		if ($(this).value == "") { 
+			$(this).parent().addClass("has-error");
+			$(this).next("span").attr("title", "Cannot be empty! Please use the editor to fill.");
+		}
+	});
 	
 	//Disables the paticles names field when the 'other particle' button isn't selected
 	$("#particles_other").click(function() {
@@ -218,12 +229,7 @@ $(document).ready(function() {
 		if ($(this).val().indexOf(" ") > -1) {
 			$(this).parent().addClass("has-error");
 			$(this).parent().next("span").addClass("glyphicon-remove");
-			$(this).parent().next("span").addClass("form-control-feedback");
-			$(this).parent().next("span").removeClass("hidden");
-			//$(this).addClass("miniminitooltop");
-			//$(this).attr("data-toggle", "tooltip");
-			//$(this).attr("data-placement", "down");
-			$(this).attr("title", "Cannot have a whitespace character!");
+			$(this).next("span").attr("title", "Cannot have a whitespace character!");
 			
 		}
 	});
@@ -232,11 +238,6 @@ $(document).ready(function() {
 		if ($(this).val() == "") {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").addClass("form-control-feedback");
-			$(this).next("span").removeClass("hidden");
-			//$(this).addClass("miniminitooltop");
-			//$(this).attr("data-toggle", "tooltip");
-			//$(this).attr("data-placement", "down");
 			$(this).attr("title", "Cannot be empty!");;
 		}
 	});
@@ -245,14 +246,8 @@ $(document).ready(function() {
 		if ($(this).val() == "") return;
 		if ($(this).val().indexOf(" ") > -1) return;
 		$(this).parent().removeClass("has-error");
-		$(this).removeClass("glyphicon-remove");
-		$(this).removeClass("form-control-feedback");
-		$(this).parent().next("span").addClass("hidden");
-		
-		//$(this).removeClass("miniminitooltip");
-		//$(this).removeAttr("data-toggle");
-		//$(this).removeAttr("data-placement");
-		$(this).removeAttr("title");
+		$(this).next("span").removeClass("glyphicon-remove");
+		$(this).next("span").removeAttr("title");
 	});
 	
 	$('[data-toggle="tooltip"]').tooltip(); 
