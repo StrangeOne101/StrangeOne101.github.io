@@ -1,12 +1,16 @@
 var currentSlot = 0;
+var selectedSlot = 0;
+var maxSaveSlots = 20;
 var acv = 0.1;
 
 var splitChar = ":";
 
 var saveSlots = [];
 
+var cookies = {};
+
 function saveCookie(slot) {
-	if (slot > 19 || slot < 0) return false;
+	if (slot > maxSaveSlots - 1 || slot < 0) return false;
 	
 	loadVars();
 	
@@ -46,13 +50,9 @@ function saveCookie(slot) {
 	object["display"] = $("#id_displayfield")[0].value;
 	object["dmgradius"] = $("#id_damageradius")[0].value;
 	
-	if (currentSlot == slot) {
-		object["default"] = true;
-	}
-	
 	var cookiestring = "{";
 	for (var s in object) {
-		cookiestring = cookiestring + s + ":\"" + object[s] + "\",";
+		cookiestring = cookiestring + s + ":\"" + encodeURIComponent(object[s]) + "\",";
 	}
 	cookiestring = cookiestring.substr(0, cookiestring.length -1) + "}"
 
@@ -60,12 +60,131 @@ function saveCookie(slot) {
     d.setTime(d.getTime() + (365.25*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = "slot_" + slot + "=" + cookiestring + "; " + expires;
+    document.cookie = "slot_index" + "=" + currentSlot + "; " + expires;
 	
 	return cookiestring;
 }
 
 
-function readCookie(slot) {
+function loadCookie(slot) {
+	
+	var split = cookies["slot_" + slot].split(",");
+	var version = null;
+	
+	for (var i = 0; i < split.length; i++) {
+		var s = split[i];
+		
+		var key = s.split(splitChar)[0];
+		var value = s.split(splitChar)[1];
+		value = decodeURIComponent(value.substr(1, value.length - 1));
+		
+		if (key == "acv") {version = parseFloat(value); continue;}
+		
+		if (version >= 0.1) {
+			if (key == "name") $("#id_move_name")[0].value = value;
+			else if (key == "moveversion") $("#id_move_version")[0].value = value;
+			else if (key == "author") $("#id_move_author")[0].value = value;
+			else if (key == "help") $("#id_move_help")[0].value = value;
+			else if (key == "element") $("#id_element")[0].value = value;
+			else if (key == "sub") $("#id_subelement")[0].value = value;
+			else if (key == "movetype") {
+				$(".movementtype-none").each(function() {$(this).removeClass("active");});
+				if (value == 1) $("#abilityMovement2_None").addClass("active");
+				else if (value == 2) $("#abilityMovement2_Block").addClass("active");
+				else if (value == 3) $("#abilityMovement2_Paticles").addClass("active");
+			}
+			else if (key == "movestart") {
+				$(".movementtype-start").each(function() {$(this).removeClass("active");});
+				if (value == 1) $("#abilityMovement_Click").addClass("active");
+				else if (value == 2) $("#abilityMovement_Sneak").addClass("active");
+				else if (value == 3) $("#abilityMovement_Both").addClass("active");
+			}
+			else if (key == "source") {
+				$(".sourceselection").each(function() {$(this).removeClass("active");});
+				if (value == 1) $("#sourceNone").addClass("active");
+				else if (value == 2) $("#sourceShift").addClass("active");
+				else if (value == 3) $("#sourceClick").addClass("active");
+			}
+			else if (key == "speed") $("#id_movementspeed")[0].value = value;
+			else if (key == "redirect") {
+				$(".abilityredirect").each(function() {$(this).removeClass("active");});
+				if (value == 1) $("#abilityRedirect_Never").addClass("active");
+				else if (value == 2) $("#abilityRedirect_Click").addClass("active");
+				else if (value == 3) $("#abilityRedirect_Sneak").addClass("active");
+				else if (value == 4) $("#abilityRedirect_Both").addClass("active");
+				else if (value == 5) $("#abilityRedirect_Always").addClass("active");
+			}
+			else if (key == "damage") $("#id_damage")[0].value = value;
+			else if (key == "maxhits") $("#id_maxhits")[0].value = value;
+			else if (key == "deathmessage") $("#id_deathmessage")[0].value = value;
+			else if (key == "display") $("#id_displayfield")[0].value = value;
+			else if (key == "dmgradius") $("#id_damageradius")[0].value = value;
+			
+			//Updates
+			$("input").change();
+			$("input").click();
+		}
+	}
+}
+
+$(document).ready(function() {
+	loadCookies();
+	
+	loadCookie(currentSlot);
+	
+	$("#autosave_btn").click(function() {
+		if ($(this).hasClass("btn-success")) {
+			$(this).removeClass("btn-success");
+			$(this).addClass("btn-danger");
+			$(this).attr("value", "Autosave OFF");
+			
+		} else {
+			$(this).removeClass("btn-danger");
+			$(this).addClass("btn-success");
+			$(this).attr("value", "Autosave ON");
+		}
+	});
+	
+	$(".save_slot").hover(function() { //On hover
+		//if ($(this).hasClass("activeitem")) return;
+		//$(this).attr("style", "border: 1px solid #AAA;background-color: #F0F0F0");
+	}, function() { //On hover leave
+		//if ($(this).hasClass("activeitem")) return;
+		//$(this).removeAttr("style");
+	});
+	
+	$(".save_slot").click(function() { //On hover
+		if ($(this).hasClass("activeitem2")) return;
+		$(".save_slot").each(function() {
+			$(this).removeClass("activeitem2");
+		});
+		$(this).addClass("activeitem2");
+		selectedSlot = $(this).value;
+	});
+	
+	$("#save_button").click(function() {
+		currentSlot = selectedSlot;
+		saveCookie(selectedSlot);
+		$("#save_notification").html("Saved!").fadeOut(800, function() {
+			$("#save_notification").html("");
+			$("#save_notification").removeAttr("style");
+		});
+		
+		var movename = $("#id_move_name")[0].value;
+		var version = $("#id_move_version")[0].value;
+		
+		if (movename == "") movename = "???";
+		if (version == "") version = "???";
+		$("#slot_" + currentSlot).html("  " + movename + " v" + version);
+		$("#slot_" + currentSlot).parent().addClass("activeitem3")
+		$("#save_button").addClass("disabled");
+		setTimeout(function() {
+			$("#save_button").removeClass("disabled");
+		}, 400);
+	});
+});
+
+function loadCookies() {
 	var cookies = document.cookie.split(";");
 	var finalCookie = null;
 	for(var i = 0; i < cookies.length; i++) {
@@ -73,25 +192,11 @@ function readCookie(slot) {
         while (c.charAt(0)==' ') {
             c = c.substring(1);
         }
-        if (c.indexOf("slot_" + slot) == 0) {
-            finalCookie = c.substring(("slot_" + slot).length, c.length);
-            break;
+        var key = c.split("=")[0];
+        var value = c.split("=")[1];
+        cookies[key] = value;
+        if (key == "slot_index") {
+        	currentSlot = parseInt(value);
         }
     }
-	if (finalCookie == null) return false;
-	var split = finalCookie.split(",");
-	var version = null;
-	for (var i = 0; i < split.length; i++) {
-		var s = split[i];
-		
-		var key = s.split(splitChar)[0];
-		var value = s.split(splitChar)[1];
-		
-		if (key == "acv") {version = parseFloat(value); continue;}
-		
-		if (version >= 0.1) {
-			
-		}
-		
-	}
 }

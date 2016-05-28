@@ -29,7 +29,6 @@ function getSubs(elementValue) {
 }
 
 function saveDisplay() {
-	console.log("Hey");
 	if ($("#block_none").hasClass("active")) {
 		if ($("#particles_other").hasClass("active")) {
 			$("#id_displayfield")[0].value = "particle="+ $("#id_particlecount")[0].value + "," + $("#id_particlescustom")[0].value;
@@ -249,6 +248,7 @@ $(document).ready(function() {
 		$(this).next("span").removeClass("glyphicon-remove");
 		$(this).next("span").removeAttr("title");
 	});
+
 	
 	$('[data-toggle="tooltip"]').tooltip(); 
 });

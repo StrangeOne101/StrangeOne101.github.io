@@ -123,15 +123,15 @@
         	<div class='form-group'>
         	  <label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
            	  <div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
-           	    <label class="btn btn-default radio-inline-btn active col-lg-4 trigger-click" id="abilityMovement_Click">
+           	    <label class="btn btn-default radio-inline-btn active col-lg-4 movementtype-start trigger-click" id="abilityMovement_Click">
            	      <input type="radio" value="1" required="required">
            	      Click
            	    </label>
-           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak" id="abilityMovement_Sneak" >
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak movementtype-start" id="abilityMovement_Sneak" >
            	      <input type="radio" value="2" required="required">
            	      Sneak
            	    </label>
-           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-click trigger-sneak" id="abilityMovement_Both" >
+           	    <label class="btn btn-default radio-inline-btn col-lg-4 trigger-click trigger-sneak movementtype-start" id="abilityMovement_Both" >
            	      <input type="radio" value="3" required="required">
            	      Sneak + Click
            	    </label>
@@ -176,23 +176,23 @@
         	  <div class='form-group'>
         	    <label class="control-label col-lg-3" for="id_redirect">Redirect*</label>
            	    <div class="btn-group col-lg-9" data-toggle="buttons" id="id_redirect">
-           	      <label class="btn btn-default radio-inline-btn active col-lg-4" id="abilityRedirect_Never">
+           	      <label class="btn btn-default radio-inline-btn active col-lg-4 abilityredirect" id="abilityRedirect_Never">
            	        <input type="radio" value="1" class="btn line1">
            	        Never
            	      </label>
-           	      <label class="btn btn-default radio-inline-btn col-lg-4" id="abilityRedirect_Click" >
-           	        <input type="radio" value="2" checked="checked" class="btn line1">
+           	      <label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Click" >
+           	        <input type="radio" value="2" class="btn line1">
            	        On Click
            	      </label>
-           	      <label class="btn btn-default radio-inline-btn col-lg-4" id="abilityRedirect_Sneak" >
+           	      <label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Sneak" >
            	        <input type="radio" value="3" class="btn line1">
            	        On Sneak
            	      </label>
-           	      <label class="btn btn-default radio-inline-btn col-lg-6" id="abilityRedirect_Both" >
+           	      <label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Both" >
            	        <input type="radio" value="4" class="btn line2">
            	        Sneak + Click
            	      </label>
-           	      <label class="btn btn-default radio-inline-btn col-lg-6" id="abilityRedirect_Always" >
+           	      <label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Always" >
            	        <input type="radio" value="5" class="btn line2">
            	        Constantly
            	      </label>
@@ -262,7 +262,7 @@
         	
         	<div class='form-group'>
            	  <div class="col-lg-3">
-           	    <button class='btn-lg btn-success' onclick="loadVars();save();" id='id_save'>Save...</button>
+           	    <input type="button" class='btn-lg btn-success' data-toggle="modal" data-target="#modal_save" id='id_save' value="Save...">
         	  </div>
            	  <div class="col-lg-3">
            	    <button class='btn-lg btn-warning' id="id_load">Load...</button>
@@ -673,11 +673,56 @@
            	    </label>
               </div>
           </div>
-          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveDisplay();">Select</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_save">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Save Data... <i><span id="save_notification"></span></i></h4>
+        </div>
+        <div class="modal-body">
+          
+          <p>Select a save slot to save your work to!</p>
+          <div style="overflow-y:scroll;height:325px">
+            <ul class="list-group" style="cursor: pointer" id="id_savelist">
+              <li class="list-group-item save_slot activeitem2" value="0">Slot 1: <span class="save-slot" id="slot_0">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="1">Slot 2: <span class="save-slot" id="slot_1">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="2">Slot 3: <span class="save-slot" id="slot_2">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="3">Slot 4: <span class="save-slot" id="slot_3">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="4">Slot 5: <span class="save-slot" id="slot_4">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="5">Slot 6: <span class="save-slot" id="slot_5">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="6">Slot 7: <span class="save-slot" id="slot_6">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="7">Slot 8: <span class="save-slot" id="slot_7">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="8">Slot 9: <span class="save-slot" id="slot_8">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="9">Slot 10: <span class="save-slot" id="slot_9">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="10">Slot 11: <span class="save-slot" id="slot_10">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="11">Slot 12: <span class="save-slot" id="slot_11">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="12">Slot 13: <span class="save-slot" id="slot_12">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="13">Slot 14: <span class="save-slot" id="slot_13">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="14">Slot 15: <span class="save-slot" id="slot_14">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="15">Slot 16: <span class="save-slot" id="slot_15">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="16">Slot 17: <span class="save-slot" id="slot_16">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="17">Slot 18: <span class="save-slot" id="slot_17">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="18">Slot 19: <span class="save-slot" id="slot_18">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot" value="19">Slot 20: <span class="save-slot" id="slot_19">&ltEmpty&gt</span></li>
+            </ul>
+          </div><br>
+          <input type="button" class="btn btn-sm btn-success" value="Autosave ON" id="autosave_btn"> <span style="color:green">Autosave saves every 10 minutes on the current slot</span>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="save_button">Save</button>
+          <button type="button" class="btn btn-warning" id="load_button">Load</button>
+          <button type="button" class="btn btn-danger" id="delete_button">Delete</button>
         </div>
       </div>
     </div>
