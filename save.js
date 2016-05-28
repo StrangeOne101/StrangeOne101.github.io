@@ -127,8 +127,8 @@ function loadCookie(slot) {
 			else if (key == "dmgradius") $("#id_damageradius")[0].value = value;
 			alert("Stopper 2")
 			//Updates
-			$("input").change();
-			$("input").click();
+			//$("input").change();
+			//$("input").click();
 		}
 	}
 }
