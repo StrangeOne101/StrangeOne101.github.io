@@ -186,18 +186,43 @@ $(document).ready(function() {
 });
 
 function loadCookies() {
-	var cookies = document.cookie.split(";");
+	var split = document.cookie.split(";");
 	var finalCookie = null;
-	for(var i = 0; i < cookies.length; i++) {
-        var c = cookies[i];
+	for(var i = 0; i < split.length; i++) {
+        var c = split[i];
         while (c.charAt(0)==' ') {
             c = c.substring(1);
         }
+        if (c == "") continue;
+        console.log(c);
         var key = c.split("=")[0];
         var value = c.split("=")[1];
-        cookies[key] = value;
         if (key == "slot_index") {
         	currentSlot = parseInt(value);
         }
+        else cookies[key] = value.substr(1, value.length - 1);
     }
+	
+	for (var i = 0; i < maxSaveSlots - 1; i++) {
+		if (!("slot_" + i in cookies)) continue;
+		
+		var obj = stringToObject(cookies["slot_" + i]);
+		var name = obj["name"];
+		var version = obj["moveversion"];
+		$("#slot_" + i).html("  " + name + " v" + version);
+	}
+}
+
+function stringToObject(string) {
+	var split = string.split(",");
+	var obj = {};
+	for (var i = 0; i < split.length; i++) {
+		var s = split[i];
+		
+		var key = s.split(splitChar)[0];
+		var value = s.split(splitChar)[1];
+		value = decodeURIComponent(value.substr(1, value.length - 1));
+		obj[key] = value;
+	}
+	return obj;
 }
