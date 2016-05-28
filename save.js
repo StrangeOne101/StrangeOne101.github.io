@@ -203,7 +203,7 @@ function loadCookies() {
         if (key == "slot_index") {
         	currentSlot = parseInt(value);
         }
-        else cookies[key] = value.substr(1, value.length - 1);
+        else cookies[key] = value.substr(1, value.length - 2);
     }
 	
 	for (var i = 0; i < maxSaveSlots - 1; i++) {
@@ -212,7 +212,7 @@ function loadCookies() {
 		var obj = stringToObject(cookies["slot_" + i]);
 		var name = obj["name"];
 		var version = obj["moveversion"];
-		$("#slot_" + i).html("  " + name + " v" + version);
+		//$("#slot_" + i).html("  " + name + " v" + version);
 	}
 }
 
