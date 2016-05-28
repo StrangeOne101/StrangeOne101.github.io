@@ -78,9 +78,10 @@ function loadCookie(slot) {
 		var key = s.split(splitChar)[0];
 		var value = s.split(splitChar)[1];
 		value = decodeURIComponent(value);
-		console.log(key + "=" value);
+		console.log(key + "=" + value);
 		value = value.substr(1, value.length - 1);
-		console.log(key + "=" value);
+		console.log(key + "=" + value);
+		value = value.substr(1, value.length - 1);
 		
 		if (key == "acv") {version = parseFloat(value); continue;}
 		
