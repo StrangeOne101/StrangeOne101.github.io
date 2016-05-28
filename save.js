@@ -67,6 +67,7 @@ function saveCookie(slot) {
 
 
 function loadCookie(slot) {
+	if (!("slot_" + slot in cookies)) return;
 	
 	var split = cookies["slot_" + slot].split(",");
 	var version = null;
