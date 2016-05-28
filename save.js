@@ -84,6 +84,8 @@ function loadCookie(slot) {
 		
 		if (key == "acv") {version = parseFloat(value); continue;}
 		
+		alert("Stopper")
+		
 		if (version >= 0.1) {
 			if (key == "name") $("#id_move_name")[0].value = value;
 			else if (key == "moveversion") $("#id_move_version")[0].value = value;
@@ -123,7 +125,7 @@ function loadCookie(slot) {
 			else if (key == "deathmessage") $("#id_deathmessage")[0].value = value;
 			else if (key == "display") $("#id_displayfield")[0].value = value;
 			else if (key == "dmgradius") $("#id_damageradius")[0].value = value;
-			
+			alert("Stopper 2")
 			//Updates
 			$("input").change();
 			$("input").click();
