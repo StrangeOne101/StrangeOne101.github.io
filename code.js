@@ -79,14 +79,6 @@ function getSub(elementValue, subValue) {
 
 
 $(document).ready(function() {
-	$('.line1').click(function() {
-		  $('.line2').checked('reset');
-		  
-	});
-		
-	$(".line2").click(function() {
-		  $(".line1").checked('reset');
-	});
 	
 	$(".movementtype-move").click(function() {
 		$("#section_movement").removeClass("hidden");
