@@ -219,9 +219,8 @@ $(document).ready(function() {
 	$(".no-whitespace").focusout(function() {
 		if ($(this).val().indexOf(" ") > -1) {
 			$(this).parent().addClass("has-error");
-			$(this).parent().next("span").addClass("glyphicon-remove");
-			$(this).next("span").attr("title", "Cannot have a whitespace character!");
-			
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).next("span").attr("title", "Cannot be empty!");
 		}
 	});
 	
@@ -229,7 +228,7 @@ $(document).ready(function() {
 		if ($(this).val() == "") {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).attr("title", "Cannot be empty!");;
+			$(this).next("span").attr("title", "Cannot be empty!");
 		}
 	});
 	

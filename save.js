@@ -3,6 +3,9 @@ var selectedSlot = 0;
 var maxSaveSlots = 20;
 var acv = 0.1;
 
+var workSaved = false;
+var autosave = true;
+
 var splitChar = ":";
 
 var saveSlots = [];
@@ -38,6 +41,8 @@ function saveCookie(slot) {
 	else if ($("#sourceShift").hasClass("active")) i = 3;
 	object["source"] = i;
 	object["speed"] = $("#id_movementspeed")[0].value;
+	object["range"] = $("#id_range")[0].value;
+	object["cooldown"] = $("#id_cooldown")[0].value;
 	if ($("#abilityRedirect_Never").hasClass("active")) i = 1;
 	else if ($("#abilityRedirect_Click").hasClass("active")) i = 2;
 	else if ($("#abilityRedirect_Sneak").hasClass("active")) i = 3;
@@ -61,6 +66,7 @@ function saveCookie(slot) {
     var expires = "expires="+ d.toUTCString();
     document.cookie = "slot_" + slot + "=" + cookiestring + "; " + expires;
     document.cookie = "slot_index" + "=" + currentSlot + "; " + expires;
+    document.cookie = "autosave" + "=" + autosave + "; " + expires;
 	
 	return cookiestring;
 }
@@ -78,9 +84,7 @@ function loadCookie(slot) {
 		var key = s.split(splitChar)[0];
 		var value = s.split(splitChar)[1];
 		value = decodeURIComponent(value);
-		console.log(key + "=" + value);
 		value = value.substr(1, value.length - 2);
-		console.log(key + "=" + value);
 		
 		if (key == "acv") {version = parseFloat(value); continue;}
 		
@@ -91,6 +95,7 @@ function loadCookie(slot) {
 			else if (key == "help") $("#id_move_help")[0].value = value;
 			else if (key == "element") $("#id_element")[0].value = value;
 			else if (key == "sub") $("#id_subelement")[0].value = value;
+			else if (key == "cooldown") $("#id_cooldown")[0].value = value;
 			else if (key == "movetype") {
 				$(".movementtype-none").each(function() {$(this).removeClass("active");});
 				if (value == 1) $("#abilityMovement2_None").addClass("active");
@@ -110,6 +115,7 @@ function loadCookie(slot) {
 				else if (value == 3) $("#sourceClick").addClass("active");
 			}
 			else if (key == "speed") $("#id_movementspeed")[0].value = value;
+			else if (key == "range") $("#id_range")[0].value = value;
 			else if (key == "redirect") {
 				$(".abilityredirect").each(function() {$(this).removeClass("active");});
 				if (value == 1) $("#abilityRedirect_Never").addClass("active");
@@ -126,6 +132,8 @@ function loadCookie(slot) {
 		}
 	}
 	
+	workSaved = true;
+	
 	$("input[data-toggle!='modal']").change();
 }
 
@@ -139,13 +147,17 @@ $(document).ready(function() {
 			$(this).removeClass("btn-success");
 			$(this).addClass("btn-danger");
 			$(this).attr("value", "Autosave OFF");
+			autosave = false;
 			
 		} else {
 			$(this).removeClass("btn-danger");
 			$(this).addClass("btn-success");
 			$(this).attr("value", "Autosave ON");
+			autosave = true;
 		}
 	});
+	
+	if (!autosave) $("#autosave_btn").click();
 	
 	$(".save_slot").hover(function() { //On hover
 		//if ($(this).hasClass("activeitem")) return;
@@ -184,6 +196,10 @@ $(document).ready(function() {
 			$("#save_button").removeClass("disabled");
 		}, 400);
 	});
+	
+	$("input[data-toggle!='modal']").change(function() {
+		workSaved = false;
+	});
 });
 
 function loadCookies() {
@@ -201,6 +217,9 @@ function loadCookies() {
         if (key == "slot_index") {
         	currentSlot = parseInt(value);
         }
+        else if (key == "autosave") {
+        	autosave = (value === "true");
+        }
         else cookies[key] = value.substr(1, value.length - 2);
     }
 	
@@ -210,7 +229,7 @@ function loadCookies() {
 		var obj = stringToObject(cookies["slot_" + i]);
 		var name = obj["name"];
 		var version = obj["moveversion"];
-		//$("#slot_" + i).html("  " + name + " v" + version);
+		$("#slot_" + i).html("  " + name + " v" + version);
 	}
 }
 
