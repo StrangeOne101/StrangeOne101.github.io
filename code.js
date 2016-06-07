@@ -220,7 +220,7 @@ $(document).ready(function() {
 		if ($(this).val().indexOf(" ") > -1) {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").attr("title", "Cannot be empty!");
+			$(this).next("span").attr("data-orginal-title", "Cannot be empty!");
 		}
 	});
 	
@@ -228,7 +228,7 @@ $(document).ready(function() {
 		if ($(this).val() == "") {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").attr("title", "Cannot be empty!");
+			$(this).next("span").attr("data-orginal-title", "Cannot be empty!");
 		}
 	});
 	
@@ -237,11 +237,14 @@ $(document).ready(function() {
 		if ($(this).val().indexOf(" ") > -1) return;
 		$(this).parent().removeClass("has-error");
 		$(this).next("span").removeClass("glyphicon-remove");
-		$(this).next("span").removeAttr("title");
+		$(this).next("span").removeAttr("data-orginal-title");
 	});
 
 	
 	$('[data-toggle="tooltip"]').tooltip(); 
+	 $("span").tooltip({
+		   placement: "right"
+		   }); 
 });
 
 

@@ -325,9 +325,15 @@
           <p>Settings for advanced users! You probably shouldn't touch these if you don't know what you're doing ;)</p>
           <hr>
           <div class='form-group'>
-           	<label class="control-label col-lg-3" for="id_damageradius">Damage Radius <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The radius of which mobs can be damaged in">?</a></label>
-          	<div class="col-lg-9 has-feedback">
+           	<label class="control-label col-lg-4" for="id_damageradius">Collision Radius* <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The radius of which mobs can be damaged in">?</a></label>
+          	<div class="col-lg-8 has-feedback">
           	  <input class='form-control not-empty' id='id_damageradius' placeholder='0.6' value="0.6" type="number" min="0.1" step="0.1" max="2">
+          	</div>
+         </div>
+         <div class='form-group'>
+           	<label class="control-label col-lg-4" for="id_packagename">Package Name* <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The package the ability is compiled under">?</a></label>
+          	<div class="col-lg-8 has-feedback">
+          	  <input class='form-control' id='id_packagename' placeholder='com.strangewebac.abilities'>
           	</div>
          </div>
          <br><br><hr>

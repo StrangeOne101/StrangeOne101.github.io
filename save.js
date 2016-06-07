@@ -1,7 +1,7 @@
 var currentSlot = 0;
 var selectedSlot = 0;
 var maxSaveSlots = 20;
-var acv = 0.1;
+var acv = 0.2;
 
 var workSaved = false;
 var autosave = true;
@@ -54,6 +54,9 @@ function saveCookie(slot) {
 	object["deathmessage"] = $("#id_deathmessage")[0].value;
 	object["display"] = $("#id_displayfield")[0].value;
 	object["dmgradius"] = $("#id_damageradius")[0].value;
+	
+	//ACV 0.2
+	object["packagename"] = $("#id_packagename")[0].value;
 	
 	var cookiestring = "{";
 	for (var s in object) {
@@ -129,6 +132,8 @@ function loadCookie(slot) {
 			else if (key == "deathmessage") $("#id_deathmessage")[0].value = value;
 			else if (key == "display") $("#id_displayfield")[0].value = value;
 			else if (key == "dmgradius") $("#id_damageradius")[0].value = value;
+		} else if (version >= 0.2) {
+			else if (key == "packagename") $("#id_packagename")[0].value = value;
 		}
 	}
 	
@@ -174,6 +179,13 @@ $(document).ready(function() {
 		});
 		$(this).addClass("activeitem2");
 		selectedSlot = $(this).value;
+		
+		if (cookies["slot_" + selectedSlot] == null) {
+			$("#load_button").removeClass("disabled");
+		} else {
+			$("#load_button").addClass("disabled");
+		}
+		
 	});
 	
 	$("#save_button").click(function() {
@@ -195,6 +207,25 @@ $(document).ready(function() {
 		setTimeout(function() {
 			$("#save_button").removeClass("disabled");
 		}, 400);
+	});
+	
+	$("#load_button").click(function() {
+		if (!workSaved && !confirm("Are you sure you want to load this save? All progress will be lost.")) {
+			return;
+		}
+		
+		loadCookie(selectedSlot);
+	});
+	
+	$("#delete_button").click(function() {
+		if (!confirm("Are you sure you delete this save? This cannot be undone!")) {
+			return;
+		}
+		
+		cookies["slot_" + selectedSlot] = null;
+		
+		$(".save_slot").next(".save-slot#slot_" + selectedSlot).html("&ltEmpty&gt");
+		document.cookie = "slot_" + selectedSlot + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 	});
 	
 	$("input[data-toggle!='modal']").change(function() {
@@ -245,4 +276,11 @@ function stringToObject(string) {
 		obj[key] = value;
 	}
 	return obj;
+}
+
+function getValue(id) {
+	if ($("#" + id)[0].value == "") {
+		return $("#" + id)[0].placeholder;
+	}
+	return $("#" + id)[0].value;
 }
