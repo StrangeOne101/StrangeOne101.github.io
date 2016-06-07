@@ -133,7 +133,7 @@ function loadCookie(slot) {
 			else if (key == "display") $("#id_displayfield")[0].value = value;
 			else if (key == "dmgradius") $("#id_damageradius")[0].value = value;
 		} else if (version >= 0.2) {
-			else if (key == "packagename") $("#id_packagename")[0].value = value;
+			if (key == "packagename") $("#id_packagename")[0].value = value;
 		}
 	}
 	
