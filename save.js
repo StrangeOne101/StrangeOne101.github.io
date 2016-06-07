@@ -4,7 +4,6 @@ var maxSaveSlots = 20;
 var acv = 0.2;
 
 var workSaved = false;
-var autosave = true;
 
 var splitChar = ":";
 
@@ -69,7 +68,6 @@ function saveCookie(slot) {
     var expires = "expires="+ d.toUTCString();
     document.cookie = "slot_" + slot + "=" + cookiestring + "; " + expires;
     document.cookie = "slot_index" + "=" + currentSlot + "; " + expires;
-    document.cookie = "autosave" + "=" + autosave + "; " + expires;
 	
 	return cookiestring;
 }
@@ -147,23 +145,6 @@ $(document).ready(function() {
 	
 	loadCookie(currentSlot);
 	
-	$("#autosave_btn").click(function() {
-		if ($(this).hasClass("btn-success")) {
-			$(this).removeClass("btn-success");
-			$(this).addClass("btn-danger");
-			$(this).attr("value", "Autosave OFF");
-			autosave = false;
-			
-		} else {
-			$(this).removeClass("btn-danger");
-			$(this).addClass("btn-success");
-			$(this).attr("value", "Autosave ON");
-			autosave = true;
-		}
-	});
-	
-	if (!autosave) $("#autosave_btn").click();
-	
 	$(".save_slot").hover(function() { //On hover
 		//if ($(this).hasClass("activeitem")) return;
 		//$(this).attr("style", "border: 1px solid #AAA;background-color: #F0F0F0");
@@ -182,9 +163,11 @@ $(document).ready(function() {
 		console.log(this + " | " + this.value);
 		
 		if (cookies["slot_" + selectedSlot] == null) {
-			$("#load_button").removeClass("disabled");
-		} else {
 			$("#load_button").addClass("disabled");
+			$("#delete_button").addClass("disabled");
+		} else {
+			$("#load_button").removeClass("disabled");
+			$("#delete_button").removeClass("disabled");
 		}
 		
 	});
@@ -203,7 +186,7 @@ $(document).ready(function() {
 		if (movename == "") movename = "???";
 		if (version == "") version = "???";
 		$("#slot_" + currentSlot).html("  " + movename + " v" + version);
-		$("#slot_" + currentSlot).parent().addClass("activeitem3")
+		$("#slot_" + currentSlot).parent().addClass("activeitem3");
 		$("#save_button").addClass("disabled");
 		setTimeout(function() {
 			$("#save_button").removeClass("disabled");
@@ -227,6 +210,9 @@ $(document).ready(function() {
 		
 		$(".save_slot").next(".save-slot#slot_" + selectedSlot).html("&ltEmpty&gt");
 		document.cookie = "slot_" + selectedSlot + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+		
+		$("#slot_" + selectedSlot).html("&ltEmpty&gt");
+		$("#slot_" + selectedSlot).parent().removeClass("activeitem3");
 	});
 	
 	$("input[data-toggle!='modal']").change(function() {
@@ -249,9 +235,6 @@ function loadCookies() {
         if (key == "slot_index") {
         	currentSlot = parseInt(value);
         }
-        else if (key == "autosave") {
-        	autosave = (value === "true");
-        }
         else cookies[key] = value.substr(1, value.length - 2);
     }
 	
@@ -262,6 +245,16 @@ function loadCookies() {
 		var name = obj["name"];
 		var version = obj["moveversion"];
 		$("#slot_" + i).html("  " + name + " v" + version);
+	}
+	
+	$("#slot_" + currentSlot).parent().addClass("activeitem3");
+	
+	if (cookies["slot_" + selectedSlot] == null) {
+		$("#load_button").addClass("disabled");
+		$("#delete_button").addClass("disabled");
+	} else {
+		$("#load_button").removeClass("disabled");
+		$("#delete_button").removeClass("disabled");
 	}
 }
 
