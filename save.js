@@ -178,7 +178,8 @@ $(document).ready(function() {
 			$(this).removeClass("activeitem2");
 		});
 		$(this).addClass("activeitem2");
-		selectedSlot = $(this).value;
+		selectedSlot = parseInt(this.value);
+		console.log(this + " | " + this.value);
 		
 		if (cookies["slot_" + selectedSlot] == null) {
 			$("#load_button").removeClass("disabled");
