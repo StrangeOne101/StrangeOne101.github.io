@@ -84,8 +84,8 @@ function loadCookie(slot) {
 		
 		var key = s.split(splitChar)[0];
 		var value = s.split(splitChar)[1];
-		value = decodeURIComponent(value);
 		value = value.substr(1, value.length - 2);
+		value = decodeURIComponent(value);
 		
 		if (key == "acv") {version = parseFloat(value); continue;}
 		
@@ -216,7 +216,7 @@ $(document).ready(function() {
 		$(".save_slot").each(function() {
 			$(this).removeClass("activeitem3");
 		});
-		$("#slot_" + currentSlot).parent().removeClass("activeitem3");
+		$("#slot_" + currentSlot).parent().addClass("activeitem3");
 	});
 	
 	$("#delete_button").click(function() {
