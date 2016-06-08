@@ -175,7 +175,10 @@ $(document).ready(function() {
 	$("#save_button").click(function() {
 		currentSlot = selectedSlot;
 		saveCookie(selectedSlot);
-		$("#save_notification").html("Saved!").fadeOut(800, function() {
+		$(".save_slot").each(function() {
+			$(this).removeClass("activeitem3");
+		});
+		$("#save_notification").html("Saved!").fadeOut(1200, function() {
 			$("#save_notification").html("");
 			$("#save_notification").removeAttr("style");
 		});
@@ -199,6 +202,21 @@ $(document).ready(function() {
 		}
 		
 		loadCookie(selectedSlot);
+		
+		$("#save_notification").html("Loaded Slot " + (selectedSlot + 1) + "!").fadeOut(1200, function() {
+			$("#save_notification").html("");
+			$("#save_notification").removeAttr("style");
+		});
+		
+		$("#load_button").addClass("disabled");
+		setTimeout(function() {
+			$("#load_button").removeClass("disabled");
+		}, 400);
+		
+		$(".save_slot").each(function() {
+			$(this).removeClass("activeitem3");
+		});
+		$("#slot_" + currentSlot).parent().removeClass("activeitem3");
 	});
 	
 	$("#delete_button").click(function() {
@@ -213,6 +231,13 @@ $(document).ready(function() {
 		
 		$("#slot_" + selectedSlot).html("&ltEmpty&gt");
 		$("#slot_" + selectedSlot).parent().removeClass("activeitem3");
+		
+		$("#save_notification").html("Deleted Slot " + (selectedSlot + 1) + "!").fadeOut(1200, function() {
+			$("#save_notification").html("");
+			$("#save_notification").removeAttr("style");
+		});
+		
+		$("#delete_button").addClass("disabled");
 	});
 	
 	$("input[data-toggle!='modal']").change(function() {

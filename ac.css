@@ -35,14 +35,15 @@ padding-right: 0px;
 	border: 1px solid #888;
 }
 
+.activeitem3 {
+	color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
 .activeitem2 {
 	color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;
 }
 
-.activeitem3 {
-	color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-}
