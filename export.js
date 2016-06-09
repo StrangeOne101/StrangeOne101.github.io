@@ -58,10 +58,61 @@ function loadVars() {
 	maxhits = parseFloat($("#id_maxhits")[0].value) / 2;
 }
 
+function canExport() {
+	$("input.required").each(function() {
+		if (this.value == "") return false;
+	});
+	$("input.not-empty").each(function() {
+		if (this.value == "") return false;
+	});
+	$("input.no-whitespace").each(function() {
+		if (this.value.indexOf(" ") > -1) return false;
+	});
+	$("input[type='number]'").each(function() {
+		if (isNaN(parseFloat(this.value))) return false;
+	});
+	return true;
+}
+
+function forceUpdate() {
+	$("input.required").focusout();
+	
+	
+}
+
 $(document).ready(function() {
 	moveName = $("#id_move_name")[0].placeholder;
 	version = $("#id_move_author")[0].placeholder;
 	help = $("#id_move_help")[0].placeholder;
 	author = $("#id_move_author")[0].placeholder;
+	
+	$("input[data-toggle!='modal']").change(function() {
+		if (!canExport()) {
+			$("#export_error").html("You must complete all forms in order to export!");
+			forceUpdate();
+		} else {
+			$("#export_error").html("");
+		}
+		
+		if ($("#export_checkbox")[0].checked && canExport()) {
+			$(".download-files").removeClass("disabled");
+		} else {
+			$(".download-files").addClass("disabled");
+		}
+	});
+	
+	$("#download_listener").click(function() {
+		if (!canExport() || !$("#export_checkbox")[0].checked) {
+			alert("You cannot download this until you have agreed to the terms and have filled out the form!");
+		} else {
+			
+		}
+	});
+	
+	$("#download_ability").click(function() {
+		if (!canExport() || !$("#export_checkbox")[0].checked) {
+			alert("You cannot download this until you have agreed to the terms and have filled out the form!");
+		}
+	});
 });
 

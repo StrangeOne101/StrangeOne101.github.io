@@ -220,7 +220,7 @@ $(document).ready(function() {
 		if ($(this).val().indexOf(" ") > -1) {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").attr("data-orginal-title", "Cannot be empty!");
+			$(this).attr("data-original-title", "Cannot have a space!");
 		}
 	});
 	
@@ -228,8 +228,8 @@ $(document).ready(function() {
 		if ($(this).val() == "") {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
-			$(this).next("span").attr("data-orginal-title", "Cannot be empty!");
-		}
+			$(this).attr("data-original-title", "Cannot be empty!");
+		} 
 	});
 	
 	$(".not-empty, .no-whitespace").focusout(function() {
@@ -237,11 +237,34 @@ $(document).ready(function() {
 		if ($(this).val().indexOf(" ") > -1) return;
 		$(this).parent().removeClass("has-error");
 		$(this).next("span").removeClass("glyphicon-remove");
-		$(this).next("span").removeAttr("data-orginal-title");
+		$(this).removeAttr("data-original-title");
+	});
+	
+	$("#id_deathmessage").focusout(function() {
+		var message = "";
+		if ($(this).val().indexOf("=") <= -1) {
+			message = "Invalid format! Use the builder ^";
+		} else if (!$(this).val().startsWith("particle=") && !$(this).val().startsWith("block=")) {
+			message = "Unknown display type. Use the builder ^";
+		} else if ($(this).val().startsWith("particle=")) {
+			
+		} else if ($(this).val().startsWith("block=")) {
+			
+		}
+		if (message != "") {
+			$(this).parent().addClass("has-error");
+			$(this).next("span").addClass("glyphicon-remove");
+			$(this).attr("data-original-title", message);
+		} else {
+			$(this).parent().removeClass("has-error");
+			$(this).next("span").removeClass("glyphicon-remove");
+			$(this).removeAttr("data-original-title");
+		}
 	});
 
 	
 	$('[data-toggle="tooltip"]').tooltip(); 
+	$('[rel="tooltip"]').tooltip(); 
 	 $("span").tooltip({
 		   placement: "right"
 		   }); 

@@ -188,7 +188,7 @@ $(document).ready(function() {
 		
 		if (movename == "") movename = "???";
 		if (version == "") version = "???";
-		$("#slot_" + currentSlot).html("  " + movename + " v" + version);
+		$("#slot_" + currentSlot).html("<b>  " + movename + " v" + version + "</b>");
 		$("#slot_" + currentSlot).parent().addClass("activeitem3");
 		$("#save_button").addClass("disabled");
 		setTimeout(function() {
