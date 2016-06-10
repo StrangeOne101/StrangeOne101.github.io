@@ -296,10 +296,3 @@ function stringToObject(string) {
 	}
 	return obj;
 }
-
-function getValue(id) {
-	if ($("#" + id)[0].value == "") {
-		return $("#" + id)[0].placeholder;
-	}
-	return $("#" + id)[0].value;
-}

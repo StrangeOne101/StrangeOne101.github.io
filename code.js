@@ -31,7 +31,7 @@ function getSubs(elementValue) {
 function saveDisplay() {
 	if ($("#block_none").hasClass("active")) {
 		if ($("#particles_other").hasClass("active")) {
-			$("#id_displayfield")[0].value = "particle="+ $("#id_particlecount")[0].value + "," + $("#id_particlescustom")[0].value;
+			$("#id_displayfield")[0].value = "particle="+ $("#id_particlescustom")[0].value + "," + $("#id_particlecount")[0].value;
 		} else {
 			var v = "";
 			$("#particlesgroup").children("label").each(function() {
@@ -42,11 +42,10 @@ function saveDisplay() {
 			$("#id_displayfield")[0].value = "particle="+ v + "," + $("#id_particlecount")[0].value;
 		}
 	} else if ($("#block_earthbending").hasClass("active")) {
-		
+		$("#id_displayfield")[0].value = "source=earth";
 	} else if ($("#block_waterbending").hasClass("active")) {
-		
+		$("#id_displayfield")[0].value = "source=water";
 	} else if ($("#block_other").hasClass("active")) {
-		console.log("Heyyyy");
 		var v = "";
 		$("#blockother_select").children("label").each(function() {
 			if ($(this).hasClass("active")) {
@@ -55,6 +54,7 @@ function saveDisplay() {
 		});
 		$("#id_displayfield")[0].value = "block=" + v;
 	}
+	$("#id_displayfield").focusout();
 }
 
 function getCodeElement(elementValue, subValue) {
@@ -193,26 +193,43 @@ $(document).ready(function() {
 				}
 			}
 			for (var p in customParticles) {
-				if ($("#id_particlescustom")[0].value == customParticles[p]) {
+				if ($("#id_particlescustom")[0].value.startsWith(customParticles[p])) {
 					b = 0;
 					break;
 				}
+			}
+			
+			if ($("#id_particlescustom")[0].value == "reddust" || $("#id_particlescustom")[0].value == "spell") {
+				//$("#id_particlespeed").removeAttr("max");
+				//$("#id_particlespeed").removeAttr("min");
+				//$("#id_particlespeed").removeAttr("min");
+				$("#id_particlespeed").attr("type", "text");
+				$("#id_particlespeed").attr("placeholder", "0xFF9C00");
+				$("#speed_label").html("Hex Color");
+			} else {
+				$("#id_particlespeed").attr("type", "number");
+				$("#id_particlespeed").attr("placeholder", "0");
+				$("#speed_label").html("Particle Speed");
 			}
 		}
 		
 		
 		if (b == 2) {
 			$("#id_particlescustom").parent().addClass("has-error");
-			$("#id_particlescustom").attr("title", "Invalid particle name!")
+			$("#id_particlescustom").next("span").addClass("glyphicon-remove");
+			$("#id_particlescustom").attr("data-original-title", "Invalid particle name!")
 		}
 		else if (b == 1) {
 			$("#id_particlescustom").parent().addClass("has-warning");
-			$("#id_particlescustom").attr("title", "Particle requires MC 1.9")
+			$("#id_particlescustom").next("span").addClass("glyphicon-alert");
+			$("#id_particlescustom").attr("data-original-title", "Particle requires MC 1.9")
 		}
 		else {
 			$("#id_particlescustom").parent().removeClass("has-error");
 			$("#id_particlescustom").parent().removeClass("has-warning");
-			$("#id_particlescustom").removeAttr("title");
+			$("#id_particlescustom").removeAttr("data-original-title");
+			$("#id_particlescustom").next("span").removeClass("glyphicon-alert");
+			$("#id_particlescustom").next("span").removeClass("glyphicon-remove");
 		}
 	});
 	
@@ -240,17 +257,16 @@ $(document).ready(function() {
 		$(this).removeAttr("data-original-title");
 	});
 	
-	$("#id_deathmessage").focusout(function() {
+	$("input[type='number']").focusout(function() {
 		var message = "";
-		if ($(this).val().indexOf("=") <= -1) {
-			message = "Invalid format! Use the builder ^";
-		} else if (!$(this).val().startsWith("particle=") && !$(this).val().startsWith("block=")) {
-			message = "Unknown display type. Use the builder ^";
-		} else if ($(this).val().startsWith("particle=")) {
-			
-		} else if ($(this).val().startsWith("block=")) {
-			
+		if (isNaN(parseFloat(this.value))) {
+			message = "Must be a number!";
+		} else if (parseFloat(this.value) > this.max) {
+			message = "Value too high!";
+		} else if (parseFloat(this.value) < this.min) {
+			message = "Value too low!";
 		}
+		
 		if (message != "") {
 			$(this).parent().addClass("has-error");
 			$(this).next("span").addClass("glyphicon-remove");
@@ -258,6 +274,88 @@ $(document).ready(function() {
 		} else {
 			$(this).parent().removeClass("has-error");
 			$(this).next("span").removeClass("glyphicon-remove");
+			$(this).removeAttr("data-original-title");
+		}
+	});
+	
+	$("#id_displayfield").focusout(function() {
+		var message = "";
+		if ($(this).val().indexOf("=") <= -1) {
+			message = "Invalid format! Use the display picker on the right!";
+		} else if (!$(this).val().startsWith("particle=") && !$(this).val().startsWith("block=") && !$(this).val().startsWith("source=")) {
+			message = "Unknown display type. Use the display picker on the right!";
+		} else if ($(this).val().startsWith("particle=")) {
+			var s = $(this).val().split("=")[1];
+			var particleName = s.split(",")[0];
+			if (s.split(",").length > 2) {
+				message = "Too many arguments! Args are [particleName,count]";
+			} else if (particleName != "pk_firebending" && particleName != "pk_airbending") {
+				var b = false;
+				for (var p in particles) {
+					if (particleName == particles[p]) {
+						b = true;
+						break;
+					}
+				}
+				for (var p in warnParticles) {
+					if (particleName == warnParticles[p]) {
+						b = true;
+						break;
+					}
+				}
+				for (var p in customParticles) {
+					if (particleName.startsWith(customParticles[p])) {
+						b = true;
+						break;
+					}
+				}
+				
+				if (!b) message = "Unknown particle type!";
+			} else if (s.split(",").length == 2) {
+				if (isNaN(parseInt(s.split(",")[1]))) {
+					message = "Invalid particle count!";
+				} else if (parseInt(s.split(",")[1]) <= 0) {
+					message = "Particle count must be positive!";
+				} else if (parseInt(s.split(",")[1]) > 120) {
+					message = "Too many particles! Don't try kill the server!";
+				}
+			}
+		} else if ($(this).val().startsWith("block=")) {
+			
+		} else if ($(this).val().startsWith("source=")) {
+			var s = $(this).val().split("=")[1];
+			
+			var type = null;
+			for (var i = 0; i < s.split(",").length; i++) {
+				var s1 = s.split(",")[i];
+				if (s1.startsWith(" ")) {
+					message = "No spaces!";
+					break;
+				}
+				if (s.split(",")[i].toLowerCase() == "earth" || s.split(",")[i].toLowerCase() == "sand" || s.split(",")[i].toLowerCase() == "metal" || s.split(",")[i].toLowerCase() == "lava") {
+					if (type == null) type = "EARTH";
+					else if (type == "WATER") {
+						message = "Conflicting element sources!";
+						break;
+					} 
+				} else if (s.split(",")[i].toLowerCase() == "water" || s.split(",")[i].toLowerCase() == "ice" || s.split(",")[i].toLowerCase() == "snow" || s.split(",")[i].toLowerCase() == "plant") {
+					if (type == null) type = "WATER";
+					else if (type == "EARTH") {
+						message = "Conflicting element sources!";
+						break;
+					}
+				} else {
+					message = "Invalid source type!";
+					break;
+				}
+			}
+			
+		}
+		if (message != "") {
+			$(this).parent().addClass("has-error");
+			$(this).attr("data-original-title", message);
+		} else {
+			$(this).parent().removeClass("has-error");
 			$(this).removeAttr("data-original-title");
 		}
 	});

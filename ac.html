@@ -39,14 +39,14 @@
            	<div class='form-group'>
            	  <label class="control-label col-lg-3" for="id_move_version">Version</label>
           	  <div class="col-lg-9 has-feedback">
-          	    <input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_version' placeholder='1.0' value="1.0" type="number" min="0.1" step="0.1">
+          	    <input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_version' placeholder='1.0' value="1.0">
           	  	<span class="glyphicon form-control-feedback"></span>
           	  </div>
           	</div>
           	<div class='form-group'>
            	  <label class="control-label col-lg-3" for="id_move_help">Help Info <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The description shown in /bending help">?</a></label>
-           	  <div class="col-lg-9 has-feedback required">
-           	    <input class='form-control not-empty' id='id_move_help' data-placement="bottom" data-toggle="tooltip" placeholder='Click to fire a beam of magic!' type='text'>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control not-empty required' id='id_move_help' data-placement="bottom" data-toggle="tooltip" placeholder='Click to fire a beam of magic!' type='text'>
            	  	<span class="glyphicon form-control-feedback"></span>
            	  </div>
            	</div>
@@ -209,7 +209,7 @@
         	<div class='form-group'>
            	  <label class="control-label col-lg-3" for="id_damage">Damage</label>
            	  <div class="col-lg-9 has-feedback">
-           	    <input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_damage' placeholder='Damage in Hearts' type='number' min="0" step="0.5" max="20" value="1.5">
+           	    <input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_damage' placeholder='Damage in Hearts' type='number' min="0" step="0.5" max="20">
         	    <span class="glyphicon form-control-feedback"></span>
         	  </div>
         	</div>
@@ -217,7 +217,7 @@
         	<div class='form-group'>
            	  <label class="control-label col-lg-3" for="id_maxhits">Max Hits</label>
            	  <div class="col-lg-9 has-feedback">
-           	    <input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_maxhits' placeholder='1' type='number' min="1" step="1" max="20" value="1">
+           	    <input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_maxhits' placeholder='1' type='number' min="0" step="1" max="20" value="1">
         	    <span class="glyphicon form-control-feedback"></span>
         	  </div>
         	</div>
@@ -235,7 +235,7 @@
         	<div class='form-group' id="section_blocks">
            	  <label class="control-label col-lg-3" for="id_displayfield">Display</label>
            	  <div class="col-lg-9 has-feedback input-group" style="float:left;padding-left:15px;padding-right:15px">
-           	    <input class='form-control' id='id_displayfield' data-placement="bottom" data-toggle="tooltip" placeholder="block=bedrock" type="text" value="particle=pk_firebending,40">
+           	    <input class='form-control required' id='id_displayfield' data-placement="bottom" data-toggle="tooltip" placeholder="block=bedrock" type="text" value="particle=pk_firebending,40">
         	  	<span class="glyphicon form-control-feedback"></span>
         	  	<span class="input-group-addon" data-toggle="modal" data-target="#modal_blocks"><span class="glyphicon glyphicon-list"></span></span>
         	  </div>
@@ -243,7 +243,7 @@
         	
         	<hr>
         	
-        	<div class='form-group'>
+        	<div class='form-group hidden'>
         	<div class='col-lg-3 col-lg-offset-2 text-center pagination-centered'>
         	  <input type="button" class='btn btn-block btn-info text-center pagination-centered' data-toggle="modal" data-target="#modal_playereffects" id='id_playereffects' value="Player Effects">
         	</div>
@@ -267,7 +267,7 @@
            	    <button type="button" class='btn-lg btn-block btn-success text-center pagination-centered' data-toggle="modal" data-target="#modal_save" id='id_save' value="Save/Load"><span class="glyphicon glyphicon-file"></span> Save/Load</button>
         	  </div>
            	  <div class="col-lg-4 text-center pagination-centered">
-           	    <button type="button" class='btn-lg btn-block btn-warning text-center pagination-centered' data-toggle="modal" data-target="#modal_export" id="id_export"><span class="glyphicon glyphicon-share"></span> Export...</button>
+           	    <button type="button" class='btn-lg btn-block btn-warning text-center pagination-centered' data-toggle="modal" data-target="#modal_export" id="id_export" onclick="forceUpdate();"><span class="glyphicon glyphicon-share"></span> Export...</button>
         	  </div>
         	</div>
           </div>
@@ -382,7 +382,7 @@
           </div>
           <hr>
           
-          <div id="section_particles" class="section_display container row">
+          <div id="section_particles" class="section_display">
             <p>Select the particles that should be displayed instead of a block</p>
             <div class='form-group'>
               <div class="btn-group control-label" data-toggle="buttons" id="particlesgroup">
@@ -403,21 +403,28 @@
            	    </label>
               </div>
             </div>
-            <br>
-            <div class="row">
-              <div class='form-group'>
-           	    <label class="control-label col-lg-3" for="id_particlecount">Particles <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="How many particles shown each second">?</a></label>
-           	    <div class="col-lg-9">
-           	      <input class='form-control not-empty' id='id_particlecount' placeholder='40' type='number' min="0" step="1" max="120" value="40">
-        	    </div>
+            <hr>
+            <div class='form-group'>
+           	  <label class="col-lg-3 control-label" for="id_particlecount">Particles <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="How many particles shown each second">?</a></label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control not-empty' id='id_particlecount' placeholder='40' type='number' min="0" step="1" max="120" value="40">
         	  </div>
-        	  <div class='form-group' id="section_particlecustom">
-           	    <label class="control-label col-lg-3" for="id_particlescustom">Particles Name</label>
-           	    <div class="col-lg-9 has-feedback">
-           	      <input class='form-control has-feedback' id='id_particlescustom' disabled placeholder='happyVillager' type='text' value="">
-        	    </div>
+        	</div>
+        	<div class='form-group'>
+           	  <label class="control-label col-lg-3" for="id_particlesspeed" id="speed_label">Particle Speed</label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input type='number' class='form-control has-feedback' data-placement="bottom" data-toggle="tooltip" id='id_particlespeed' placeholder='0' max='5' min='0' step="0.05">
+        	    <span class="glyphicon form-control-feedback"></span>
         	  </div>
-            </div>
+        	</div>
+        	<div class='form-group' id="section_particlecustom">
+           	  <label class="control-label col-lg-3" for="id_particlescustom">Particles Name</label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control has-feedback' data-placement="bottom" data-toggle="tooltip" id='id_particlescustom' disabled placeholder='happyVillager'>
+        	    <span class="glyphicon form-control-feedback"></span>
+        	  </div>
+        	</div>
+        	<br><br><br><br>
           </div>
           
           <div id="section_waterbending" class="section_display hidden">
