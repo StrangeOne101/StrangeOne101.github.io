@@ -18,9 +18,8 @@
     <link rel='shortcut icon' href="img/avatar-favicon.png" style="border-radius: 50%;">
     <script src='lib/jquery.min.js' type='text/javascript'></script>
     <script src='lib/bootstrap.min.js' type='text/javascript'></script>
-  
-	<script src='easteregg.js' type='text/javascript'></script>
-  
+    <script src='easteregg.js' type='text/javascript'></script>
+
     <!-- Custom CSS -->
     <link href="css/one-page-wonder.css" rel="stylesheet">
 
@@ -30,6 +29,19 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+    function getChunks(thing) {
+    	if (!isNaN(parseInt(thing))) {
+    		var r = parseInt(thing);
+    		var d = r * 2 - 1;
+    		var c = d * d;
+    		var count = (c / 2 + 0.5);
+    		document.getElementById('chunkSize').innerHTML = "There are " + count + " chunks within a render distance of " + thing + "<br>";
+    	} else {
+    		document.getElementById('chunkSize').innerHTML = "Please learn how to enter numbers properly...<br>";
+    	}
+    }
+    </script>
 
 </head>
 
@@ -73,8 +85,8 @@
                     <li>
                         <a href="AbilityCreator/start.html" class="dropdown-toggle" data-toggle="dropdown">AbilityCreator <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="AbilityCreator/about.html">About</a></li>
-                          <li><a href="AbilityCreator/start.html">New Ability</a></li>
+                          <li><a href="bilityCreator/about.html">About</a></li>
+                          <li><a href="bilityCreator/start.html">New Ability</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -87,61 +99,23 @@
     
     <!-- Page Content -->
     <div class="container" style="">
-		<h1 class="page-header">Home</h1>
-		<div class="jumbotron" style="margin-top: 40px;">
-  			
-  			<img src="img/avatar.png" width="120px" height="120px" style="border-radius: 50%;">
-  			<h1>You know who I am</h1>
-  			<p>Moder, coder, developer, gamer. I'm currently just a student who plays games and codes in his spare time for fun. I'm a developer for <a href="http://projectkorra.com/forums/">ProjectKorra</a> but I also like to do a lot of plugin work, too.</p>
-		</div>
-		
-		<div class="col-md-4" style="padding-left:0px;">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4><span class="glyphicon glyphicon-tags"> </span> Projects</h4>
+		<h1 class="page-header">Tools</h1>
+		<h4>Chunks in Render Distance Calculator</h4>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p>Used to calculate how many chunks are shown within a render distance. <br>Note: This is for server render distances.</p>
+				
+				<div class='form-group'>
+					<label class="control-label col-lg-2 col-xs-12" for="chunkdiv">Render Distance: </label>
+					<div class="col-lg-3 col-xs-12" >
+						<input class="form-control" id="chunkdiv" type="number" placeholder="10" min="0" step="1" max="32">
+					</div><br>
 				</div>
-				<div class="panel-body"> <!-- available -->
-					<p>Take a look at my current projects. All of which are on github and are completely open source.</p>
-					<a href="projects.html" class="btn btn-default">Learn More</a>
-				</div>
+				<b id="chunkSize"></b>
+				<a href="#" onclick="getChunks(parseInt($('#chunkdiv')[0].value));" class="btn btn-default">Calculate</a>
 			</div>
 		</div>
-		
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4><span class="glyphicon glyphicon-file"></span> Ability Creator</h4>
-				</div>
-				<div class="panel-body">
-					<p>Create your own abilities for ProjectKorra! Tutorial coming soon as well!</p>
-					<a href="AbilityCreator/start.html" class="btn btn-default">Learn More</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-md-4" style="padding-right:0px;">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4><span class="glyphicon glyphicon-th-list"></span> Misc. Tools</h4>
-				</div>
-				<div class="panel-body">
-					<p>A collection of random tools that may be useful for a thing or two. Have a look if you're bored!</p>
-					<a href="tools.html" class="btn btn-default">Learn More</a>
-				</div>
-			</div>
-		</div><br><br><br><br><br>
-		
-        
-
-        <!-- First Featurette -->
-        <!--  <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
-            <h2 class="featurette-heading">This First Heading
-                <span class="text-muted">Will Catch Your Eye</span>
-            </h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>-->
-
+       
         <!-- Footer -->
         <footer>
             <div class="row">
