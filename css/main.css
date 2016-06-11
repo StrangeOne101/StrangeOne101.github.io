@@ -12,6 +12,18 @@ body .navbar-header .header-logo {
     vertical-align: middle; 
     top: 1px;
 }
+html > body {
+	background-color: #FBFBFB;
+	
+}
+
+div.panel-large {
+	font-size: 20px;
+}
+footer.less-height {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
 body .navbar-header {
     position: relative;
