@@ -38,7 +38,7 @@ function getDisplay() {
 	} else if (particlename == "reddust" || particlename == "spell") {
 		var r, g, b;
 		if (speed.startsWith("#")) speed = speed.substring(1, speed.length - 1);
-		else if (speed.startsWith("0x")) speed = speed.substring(1, speed.length - 1);
+		else if (speed.startsWith("0x")) speed = speed.substring(2, speed.length - 1);
 		else {
 			
 		}
