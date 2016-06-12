@@ -42,6 +42,7 @@
     		document.getElementById('chunkSize').innerHTML = "Please learn how to enter numbers properly...<br>";
     	}
     }
+    
     </script>
 
 </head>
@@ -87,7 +88,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">AbilityCreator <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="http://strangeone101.github.io/abilitycreator/about">About</a></li>
-                          <li><a href="http://strangeone101.github.io/abilitycreator/start">New Ability</a></li>
+                          <li class="hidden-sm hidden-xs"><a href="http://strangeone101.github.io/abilitycreator/start">New Ability</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,7 +102,7 @@
     <!-- Page Content -->
     <div class="container" style="">
 		<h1 class="page-header">Tools</h1>
-		<h4>Chunks in Render Distance Calculator</h4>
+		<h3>Chunks in Render Distance Calculator</h3>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<p>Used to calculate how many chunks are shown within a render distance. <br>Note: This is for server render distances.</p>
@@ -110,6 +111,30 @@
 					<label class="control-label col-lg-2 col-xs-12" for="chunkdiv" style="padding-left: 0px">Render Distance: </label>
 					<div class="col-lg-3 col-xs-12" style="padding-left: 0px">
 						<input class="form-control" id="chunkdiv" type="number" placeholder="10" min="0" step="1" max="32">
+					</div><br>
+				</div>
+				<div style="height: 0px; margin-top: 20px; margin-bottom: 5px;"><b id="chunkSize" style="vertical-align: middle;"></b></div>
+				<br><a href="#" onclick="getChunks(parseInt($('#chunkdiv')[0].value));" class="btn btn-default">Calculate</a>
+			</div>
+		</div>
+		<h3>Base64 Encoder/Decoder</h3>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class='form-group'>
+					<div class="btn-group col-lg-4" style="width: 100%; display: block;" data-toggle="buttons" id="id_encodedecode">
+           	    		<label class="btn btn-default radio-inline-btn col-lg-4 active sourceselection" id="sourceNone">
+           	      			<input type="radio" value="1" required="required">
+           	      			Encode
+           	    		</label>
+           	    		<label class="btn btn-default radio-inline-btn col-lg-4 sourceselection trigger-sneak" id="sourceShift" >
+           	      			<input type="radio" value="2" required="required">
+           	      			Decode
+           	    		</label>
+           	    	</div>
+           	    	<input type="button" class="btn btn-default" id="encodedecode_button" value="Go">
+					<label class="control-label col-lg-2 col-xs-12" for="chunkdiv" style="padding-left: 0px">Output</label>
+					<div class="">
+						<input class="form-control" id="chunkdiv" type="text" height="5" draggable="true" >
 					</div><br>
 				</div>
 				<div style="height: 0px; margin-top: 20px; margin-bottom: 5px;"><b id="chunkSize" style="vertical-align: middle;"></b></div>
