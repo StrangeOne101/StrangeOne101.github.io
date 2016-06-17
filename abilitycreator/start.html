@@ -92,7 +92,7 @@
     
     <!-- Page Content -->
     <div class="container" style="">
-		<h1 class="page-header">Ability Creator</h1>
+		<div class="page-header"><h1>Ability Creator <small>ALPHA 1.0</small></h1></div>
 		<div class="hidden-lg hidden-md"><h3>You cannot use the Ability Creator on a mobile device! Sorry!</h3></div>
 		<div class='container hidden-sm hidden-xs'>
       		<div class='panel-body'>
@@ -336,6 +336,7 @@
 				    </div> <!-- Row end -->
         
         			<p>* Things marked with a star are a WORK IN PROGRESS.</p>
+        			<a href="#" data-toggle="modal" data-target="#modal_help"><i>What do all these things mean?</i></a>
       			</form>
     		</div>
   		</div>
@@ -773,26 +774,26 @@
           <p>Select a save slot to save your work to!</p>
           <div style="overflow-y:scroll;height:325px">
             <ul class="list-group" style="cursor: pointer" id="id_savelist">
-              <li class="list-group-item save_slot activeitem2" value="0">Slot 1: <span class="save-slot" id="slot_0">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="1">Slot 2: <span class="save-slot" id="slot_1">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="2">Slot 3: <span class="save-slot" id="slot_2">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="3">Slot 4: <span class="save-slot" id="slot_3">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="4">Slot 5: <span class="save-slot" id="slot_4">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="5">Slot 6: <span class="save-slot" id="slot_5">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="6">Slot 7: <span class="save-slot" id="slot_6">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="7">Slot 8: <span class="save-slot" id="slot_7">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="8">Slot 9: <span class="save-slot" id="slot_8">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="9">Slot 10: <span class="save-slot" id="slot_9">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="10">Slot 11: <span class="save-slot" id="slot_10">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="11">Slot 12: <span class="save-slot" id="slot_11">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="12">Slot 13: <span class="save-slot" id="slot_12">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="13">Slot 14: <span class="save-slot" id="slot_13">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="14">Slot 15: <span class="save-slot" id="slot_14">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="15">Slot 16: <span class="save-slot" id="slot_15">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="16">Slot 17: <span class="save-slot" id="slot_16">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="17">Slot 18: <span class="save-slot" id="slot_17">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="18">Slot 19: <span class="save-slot" id="slot_18">&ltEmpty&gt</span></li>
-              <li class="list-group-item save_slot" value="19">Slot 20: <span class="save-slot" id="slot_19">&ltEmpty&gt</span></li>
+              <li class="list-group-item save_slot activeitem2" value="0">Slot 1: <span class="save-slot" id="slot_0">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="1">Slot 2: <span class="save-slot" id="slot_1">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="2">Slot 3: <span class="save-slot" id="slot_2">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="3">Slot 4: <span class="save-slot" id="slot_3">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="4">Slot 5: <span class="save-slot" id="slot_4">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="5">Slot 6: <span class="save-slot" id="slot_5">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="6">Slot 7: <span class="save-slot" id="slot_6">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="7">Slot 8: <span class="save-slot" id="slot_7">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="8">Slot 9: <span class="save-slot" id="slot_8">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="9">Slot 10: <span class="save-slot" id="slot_9">&lt;tEmpty&gt;</span></li>
+              <li class="list-group-item save_slot" value="10">Slot 11: <span class="save-slot" id="slot_10">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="11">Slot 12: <span class="save-slot" id="slot_11">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="12">Slot 13: <span class="save-slot" id="slot_12">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="13">Slot 14: <span class="save-slot" id="slot_13">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="14">Slot 15: <span class="save-slot" id="slot_14">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="15">Slot 16: <span class="save-slot" id="slot_15">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="16">Slot 17: <span class="save-slot" id="slot_16">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="17">Slot 18: <span class="save-slot" id="slot_17">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="18">Slot 19: <span class="save-slot" id="slot_18">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="19">Slot 20: <span class="save-slot" id="slot_19">&lt;Empty&gt;</span></li>
             </ul>
           </div><br>
           <span style="color:green">Select a slot to save on.</span>
@@ -827,6 +828,47 @@
           <span id="export_error" style="color:red"></span><br>
           <button class="btn btn-danger btn-large disabled download-files" id="download_listener"><span class="glyphicon glyphicon-save"></span> Listener</button>
           <button class="btn btn-danger btn-large disabled download-files" id="download_ability"><span class="glyphicon glyphicon-save"></span> Ability</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ability Creator Help</h4>
+        </div>
+        <div class="modal-body">
+          <p>This section is made to help people understand what all the fields mean within the Ability Creator. If things still aren't clear after reading this, <a href="http://projectkorra.com/conversations/add?to=StrangeOne101">contact StrangeOne101</a>.</p>
+          <div id="help" class="" style="overflow:scroll;height:480px;background-color:#EFEFEF;border: 1px solid #DDD;padding:6px 6px 6px 6px;margin-right:1px;padding-top: 0px;margin-bottom: 6px;font-size: 14px;">
+          	  <h2>Basic Fields</h2>
+          	  <p><b>Name</b>: Name of the ability. Cannot have a space and is the name of the ability users type when going /bending bind &lt;ability&gt;</p>
+          	  <p><b>Author</b>: Your name. This will tell everyone who made the ability! E.g. StrageOne101</p>
+          	  <p><b>Version</b>: The version of the ability. This is for when you do updates on your ability. When you update it, increase it by 0.1 or something so users know that it's a different version!</p>
+              <p><b>Help Info</b>: This tells people how to use your move. Everything in this field will be shown in /bending help &lt;ability&gt;</p>
+              <p><b>Element</b>: What element this ability is. Pretty self explanatory.</p> 
+              <p><b>SubElement</b>: What subelement this ability is. Also pretty self explanatory.</p>
+              <p><b>Cooldown</b>: When people successfully use this move, how long should they not be able to use it? This is in <b>seconds!</b></p>
+              <p><b>Move Type</b>: What kind of move this is. Keep this on block/particle for now (no other moves supported)</p>
+              <p><b>Move Start</b>: How your move is activated. E.g. "Click" for moves like FireBlast, "Shift" for moves like Blaze</p>
+              <p><b>Source Selection</b>: How people select a source. <b>NOTE</b>: Moves that don't require sources will start from the selected location (think of AirBlast)</p>
+              <p><b>Speed</b>: The amount of blocks per second the ability moves at.</p>
+              <p><b>Range</b>: The number of blocks until the ability dissipates.</p>
+              <p><b>Redirect</b>: How the move can be redirected. Constant redirection means it will follow where the player is looking.</p>
+              <p><b>Damage</b>: The amount of damage this move does (in hearts).</p>
+              <p><b>Max Hits</b>: Like the config option in torrent that lets admins choose how many times the move hits before it won't hit anymore (from one blast).</p>
+              <p><b>Death Message</b>: The message that shows when players are killed by the ability.</p>
+              <p><b>Display</b>: How this move looks. Use the builder button on the right to configure this!</p>
+              <hr>
+              <h2>Advanced Fields</h2>
+              <p><b>Collision Radius</b>: The radius (in blocks) that mobs and players can be hit in. </p>
+              <p><b>Package Name</b>: A field for real developers. This field will do nothing in game and is just an option for a slight change in the code.</p>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="download_ability">Close</button>
         </div>
       </div>
     </div>

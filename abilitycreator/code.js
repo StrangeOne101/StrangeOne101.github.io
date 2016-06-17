@@ -288,7 +288,7 @@ $(document).ready(function() {
 			var s = $(this).val().split("=")[1];
 			var particleName = s.split(",")[0];
 			if (s.split(",").length > 2) {
-				message = "Too many arguments! Args are [particleName,count]";
+				message = "Too many arguments! Args are [particleName,count,speed]";
 			} else if (particleName != "pk_firebending" && particleName != "pk_airbending") {
 				var b = false;
 				for (var p in particles) {

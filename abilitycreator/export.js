@@ -25,11 +25,13 @@ var listenerString = 'package com.strangewebac.abilities;\n\nimport org.bukkit.e
 var abilityString = 'package com.strangewebac.abilities;\n\nimport java.util.List;\nimport java.util.Random;\n\nimport java.util.logging.Level;\n\nimport org.bukkit.Location;\nimport org.bukkit.entity.Entity;\nimport org.bukkit.entity.LivingEntity;\nimport org.bukkit.entity.Player;\nimport org.bukkit.util.Vector;\n\nimport com.projectkorra.projectkorra.GeneralMethods;\nimport com.projectkorra.projectkorra.ProjectKorra;\nimport com.projectkorra.projectkorra.ability.AddonAbility;\nimport com.projectkorra.projectkorra.ability.{ELEMENT}Ability;\nimport com.projectkorra.projectkorra.configuration.ConfigManager;\nimport com.projectkorra.projectkorra.util.DamageHandler;\n\npublic class {ABILITY} extends {ELEMENT}Ability implements AddonAbility\n{	\n	public static double RANGE = {RANGE};\n	public static long COOLDOWN = {COOLDOWN}L;\n	public static double MAXHITS = {MAXHITS};\n	public static double DAMAGE = {DAMAGE};\n	public static double DAMAGERADIUS = {DAMAGERADIUS};\n	public static double MOVESPEED = {SPEED};\n	\n	public static boolean isClick = {CLICK};\n	public static boolean isShift = {SHIFT};\n\n	public static Random random = new Random();\n	\n	public Location startLoc;\n	public int hits = 0;\n	public Vector direction;\n	public Location loc;\n	\n	public {ABILITY}(Player player)\n	{\n		super(player);\n		\n		if (!bPlayer.canBend(this)) {\n			remove();\n			return;\n		}\n		\n		this.startLoc = player.getLocation();\n		this.direction = player.getEyeLocation().getDirection().normalize();\n		this.loc = player.getLocation();\n		\n		start();\n	}\n	\n	@Override\n	public void progress() \n	{	\n		if (this.getLocation().distance(this.startLoc) > RANGE) {\n			remove();\n			bPlayer.addCooldown(this);\n			return;\n		}\n		\n		if (!bPlayer.canBend(this)) {\n			remove();\n			return;\n		}\n		\n		this.loc.add(direction);\n		\n		List<Entity> entities = GeneralMethods.getEntitiesAroundPoint(getLocation(), DAMAGERADIUS);\n		for (Entity e : entities) {\n			if (e instanceof LivingEntity && e.getEntityId() != player.getEntityId()) {\n				hits++;\n				DamageHandler.damageEntity(e, DAMAGE, this);\n				if (hits >= MAXHITS) {\n					bPlayer.addCooldown(this);\n					remove();\n					return;\n				}\n			}\n		}\n		\n		return;\n	}	\n\n	@Override\n	public long getCooldown() {\n		return COOLDOWN;\n	}\n\n	@Override\n	public String getName() \n	{\n		return "{ABILITY}";\n	}\n\n	@Override\n	public boolean isHarmlessAbility() \n	{\n		return false;\n	}\n\n	@Override\n	public boolean isSneakAbility() {\n		return isShift;\n	}\n\n	@Override\n	public String getAuthor() {\n		return "{AUTHOR}";\n	}\n\n	@Override\n	public String getVersion() \n	{\n		return "{VERSION}";\n	}\n\n	@Override\n	public void load() {\n		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new _Listener(), ProjectKorra.plugin);\n		\n		ProjectKorra.plugin.getLogger().log(Level.INFO, getName() + " v" + getVersion() + " by " + getAuthor() + " loaded (created by StrangeOne101\'s Ability Creator)!");\n		\n		//ConfigManager.languageConfig.get().addDefault("Abilities.Water.BloodRip.DeathMessage", "{victim} was purged by {attacker}\'s {ability}");\n		\n		ConfigManager.languageConfig.save();\n	}\n\n	@Override\n	public void stop() {\n		\n	}\n	\n	@Override\n	public String getDescription() {\n		return "{HELP}";\n	}\n\n	@Override\n	public Location getLocation() {\n		return loc;\n	}\n	\n}';
 var avatarFunction = '\n    @Override\n    public boolean requireAvatar() {\n        return false;\n    }\n';
 
-function getDisplay() {
-	var particlename = "";
-	var amount = "";
-	var speed = "";
-	var range = "";
+function getParticleDisplay() {
+	var particlename = $("#id_displayfield")[0].value.split("=")[1].split(",")[0];
+	var amount = $("#id_displayfield")[0].value.split("=")[1].split(",")[1];
+	
+	var speed = 0;
+	if ($("#id_displayfield")[0].value.split("=")[1].split(",").length >= 3) speed = $("#id_displayfield")[0].value.split("=")[2].split(",")[1];
+	var range = getValue("id_damageradius");
 	
 	if (particlename == "pk_firebending") {
 		return "            com.projectkorra.projectkorra.ability.FireAbility.playFirebendingParticles(loc, " + amount + ", " + range + ", " + range + ", " + range + ");";
@@ -40,9 +42,14 @@ function getDisplay() {
 		if (speed.startsWith("#")) speed = speed.substring(1, speed.length - 1);
 		else if (speed.startsWith("0x")) speed = speed.substring(2, speed.length - 1);
 		else {
-			
+			speed = "000000";
 		}
+		r = parseInt(speed.substring(0, 2), 16);
+		g = parseInt(speed.substring(2, 4), 16);
+		b = parseInt(speed.substring(4, 6), 16);
 		return "            for (int i = 0; i < " + amount + "; i++) {\n                ParticleEffect.RED_DUST.display(" + r + ", " + g + ", " + b + ", 0.004F, 0, this.loc.clone().add(Math.random() * " + range + " * 2 - " + range + ", Math.random() * " + range + " * 2 - " + range + ", Math.random() * " + range + " * 2 - " + range + "), 256);\n            }";
+	} else {
+		return '            ParticleEffect.fromName("' + particleName + '").display(' + range + ', ' + range + ', ' + range + ', ' + speed + ', ' + amount + ', this.loc, 256);'l
 	}
 	
 	
@@ -64,6 +71,12 @@ function save() {
 	finalString = finalString.replace(/{DAMAGE}/g, damage);
 	finalString = finalString.replace(/{RANGE}/g, range);
 	finalString = finalString.replace(/{MAXHITS}/g, maxhits);
+	
+	if ($("#id_displayfield")[0].value.startswith("particle=")) {
+		finalString = finalString.replace(/{DISPLAY}/g, getParticleDisplay());
+	} else {
+		finalString = finalString.replace(/{DISPLAY}/g, "");
+	}
 	download(moveName + ".java", finalString);
 	
 	download("_Listener" + ".java", listenerString.replace(/BloodRip/g, moveName));
