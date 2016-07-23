@@ -140,7 +140,7 @@ function genClass() {
 	var hash = generateHash(clazz);
 	clazz = clazz + "/*****************************\n";
 	var d = new Date();
-	clazz = clazz + "Creation: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + (d.getYear() - 100) + " " + d.getHour() + ":" + d.getMinutes();
+	clazz = clazz + "Creation: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + (d.getYear() - 100) + " " + d.getHours() + ":" + d.getMinutes();
 	clazz = clazz + "IP: " + IP;
 	clazz = clazz + "ACV: " + acv;
 	clazz = clazz + "Version: " + acversion;
