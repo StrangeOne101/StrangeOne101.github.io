@@ -77,7 +77,7 @@ function getSub(elementValue, subValue) {
 
 $(document).ready(function() {
 	
-	$("#globalVersion").text(version.toUpperCase());
+	$("#globalVersion").text(acversion.toUpperCase());
 	
 	$(".movementtype-move").click(function() {
 		$("#section_movement").removeClass("hidden");
