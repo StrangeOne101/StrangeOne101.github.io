@@ -138,13 +138,13 @@ function genClass() {
 	clazz = clazz.replace("%maxhits%", maxhits);
 	clazz = clazz.replace("%damageradius%", damageradius);
 	var hash = generateHash(clazz);
-	clazz = clazz + "/*****************************\n";
+	clazz = clazz + "\n/*****************************\n";
 	var d = new Date();
-	clazz = clazz + "Creation: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + (d.getYear() - 100) + " " + d.getHours() + ":" + d.getMinutes();
-	clazz = clazz + "IP: " + IP;
-	clazz = clazz + "ACV: " + acv;
-	clazz = clazz + "Version: " + acversion;
-	clazz = clazz + "Hash: " + hash;
+	clazz = clazz + "Creation: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + (d.getYear() - 100) + " " + d.getHours() + ":" + d.getMinutes() + "\n";
+	clazz = clazz + "IP: " + IP + "\n";
+	clazz = clazz + "ACV: " + acv + "\n";
+	clazz = clazz + "Version: " + acversion + "\n";
+	clazz = clazz + "Hash: " + hash + "\n";
 	clazz = clazz + "**************AC*************/";
 	return clazz;
 }
