@@ -1,5 +1,10 @@
+var acversion = "Alpha 1.0"
 
+var error = "border-color: #b94a48;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);background-color:#FF6666 "
 
+var particles = ["smoke", "hearts", "explode", "largeexplode", "hugeexplosion", "fireworkSpark", "bubble", "splash", "wake", "suspended", "depthsuspend", "crit", "magicCrit", "largesmoke", "spell", "instantSpell", "mobSpell", "mobSpellAmbient", "witchMagic", "dripWater", "dripLava", "angryVillager", "happyVillager", "townaura", "note", "portal", "enchantmenttable", "flame", "lava", "footstep", "reddust", "snowballpoof", "slime", "barrier", "cloud", "snowshovel", "droplet", "take"];
+var warnParticles = ["endRod", "dragonbreath", "damageIndicator", "sweepAttack"];
+var customParticles = ["iconcrack", "blockcrack", "blockdust"];	
 
 function btnSelect(element) {
 	$(".radio-inline-btn").each(function() {
@@ -9,14 +14,6 @@ function btnSelect(element) {
 	$(element).removeClass("btn-default");
 	$(element).addClass("btn-primary");
 }
-
-var error = "border-color: #b94a48;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);background-color:#FF6666 "
-
-var particles = ["smoke", "hearts", "explode", "largeexplode", "hugeexplosion", "fireworkSpark", "bubble", "splash", "wake", "suspended", "depthsuspend", "crit", "magicCrit", "largesmoke", "spell", "instantSpell", "mobSpell", "mobSpellAmbient", "witchMagic", "dripWater", "dripLava", "angryVillager", "happyVillager", "townaura", "note", "portal", "enchantmenttable", "flame", "lava", "footstep", "reddust", "snowballpoof", "slime", "barrier", "cloud", "snowshovel", "droplet", "take"];
-var warnParticles = ["endRod", "dragonbreath", "damageIndicator", "sweepAttack"];
-var customParticles = ["iconcrack", "blockcrack", "blockdust"];	
-
-
 
 function getSubs(elementValue) {
 	if (elementValue == "0") return ["None", "Flight", "Spiritual Projection"];
@@ -79,6 +76,8 @@ function getSub(elementValue, subValue) {
 
 
 $(document).ready(function() {
+	
+	$("#globalVersion").text(version.toUpperCase());
 	
 	$(".movementtype-move").click(function() {
 		$("#section_movement").removeClass("hidden");
