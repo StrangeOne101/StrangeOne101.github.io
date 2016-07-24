@@ -137,7 +137,7 @@ function genClass() {
 	clazz = clazz.replace("%damage%", damage);
 	clazz = clazz.replace("%maxhits%", maxhits);
 	clazz = clazz.replace("%damageradius%", damageradius);
-	var tempClazz = clazz.replace("\t", "");
+	var tempClazz = clazz;//.replace("\t", "");
 	var hash = generateHash(tempClazz);
 	clazz = clazz + "\n/*****************************\n";
 	var d = new Date();
