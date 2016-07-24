@@ -143,6 +143,7 @@ function genClass() {
 	var d = new Date();
 	clazz = clazz + "Creation: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + (d.getYear() - 100) + " " + d.getHours() + ":" + d.getMinutes() + "\n";
 	clazz = clazz + "IP: " + IP + "\n";
+	clazz = clazz + "HashLength: " + tempHash.length + "\n";
 	clazz = clazz + "ACV: " + acv + "\n";
 	clazz = clazz + "Version: " + acversion + "\n";
 	clazz = clazz + "Hash: " + hash + "\n";
