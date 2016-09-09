@@ -48,6 +48,14 @@ padding-left: 0px;
 padding-right: 0px;
 }
 
+.element-selector {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .activeitem {
 	background-color: #E9E9E9;
 	font-weight: bold;

@@ -26,6 +26,8 @@
   	<!--  <script src="code.js" type='text/javascript'></script> These are commented out for now because the AC is being overhauled
   	<script src="save.js" type='text/javascript'></script>
   	<script src="export.js" type='text/javascript'></script>-->
+  	<script src="beta.js" type='text/javascript'></script>
+  	<script src="ready.js" type='text/javascript'></script>
     <!-- Custom CSS -->
     <link href="http://strangeone101.github.io/css/one-page-wonder.css" rel="stylesheet">
 
@@ -148,7 +150,7 @@
     						<p>For stats that can be modified on the move, such as the element it is and the cooldown it gives.</p>
     						<hr>
     						<div class="row">
-	    						<div class='form-group'>
+	    						<div class='form-group hidden'>
 	           	  					<label class="control-label col-lg-3" for="id_element">Element</label>
 	           	  					<div class="col-lg-6">
 	           	    					<select class='form-control' id='id_element'>
@@ -161,7 +163,7 @@
 	           	    					</select>
 	           	  					</div>
 	           					</div>
-	           					<div class='form-group'>
+	           					<div class='form-group hidden'>
 					           	  	<label class="control-label col-lg-3" for="id_subelement" id="id_element_option">Subelement</label>
 					           	  	<div class="col-lg-6">
 					           	    	<select class='form-control' id='id_subelement'>
@@ -170,6 +172,33 @@
 						             	  	<option value="2">Spiritual Projection</option>
 						           	    </select>
 					           	  	</div>
+					           	</div>
+					           	<div>
+					           		<div class='form-group centered-block'>
+              							<div class="btn-group control-label" data-toggle="buttons" id="particlesgroup">
+                							<label class="element-selector btn btn-default radio-inline-btn active" id="element_fire">
+           	      								<input type="radio" value="0" class="btn btn-default">
+           	      								<img src="img/textures/fire.png" width="32px" height="32px"><br>
+           	    							</label>
+           	    							<label class="element-selector btn btn-default radio-inline-btn active" id="element_water">
+           	      								<input type="radio" value="1" class="btn btn-default">
+           	      								<img src="img/textures/water.png" width="32px" height="32px"><br>
+           	    							</label>
+           	    							<label class="element-selector btn btn-default radio-inline-btn" id="element_earth" >
+							           	     	<input type="radio" value="2" class="btn btn-default">
+							           	      	<img src="img/textures/earth2.png" width="32px" height="32px"><br>
+							           	    </label>
+							           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_air" >
+							           	     	<input type="radio" value="3" class="btn btn-default">
+							           	      	<img src="img/textures/air.png" width="32px" height="32px"><br>
+							           	    </label>
+							           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_chi" >
+							           	     	<input type="radio" value="2" class="btn btn-default">
+							           	      	<img src="img/textures/earth2.png" width="32px" height="32px"><br>
+							           	    </label>
+							           	</div>
+							        </div>
+           	    							
 					           	</div>
 					           	<div class='form-group'>
 					           	  	<label class="control-label col-lg-3" for="id_cooldown">Cooldown</label>
@@ -188,8 +217,10 @@
   							</div>
   						</div>
   						<div id="tab_step_event" class="tab-pane fade">
-    						<h3>Menu 2</h3>
-    						<p>Some content in menu 2.</p>
+    						<h3>Step Event</h3>
+    						<p>This is where you can add a sequence of events that are to be executed every tick (every 0.05 seconds OR 1 second for every 20 ticks). This should be used to display things like particles, etc.</p>
+  							<hr>
+  							
   						</div>
   						<div id="tab_collide_event" class="tab-pane fade">
     						<h3>Menu 2</h3>
