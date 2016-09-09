@@ -92,7 +92,7 @@
     
     <!-- Page Content -->
     <div class="container" style="">
-		<div class="page-header"><h1>Ability Creator <small id="globalVersion">BETA 1.0</small></h1></div>
+		<div class="page-header"><h1>Ability Creator <small id="globalVersion">BETA 1.0.1</small></h1></div>
 		<div class="hidden-lg hidden-md"><h3>You cannot use the Ability Creator on a mobile device! Sorry!</h3></div>
 		<div class='container hidden-sm hidden-xs'>
       		<div class='panel-body'>
@@ -108,16 +108,84 @@
 					
 					<div class="tab-content" id="tab_pane">
   						<div id="tab_info" class="tab-pane fade in active">
-    						<h3>Info</h3>
-    						<p>Some content.</p>
+    						<h3>Ability Info</h3>
+    						<p>This is where the main information for you ability goes. The "Help Text" is the text users see when running the /bending help command with your ability.</p>
+    						<hr>
+    						<div class="row" style="padding-left: 20px; padding-right: 20px;">
+    							<div class='form-group'>
+           	  						<label class="control-label col-lg-3" for="id_move_name">Ability Name</label>
+	           	  					<div class="col-lg-6 has-feedback">
+	           	    					<input class='form-control no-whitespace not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_name' placeholder='MagicBlast' type='text'>
+	           	   						<span class="glyphicon form-control-feedback"></span>
+	           	  					</div>
+	          					</div> 
+	          					<div class='form-group'>
+	           	  					<label class="control-label col-lg-3" for="id_move_author">Author</label>
+	           	  					<div class="col-lg-6 has-feedback">
+	           	    					<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_author' placeholder='Notch' type='text'>
+	           	  						<span class="glyphicon form-control-feedback"></span>
+	           	  					</div>
+	           					</div>
+	           					<div class='form-group'>
+	           	  					<label class="control-label col-lg-3" for="id_move_version">Version</label>
+	          	  					<div class="col-lg-6 has-feedback">
+	          	   						<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_version' placeholder='1.0' value="1.0">
+	          	  						<span class="glyphicon form-control-feedback"></span>
+	          	  					</div>
+	          					</div>
+	          					<div class='form-group'>
+	           	  					<label class="control-label col-lg-3" for="id_move_help">Help Text</label>
+	           	  					<div class="col-lg-6 has-feedback">
+	           	    					<input class='form-control not-empty required' id='id_move_help' data-placement="bottom" data-toggle="tooltip" placeholder='Click to fire a beam of magic!' type='text'>
+	           	  						<span class="glyphicon form-control-feedback"></span>
+	           	  					</div>
+	           					</div>
+    						</div>
+    						
   						</div>
   						<div id="tab_general" class="tab-pane fade">
-   							<h3>Menu 1</h3>
-    						<p>Some content in menu 1.</p>
+   							<h3>General</h3>
+    						<p>For stats that can be modified on the move, such as the element it is and the cooldown it gives.</p>
+    						<hr>
+    						<div class="row">
+	    						<div class='form-group'>
+	           	  					<label class="control-label col-lg-3" for="id_element">Element</label>
+	           	  					<div class="col-lg-6">
+	           	    					<select class='form-control' id='id_element'>
+	           	      						<option value="0">Air</option>
+	                  						<option value="1">Earth</option>
+	                  						<option value="2">Fire</option>
+							            	  <option value="3">Water</option>
+							                  <option value="4">Chi</option>
+							                  <option value="5">Avatar</option>
+	           	    					</select>
+	           	  					</div>
+	           					</div>
+	           					<div class='form-group'>
+					           	  	<label class="control-label col-lg-3" for="id_subelement" id="id_element_option">Subelement</label>
+					           	  	<div class="col-lg-6">
+					           	    	<select class='form-control' id='id_subelement'>
+						             	  	<option value="0">None</option>
+						             	  	<option value="1">Flight</option>
+						             	  	<option value="2">Spiritual Projection</option>
+						           	    </select>
+					           	  	</div>
+					           	</div>
+					           	<div class='form-group'>
+					           	  	<label class="control-label col-lg-3" for="id_cooldown">Cooldown</label>
+					           	  	<div class="col-lg-6">
+					           	    	<input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_cooldown' placeholder='Seconds' type='number' min="0" step="1" max="3600" >
+					        	  	</div>
+					        	</div>
+    						</div>
   						</div>
   						<div id="tab_sources" class="tab-pane fade">
-    						<h3>Menu 2</h3>
-    						<p>Some content in menu 2.</p>
+    						<h3>Source Selection</h3>
+    						<p>This tab allows you to control how sources work. For elements that don't require a source, you can choose whether or not to allow the move to come from a different location.</p>
+  							<hr>
+  							<div id="source_selection">
+  							
+  							</div>
   						</div>
   						<div id="tab_step_event" class="tab-pane fade">
     						<h3>Menu 2</h3>
