@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Strange's Site | Ability Creator</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href='http://strangeone101.github.io/lib/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='http://strangeone101.github.io/lib/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+ 	<link href='ac.css' rel='stylesheet' type='text/css'>
+    <link href='http://strangeone101.github.io/css/main.css' rel='stylesheet' type='text/css'>
+    <link rel='shortcut icon' href="http://strangeone101.github.io/img/avatar-favicon.png" style="border-radius: 50%;">
+    <link rel='apple-touch-icon' href="http://strangeone101.github.io/img/avatar.png">
+    <script src='http://strangeone101.github.io/lib/jquery.min.js' type='text/javascript'></script>
+    <script src='http://strangeone101.github.io/lib/bootstrap.min.js' type='text/javascript'></script>
+  
+	<script src='http://strangeone101.github.io/easteregg.js' type='text/javascript'></script>
+  	<script src='http://strangeone101.github.io/lib/bootstrap-switch.min.js' type='text/javascript'></script>
+  	<script src="code.js" type='text/javascript'></script>
+  	<script src="save.js" type='text/javascript'></script>
+  	<script src="export.js" type='text/javascript'></script>
+    <!-- Custom CSS -->
+    <link href="http://strangeone101.github.io/css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" style="color:#ffffff">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="header-logo"><img style="border-radius: 50%;" width="48px" height="48px" src="http://strangeone101.github.io/img/avatar.png"></span>
+                
+                <a class="navbar-brand" href="http://strangeone101.github.io">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="http://strangeone101.github.io/about">About</a>
+                    </li>
+                    <li>
+                        <a href="http://strangeone101.github.io/tools">Tools</a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="http://strangeone101.github.io/projects/">My Projects</a></li>
+                          <li class="divider"></li>
+                          <li><a href="http://strangeone101.github.io/projects/ircbot">IRCBot</a></li>
+                          <li><a href="http://strangeone101.github.io/projects/betterspawners">BetterSpawners</a></li>
+                          <li><a href="http://strangeone101.github.io/projects/bendinggui">BendingGUI</a></li>
+                          <li><a href="http://strangeone101.github.io/projects/projectkorra">ProjectKorra</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">AbilityCreator <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="http://strangeone101.github.io/abilitycreator/about">About</a></li>
+                          <li class="hidden-sm hidden-xs"><a href="http://strangeone101.github.io/abilitycreator/start">New Ability</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="navbar-text navbar-right hidden-sm" id="iamstrange">Yes, I am strange ;)</p>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <!-- Page Content -->
+    <div class="container" style="">
+		<div class="page-header"><h1>Ability Creator <small id="globalVersion">ALPHA 1.0</small></h1></div>
+		<div class="hidden-lg hidden-md"><h3>You cannot use the Ability Creator on a mobile device! Sorry!</h3></div>
+		<div class='container hidden-sm hidden-xs'>
+      		<div class='panel-body'>
+        		<form class='form-horizontal' id="mainForm">
+         			<div class='row'>
+           				<div class="col-lg-6" style="border-right: 1px solid rgb(238, 238, 238);">
+           					<!-- <h4>Ability Info</h4> -->
+           					<div class='form-group'>
+           	  					<label class="control-label col-lg-3" for="id_move_name">Name</label>
+           	  					<div class="col-lg-9 has-feedback">
+           	    					<input class='form-control no-whitespace not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_name' placeholder='MagicBlast' type='text'>
+           	   						<span class="glyphicon form-control-feedback"></span>
+           	  					</div>
+          					</div> 
+          					<div class='form-group'>
+           	  					<label class="control-label col-lg-3" for="id_move_author">Author</label>
+           	  					<div class="col-lg-9 has-feedback">
+           	    					<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_author' placeholder='Notch' type='text'>
+           	  						<span class="glyphicon form-control-feedback"></span>
+           	  					</div>
+           					</div>
+           					<div class='form-group'>
+           	  					<label class="control-label col-lg-3" for="id_move_version">Version</label>
+          	  					<div class="col-lg-9 has-feedback">
+          	   						<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_move_version' placeholder='1.0' value="1.0">
+          	  						<span class="glyphicon form-control-feedback"></span>
+          	  					</div>
+          					</div>
+          					<div class='form-group'>
+           	  					<label class="control-label col-lg-3" for="id_move_help">Help Info <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The description shown in /bending help">?</a></label>
+           	  					<div class="col-lg-9 has-feedback">
+           	    					<input class='form-control not-empty required' id='id_move_help' data-placement="bottom" data-toggle="tooltip" placeholder='Click to fire a beam of magic!' type='text'>
+           	  						<span class="glyphicon form-control-feedback"></span>
+           	  					</div>
+           					</div>
+           	
+           					<hr>
+           	
+           					<!-- <h4>Ability Settings</h4> -->
+           					<div class='form-group'>
+           	  					<label class="control-label col-lg-3" for="id_element">Element</label>
+           	  					<div class="col-lg-9">
+           	    					<select class='form-control' id='id_element'>
+           	      						<option value="0">Air</option>
+                  						<option value="1">Earth</option>
+                  						<option value="2">Fire</option>
+						            	  <option value="3">Water</option>
+						                  <option value="4">Chi</option>
+						                  <option value="5">Avatar</option>
+           	    					</select>
+           	  					</div>
+           					</div>
+           					<div class='form-group'>
+				           	  	<label class="control-label col-lg-3" for="id_subelement" id="id_element_option">Subelement</label>
+				           	  	<div class="col-lg-9">
+				           	    	<select class='form-control' id='id_subelement'>
+					             	  	<option value="0">None</option>
+					             	  	<option value="1">Flight</option>
+					             	  	<option value="2">Spiritual Projection</option>
+					           	    </select>
+				           	  	</div>
+				           	</div>
+				           	<div class='form-group'>
+				           	  	<label class="control-label col-lg-3" for="id_cooldown">Cooldown</label>
+				           	  	<div class="col-lg-9 has-feedback">
+				           	    	<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_cooldown' placeholder='Seconds' type='number' min="0" step="1" max="3600" >
+				        	  		<span class="glyphicon form-control-feedback"></span>
+				        	  	</div>
+				        		</div>
+				        	
+				        		<hr>
+        	
+					        	<!-- <h4>Movement</h4> -->
+					        	<div class='form-group'>
+					        	  	<label class="control-label col-lg-3" for="id_movementtype2">Move Type</label>
+					           	  	<div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype2">
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 movementtype-none" id="abilityMovement2_None">
+					           	      		<input type="radio" value="1">
+					           	      		None
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 active movementtype-move" id="abilityMovement2_Block" >
+					           	      		<input type="radio" value="2">
+					           	      		Block
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 movementtype-move" id="abilityMovement2_Particles" >
+					           	      		<input type="radio" value="3">
+					           	      		Particles
+					           	    	</label>
+					           	  	</div>
+					        	</div>
+					        	
+					        	<div class='form-group'>
+					        	  	<label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
+					           	  	<div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
+					           	    	<label class="btn btn-default radio-inline-btn active col-lg-4 movementtype-start trigger-click" id="abilityMovement_Click">
+					           	      		<input type="radio" value="1" required="required">
+					           	      		Click
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak movementtype-start" id="abilityMovement_Sneak" >
+					           	      		<input type="radio" value="2" required="required">
+					           	      		Sneak
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 trigger-click trigger-sneak movementtype-start" id="abilityMovement_Both" >
+					           	      		<input type="radio" value="3" required="required">
+					           	      		Sneak + Click
+					           	    	</label>
+					           	  	</div>
+					        	</div>
+        	
+					        	<div class='form-group'>
+					        	  	<label class="control-label col-lg-3" for="id_sourceselection">Source Selection*</label>
+					           	  	<div class="btn-group col-lg-9" data-toggle="buttons" id="id_sourceselection">
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 active sourceselection" id="sourceNone">
+					           	      		<input type="radio" value="1" required="required">
+					           	      		None
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 sourceselection trigger-sneak" id="sourceShift" >
+					           	      		<input type="radio" value="2" required="required">
+					           	      		Sneak
+					           	    	</label>
+					           	    	<label class="btn btn-default radio-inline-btn col-lg-4 sourceselection trigger-click" id="sourceClick" >
+					           	     		<input type="radio" value="3" required="required">
+					           	      		Click
+					           	    	</label>
+					           	  	</div>
+					        	</div>
+					        	<hr> <!-- This section is for movement data. If they select other, the other one should be shown -->
+					        </div> <!-- End of row -->
+					        <div class="col-lg-6">
+					          	<!-- <h4>Damage</h4> -->
+					          	<div class="" id="section_movement">
+					        	  	<div class='form-group'>
+					           	    	<label class="control-label col-lg-3" for="id_movementspeed">Speed (BPS) <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="Blocks per second">?</a></label>
+					           	    	<div class="col-lg-9 has-feedback">
+					           	      		<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_movementspeed' placeholder='Blocks per second' type='number' min="0" step="0.5" max="20" value="5">
+					        	      		<span class="glyphicon form-control-feedback"></span>
+					        	    	</div>
+					        	  	</div>
+					        	  
+					        	  	<div class='form-group'>
+					           	    	<label class="control-label col-lg-3" for="id_range">Range</label>
+					           	    	<div class="col-lg-9 has-feedback">
+					           	      		<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_range' placeholder='20' type='number' min="0" step="1" max="50" value="20">
+					        	      	<span class="glyphicon form-control-feedback"></span>
+					        	    	</div>
+					        	  	</div>
+        	
+						        	<div class='form-group'>
+						        	    <label class="control-label col-lg-3" for="id_redirect">Redirect*</label>
+						           	    <div class="btn-group col-lg-9" data-toggle="buttons" id="id_redirect">
+						           	      	<label class="btn btn-default radio-inline-btn active col-lg-4 abilityredirect" id="abilityRedirect_Never">
+						           	        	<input type="radio" value="1" class="btn line1">
+						           	        	Never
+						           	      	</label>
+						           	      	<label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Click" >
+						           	        	<input type="radio" value="2" class="btn line1">
+						           	        	On Click
+						           	      	</label>
+						           	      	<label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Sneak" >
+						           	        	<input type="radio" value="3" class="btn line1">
+						           	        	On Sneak
+						           	      	</label>
+						           	      	<label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Both" >
+						           	        	<input type="radio" value="4" class="btn line2">
+						           	        	Sneak + Click
+						           	      	</label>
+						           	      	<label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Always" >
+						           	        	<input type="radio" value="5" class="btn line2">
+						           	        	Constantly
+						           	      	</label>
+						           	    </div>
+						        	</div>
+						       	</div>
+					        	<div class="hidden" id="section_nonmovement">
+					        	  	<br><h3 class="pagination-centered text-center">Coming Soon.</h3><br><h5 class="pagination-centered text-center">Please use a moving move in the meantime.</h5><br><br>
+					        	</div>
+					        	<hr>
+					        	<div class='form-group'>
+					           	  	<label class="control-label col-lg-3" for="id_damage">Damage</label>
+					           	  	<div class="col-lg-9 has-feedback">
+					           	    	<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_damage' placeholder='Damage in Hearts' type='number' min="0" step="0.5" max="20">
+					        	    	<span class="glyphicon form-control-feedback"></span>
+					        	  	</div>
+					        	</div>
+        	
+					        	<div class='form-group'>
+					           	  	<label class="control-label col-lg-3" for="id_maxhits">Max Hits</label>
+					           	  	<div class="col-lg-9 has-feedback">
+					           	    	<input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_maxhits' placeholder='1' type='number' min="0" step="1" max="20" value="1">
+					        	    	<span class="glyphicon form-control-feedback"></span>
+					        	  	</div>
+					        	</div>
+					        	
+					        	<div class='form-group'>
+					           	  	<label class="control-label col-lg-3" for="id_deathmessage">Death Message*</label>
+					           	  	<div class="col-lg-9 has-feedback">
+					           	    	<input class='form-control' data-placement="bottom" data-toggle="tooltip" data-placement="bottom" id='id_deathmessage' placeholder="{PLAYER} was murdered by {KILLER} using {ABILITY}" type='text' value="{PLAYER} was murdered by {KILLER} using {ABILITY}">
+					        	    	<span class="glyphicon form-control-feedback"></span>
+					        	  	</div>
+					        	</div>
+					        	
+					        	<hr>
+        	
+					        	<div class='form-group' id="section_blocks">
+					           	  	<label class="control-label col-lg-3" for="id_displayfield">Display</label>
+					           	  	<div class="col-lg-9 has-feedback input-group" style="float:left;padding-left:15px;padding-right:15px">
+					           	    	<input class='form-control required' id='id_displayfield' data-placement="bottom" data-toggle="tooltip" placeholder="block=bedrock" type="text" value="particle=pk_firebending,40">
+					        	  		<span class="glyphicon form-control-feedback"></span>
+					        	  		<span class="input-group-addon" data-toggle="modal" data-target="#modal_blocks"><span class="glyphicon glyphicon-list"></span></span>
+					        	  	</div>
+					        	</div>
+					        	
+					        	<hr>
+        	
+					        	<div class='form-group hidden'>
+					        		<div class='col-lg-3 col-lg-offset-2 text-center pagination-centered'>
+					        	  		<input type="button" class='btn btn-block btn-info text-center pagination-centered' data-toggle="modal" data-target="#modal_playereffects" id='id_playereffects' value="Player Effects">
+					        		</div>
+					        	<div class='col-lg-3 text-center pagination-centered'>
+					        	  	<input type="button" class='btn btn-block btn-info text-center pagination-centered' data-toggle="modal" data-target="#modal_hiteffects" id='id_hiteffects' value="Hit Effects">
+					        	</div>
+					        	<div class='col-lg-3 text-center pagination-centered'>
+					        	  <input type="button" class='btn btn-block btn-info text-center pagination-centered' data-toggle="modal" data-target="#modal_settings" id='id_settings' value="Adv. Settings">
+					        	</div>
+					        </div>
+        	
+        					<hr>
+        	
+				        	<div class='form-group'>
+				        		<div class="col-lg-4 text-center pagination-centered">
+				        	  		<button type="button" class='btn-lg btn-block btn-info text-center pagination-centered' data-toggle="modal" data-target="#modal_settings" id='id_settings' style="font-size:18px"><span class="glyphicon glyphicon-cog" style="font-size:14px"></span> Adv. Settings</button>
+				        		</div>
+				           	  	<div class="col-lg-4 text-center pagination-centered">
+				           	    	<button type="button" class='btn-lg btn-block btn-success text-center pagination-centered' data-toggle="modal" data-target="#modal_save" id='id_save' value="Save/Load"><span class="glyphicon glyphicon-file"></span> Save/Load</button>
+				        	  	</div>
+				           	  	<div class="col-lg-4 text-center pagination-centered">
+				           	    	<button type="button" class='btn-lg btn-block btn-warning text-center pagination-centered' data-toggle="modal" data-target="#modal_export" id="id_export" onclick="forceUpdate();"><span class="glyphicon glyphicon-share"></span> Export...</button>
+				        	  	</div>
+				        	  	<div class="col-lg-4 text-center pagination-centered">
+				           	    	<button type="button" class='btn-lg btn-block btn-default text-center pagination-centered' data-toggle="modal" data-target="#modal_step_event" id="id_step_event_button"><span class="glyphicon glyphicon-chevron-right"></span> Step Event</button>
+				        	  	</div>
+				        	</div>
+				        </div>
+				    </div> <!-- Row end -->
+        
+        			<p>* Things marked with a star are a WORK IN PROGRESS.</p>
+        			<a href="#" data-toggle="modal" data-target="#modal_help"><i>What do all these things mean?</i></a>
+      			</form>
+    		</div>
+  		</div>
+  		
+  		<!-- ** Modals ** -->
+  
+  <!-- Hit effects -->
+  <div class="modal fade" id="modal_hiteffects">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Hit Effects (Mobs &#38; Players)</h4>
+        </div>
+        <div class="modal-body">
+          <p>These are the effects that hit players and mobs will recieve. This is a work-in-progress.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_playereffects">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Player Effects</h4>
+        </div>
+        <div class="modal-body">
+          <p>These are the effects that will effect the player/bender when they use this move. This is a work-in-progress.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_settings">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Advanced Settings</h4>
+        </div>
+        <div class="modal-body">
+          <p>Settings for advanced users! You probably shouldn't touch these if you don't know what you're doing ;)</p>
+          <hr>
+          <div class='form-group'>
+           	<label class="control-label col-lg-4" for="id_damageradius">Collision Radius* <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The radius of which mobs can be damaged in">?</a></label>
+          	<div class="col-lg-8 has-feedback">
+          	  <input class='form-control not-empty' id='id_damageradius' placeholder='0.6' value="0.6" type="number" min="0.1" step="0.1" max="2">
+          	</div>
+         </div>
+         <div class='form-group'>
+           	<label class="control-label col-lg-4" for="id_packagename">Package Name* <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="The package the ability is compiled under">?</a></label>
+          	<div class="col-lg-8 has-feedback">
+          	  <input class='form-control' id='id_packagename' placeholder='com.strangewebac.abilities'>
+          	</div>
+         </div>
+         <br><br><hr>
+         <p>More possibly coming soon. <a href="http://projectkorra.com/conversations/add?to=StrangeOne101">PM me on ProjectKorra</a> if you want to submit an idea!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Block selection -->
+  <div class="modal fade" id="modal_blocks">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Block Selection</h4>
+        </div>
+        <div class="modal-body">
+          <p>Select a block that should be used when the ability is moving.</p>
+          <div class='btn-group control-label' data-toggle="buttons">
+            <label class="btn-blockbtn btn btn-default radio-inline-btn active" id="block_none">
+           	  <input type="radio" value="1" class="btn btn-default">
+           	  <img src="img/blocks/blank.png" width="64px" height="64px"><br>
+           	  None
+           	</label>
+           	<label class="btn-blockbtn btn btn-default radio-inline-btn" id="block_waterbending" >
+           	  <input type="radio" value="2" class="btn btn-default">
+           	  <img src="img/blocks/water.png" width="64px" height="64px"><br>
+           	  Water Source*
+           	</label>
+           	<label class="btn-blockbtn btn btn-default radio-inline-btn" id="block_earthbending" >
+           	  <input type="radio" value="3" class="btn btn-default">
+           	  <img src="img/blocks/grass.png" width="64px" height="64px"><br>
+           	  Earth Source*
+           	</label>
+           	<label class="btn-blockbtn btn btn-default radio-inline-btn" id="block_other" >
+           	  <input type="radio" value="4" class="btn btn-default">
+           	  <img src="img/blocks/glass.png" width="64px" height="64px"><br>
+           	  Other Block
+           	</label>
+          </div>
+          <hr>
+          
+          <div id="section_particles" class="section_display">
+            <p>Select the particles that should be displayed instead of a block</p>
+            <div class='form-group'>
+              <div class="btn-group control-label" data-toggle="buttons" id="particlesgroup">
+                <label class="btn-blockbtn btn btn-default radio-inline-btn active btn-particles" id="particles_fire">
+           	      <input type="radio" value="pk_firebending" class="btn btn-default">
+           	      <img src="img/textures/flame.png" width="64px" height="64px"><br>
+           	      Firebending
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn btn-particles" id="particles_air" >
+           	      <input type="radio" value="pk_airbending" class="btn btn-default">
+           	      <img src="img/textures/cloud.png" width="64px" height="64px"><br>
+           	      Airbending
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn" id="particles_other" >
+           	      <input type="radio" value="pk_WTFisThisHere" class="btn btn-default">
+           	      <img src="http://vignette3.wikia.nocookie.net/pokemon/images/1/16/025Pikachu_OS_anime_10.png" width="64px" height="64px"><br>
+           	      Other...
+           	    </label>
+              </div>
+            </div>
+            <hr>
+            <div class='form-group'>
+           	  <label class="col-lg-3 control-label" for="id_particlecount">Particles <a href="#" class="miniminitooltip" data-toggle="tooltip" data-placement="right" title="How many particles shown each second">?</a></label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control not-empty' id='id_particlecount' placeholder='40' type='number' min="0" step="1" max="120" value="40">
+        	  </div>
+        	</div>
+        	<div class='form-group'>
+           	  <label class="control-label col-lg-3" for="id_particlesspeed" id="speed_label">Particle Speed</label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input type='number' class='form-control has-feedback' data-placement="bottom" data-toggle="tooltip" id='id_particlespeed' placeholder='0' max='5' min='0' step="0.05">
+        	    <span class="glyphicon form-control-feedback"></span>
+        	  </div>
+        	</div>
+        	<div class='form-group' id="section_particlecustom">
+           	  <label class="control-label col-lg-3" for="id_particlescustom">Particles Name</label>
+           	  <div class="col-lg-9 has-feedback">
+           	    <input class='form-control has-feedback' data-placement="bottom" data-toggle="tooltip" id='id_particlescustom' disabled placeholder='happyVillager'>
+        	    <span class="glyphicon form-control-feedback"></span>
+        	  </div>
+        	</div>
+        	<br><br><br><br>
+          </div>
+          
+          <div id="section_waterbending" class="section_display hidden">
+          	<p>Stuff for waterbending goes here</p>
+          </div>
+          
+          <div id="section_earthbending" class="section_display hidden">
+          	<p>Stuff for earthbending goes here</p>
+          </div>
+          
+          <div id="section_blocks_" class="section_display hidden" style="overflow:scroll;height:338px">
+          	<p>Select a block type to be used...</p>
+          	<div class="btn-group control-label" data-toggle="buttons" id="blockother_select">
+             
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn active">
+           	      <input type="radio" value="grass" class="btn btn-default btn-particles">
+           	      <img src="img/blocks/grass.png" width="64px" height="64px"><br>
+           	      Grass
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="dirt:0" class="btn btn-default">
+           	      <img src="img/blocks/dirt.png" width="64px" height="64px"><br>
+           	      Dirt
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="clay" class="btn btn-default btn-particles">
+           	      <img src="img/blocks/clay.png" width="64px" height="64px"><br>
+           	      Clay
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="log:0" class="btn btn-default btn-particles">
+           	      <img src="img/blocks/log_oak.png" width="64px" height="64px"><br>
+           	      Wood
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="wood" class="btn btn-default btn-particles">
+           	      <img src="img/blocks/planksoak.png" width="64px" height="64px"><br>
+           	      Planks
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stone" class="btn btn-default btn-particles">
+           	      <img src="img/blocks/stone.png" width="64px" height="64px"><br>
+           	      Stone
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="smooth_brick:0" class="btn btn-default">
+           	      <img src="img/blocks/stonebricks.png" width="64px" height="64px"><br>
+           	      Stone Bricks
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stone_slab2:0" class="btn btn-default">
+           	      <img src="img/blocks/stoneslab.png" width="64px" height="64px"><br>
+           	      Stoneslab
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="cobblestone" class="btn btn-default">
+           	      <img src="img/blocks/cobblestone.png" width="64px" height="64px"><br>
+           	      Cobblestone
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="mossy_cobblestone" class="btn btn-default">
+           	      <img src="img/blocks/mossycobblestone.png" width="64px" height="64px"><br>
+           	      Mossstone
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="melon_block" class="btn btn-default">
+           	      <img src="img/blocks/melon.png" width="64px" height="64px"><br>
+           	      Melon
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="pumpkin" class="btn btn-default">
+           	      <img src="img/blocks/pumpkin.png" width="64px" height="64px"><br>
+           	      Pumpkin
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="ender_stone" class="btn btn-default">
+           	      <img src="img/blocks/endstone.png" width="64px" height="64px"><br>
+           	      Endstone
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="cobble_wall:0" class="btn btn-default">
+           	      <img src="img/blocks/wall_cobblestone.png" width="64px" height="64px"><br>
+           	      Cobble Wall
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="cobble_wall:1" class="btn btn-default">
+           	      <img src="img/blocks/wall_mossy_cobblestone.png" width="64px" height="64px"><br>
+           	      Mossy Wall
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="glowstone" class="btn btn-default">
+           	      <img src="img/blocks/glowstone.png" width="64px" height="64px"><br>
+           	      Glowstone
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="netherrack" class="btn btn-default">
+           	      <img src="img/blocks/netherrack.png" width="64px" height="64px"><br>
+           	      Netherrack
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="soul_sand" class="btn btn-default">
+           	      <img src="img/blocks/soulsand.png" width="64px" height="64px"><br>
+           	      Soulsand
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="nether_brick" class="btn btn-default">
+           	      <img src="img/blocks/netherbrick.png" width="64px" height="64px"><br>
+           	      Netherbrick
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="obsidian" class="btn btn-default">
+           	      <img src="img/blocks/obsidian.png" width="64px" height="64px"><br>
+           	      Obsidian
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="iron_block" class="btn btn-default">
+           	      <img src="img/blocks/ironblock.png" width="64px" height="64px"><br>
+           	      Iron Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="gold_block" class="btn btn-default">
+           	      <img src="img/blocks/goldblock.png" width="64px" height="64px"><br>
+           	      Gold Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="diamond" class="btn btn-default">
+           	      <img src="img/blocks/diamondblock.png" width="64px" height="64px"><br>
+           	      Diamond Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="lapis_block" class="btn btn-default">
+           	      <img src="img/blocks/lapisblock.png" width="64px" height="64px"><br>
+           	      Lapis Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="quartz_block" class="btn btn-default">
+           	      <img src="img/blocks/quartz.png" width="64px" height="64px"><br>
+           	      Quartz Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="coal_block" class="btn btn-default">
+           	      <img src="img/blocks/coal.png" width="64px" height="64px"><br>
+           	      Coal Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="emerald_block" class="btn btn-default">
+           	      <img src="img/blocks/emeraldblock.png" width="64px" height="64px"><br>
+           	      Emerald Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="redstone_block" class="btn btn-default">
+           	      <img src="img/blocks/redstoneblock.png" width="64px" height="64px"><br>
+           	      Redstone Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="tnt" class="btn btn-default">
+           	      <img src="img/blocks/TNT.png" width="64px" height="64px"><br>
+           	      TNT
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="bedrock" class="btn btn-default">
+           	      <img src="img/blocks/bedrock.png" width="64px" height="64px"><br>
+           	      Bedrock
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="coal_ore" class="btn btn-default">
+           	      <img src="img/blocks/coalore.png" width="64px" height="64px"><br>
+           	      Coal Ore
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="iron_ore" class="btn btn-default">
+           	      <img src="img/blocks/ironore.png" width="64px" height="64px"><br>
+           	      Iron Ore
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="gold_ore" class="btn btn-default">
+           	      <img src="img/blocks/goldore.png" width="64px" height="64px"><br>
+           	      Gold Ore
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="emerald_block" class="btn btn-default">
+           	      <img src="img/blocks/diamondblock.png" width="64px" height="64px"><br>
+           	      Diamond Ore
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="lapis_ore" class="btn btn-default">
+           	      <img src="img/blocks/lapisore.png" width="64px" height="64px"><br>
+           	      Lapis Ore
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="leaves:5" class="btn btn-default">
+           	      <img src="img/blocks/leavesoak.png" width="64px" height="64px"><br>
+           	      Oak Leaves
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="leaves:6" class="btn btn-default">
+           	      <img src="img/blocks/leavesspruce.png" width="64px" height="64px"><br>
+           	      Spruce Leaves
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="snow_block" class="btn btn-default">
+           	      <img src="img/blocks/snow.png" width="64px" height="64px"><br>
+           	      Snow Block
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="ice" class="btn btn-default">
+           	      <img src="img/blocks/ice.png" width="64px" height="64px"><br>
+           	      Ice
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="packed_ice" class="btn btn-default">
+           	      <img src="img/blocks/ice_packed.png" width="64px" height="64px"><br>
+           	      Packed Ice
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="wool:0" class="btn btn-default">
+           	      <img src="img/blocks/woolwhite.png" width="64px" height="64px"><br>
+           	      Wool
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="wool:14,1,4,5,3,11,10" class="btn btn-default">
+           	      <img src="img/blocks/woolrainbow.gif" width="64px" height="64px"><br>
+           	      Wool Rainbow
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="glass" class="btn btn-default">
+           	      <img src="img/blocks/glass.png" width="64px" height="64px"><br>
+           	      Glass
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_glass:0" class="btn btn-default">
+           	      <img src="img/blocks/glass_blue.png" width="64px" height="64px"><br>
+           	      Stained Glass
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_glass:14,1,4,5,3,11,10" class="btn btn-default">
+           	      <img src="img/blocks/glassrainbow2.gif" width="64px" height="64px"><br>
+           	      R Stained Glass
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_clay:14" class="btn btn-default">
+           	      <img src="img/blocks/clay_red.png" width="64px" height="64px"><br>
+           	      Stained Clay
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_clay:4" class="btn btn-default">
+           	      <img src="img/blocks/clay_yellow.png" width="64px" height="64px"><br>
+           	      Stained Clay
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_clay:14,1,4,5,13,3,11" class="btn btn-default">
+           	      <img src="img/blocks/clayrainbow.gif" width="64px" height="64px"><br>
+           	      R Stained Clay
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_clay:5" class="btn btn-default">
+           	      <img src="img/blocks/clay_lime.png" width="64px" height="64px"><br>
+           	      Stained Clay
+           	    </label>
+           	    <label class="btn-blockbtn btn btn-default radio-inline-btn">
+           	      <input type="radio" value="stained_clay:11" class="btn btn-default">
+           	      <img src="img/blocks/clay_blue.png" width="64px" height="64px"><br>
+           	      Stained Clay
+           	    </label>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveDisplay();">Select</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_save">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Save Data... <i><span id="save_notification"></span></i></h4>
+        </div>
+        <div class="modal-body">
+          
+          <p>Select a save slot to save your work to!</p>
+          <div style="overflow-y:scroll;height:325px">
+            <ul class="list-group" style="cursor: pointer" id="id_savelist">
+              <li class="list-group-item save_slot activeitem2" value="0">Slot 1: <span class="save-slot" id="slot_0">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="1">Slot 2: <span class="save-slot" id="slot_1">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="2">Slot 3: <span class="save-slot" id="slot_2">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="3">Slot 4: <span class="save-slot" id="slot_3">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="4">Slot 5: <span class="save-slot" id="slot_4">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="5">Slot 6: <span class="save-slot" id="slot_5">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="6">Slot 7: <span class="save-slot" id="slot_6">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="7">Slot 8: <span class="save-slot" id="slot_7">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="8">Slot 9: <span class="save-slot" id="slot_8">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="9">Slot 10: <span class="save-slot" id="slot_9">&lt;tEmpty&gt;</span></li>
+              <li class="list-group-item save_slot" value="10">Slot 11: <span class="save-slot" id="slot_10">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="11">Slot 12: <span class="save-slot" id="slot_11">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="12">Slot 13: <span class="save-slot" id="slot_12">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="13">Slot 14: <span class="save-slot" id="slot_13">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="14">Slot 15: <span class="save-slot" id="slot_14">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="15">Slot 16: <span class="save-slot" id="slot_15">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="16">Slot 17: <span class="save-slot" id="slot_16">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="17">Slot 18: <span class="save-slot" id="slot_17">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="18">Slot 19: <span class="save-slot" id="slot_18">&lt;Empty&gt;</span></li>
+              <li class="list-group-item save_slot" value="19">Slot 20: <span class="save-slot" id="slot_19">&lt;Empty&gt;</span></li>
+            </ul>
+          </div><br>
+          <span style="color:green">Select a slot to save on.</span>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="save_button">Save</button>
+          <button type="button" class="btn btn-warning" id="load_button">Load</button>
+          <button type="button" class="btn btn-danger" id="delete_button">Delete</button>
+          <button type="button" class="btn btn-primary" id="close_button" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_export">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Export to java files</h4>
+        </div>
+        <div class="modal-body">
+          <p>This will allow you to export your ability to java files. You must agree to the terms of use before you export the files.<br><br><b>Note: You have to compile these java files before you can use them on your server!</b></p>
+          <h2>Terms of Use</h2>
+          <div id="termsofuse" class="" style="overflow:scroll;height:320px;background-color:#EFEFEF;border: 1px solid #DDD;padding:6px 6px 6px 6px;margin-right:1px;padding-top: 0px;margin-bottom: 6px">
+          	  <h3>1. Liability</h3><p>StrangeOne101 is not liable under any circumstances for damage to your server. Any mallicious software or code is a result of the user's actions and is not a result of StrangeOne101's Ability Creator.</p>
+          	  <h3>2. Redistribution</h3><p>You may not under any circumstances redistribute abilities created by StrangeOne101's Ability Creator. Redistributing abilities created by this is a breach of the terms. </p>
+          	  <h3>3. Selling</h3><p>You may not under any circumstances sell or market abilities created by StrangeOne101's Ability Creator. All abilities are for personal use and cannot be sold for profit under any circumstances.</p>
+          </div>
+          <input type="checkbox" id="export_checkbox"> I have read and accept the terms of use<br>
+          <span id="export_error" style="color:red"></span><br>
+          <button class="btn btn-danger btn-large disabled download-files disabled" id="download_listener"><span class="glyphicon glyphicon-save"></span> Listener</button>
+          <button class="btn btn-danger btn-large disabled download-files disabled" id="download_ability"><span class="glyphicon glyphicon-save"></span> Ability</button>
+          <button class="btn btn-danger btn-large disabled download-files" id="download_test"><span class="glyphicon glyphicon-save"></span> Test Ability File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_step_event">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Step Event</h4>
+        </div>
+        <div class="modal-body">
+          <p>The step event is what happens every tick (20 ticks occur every second). You can use this to display particles, move the block, create explosions, etc.</p>
+          <div style="overflow-y:scroll;height:200px">
+            <ul class="list-group" id="id_savelist" id="step_event_list">
+          		 <li class="list-group-item"></li>
+          		 <li class="list-group-item"></li>
+          		 <li class="list-group-item"></li>
+          		 <li class="list-group-item"></li>
+            </ul>
+          </div>
+          <div class="form-control bg-primary center-block">
+          	<div class="lg-col-6">Explosion (Radius: 1)</div>
+          	<div class="lg-col-6 text-right"></div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal_help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ability Creator Help</h4>
+        </div>
+        <div class="modal-body">
+          <p>This section is made to help people understand what all the fields mean within the Ability Creator. If things still aren't clear after reading this, <a href="http://projectkorra.com/conversations/add?to=StrangeOne101">contact StrangeOne101</a>.</p>
+          <div id="help" class="" style="overflow:scroll;height:480px;background-color:#EFEFEF;border: 1px solid #DDD;padding:6px 6px 6px 6px;margin-right:1px;padding-top: 0px;margin-bottom: 6px;font-size: 14px;">
+          	  <h2>Basic Fields</h2>
+          	  <p><b>Name</b>: Name of the ability. Cannot have a space and is the name of the ability users type when going /bending bind &lt;ability&gt;</p>
+          	  <p><b>Author</b>: Your name. This will tell everyone who made the ability! E.g. StrageOne101</p>
+          	  <p><b>Version</b>: The version of the ability. This is for when you do updates on your ability. When you update it, increase it by 0.1 or something so users know that it's a different version!</p>
+              <p><b>Help Info</b>: This tells people how to use your move. Everything in this field will be shown in /bending help &lt;ability&gt;</p>
+              <p><b>Element</b>: What element this ability is. Pretty self explanatory.</p> 
+              <p><b>SubElement</b>: What subelement this ability is. Also pretty self explanatory.</p>
+              <p><b>Cooldown</b>: When people successfully use this move, how long should they not be able to use it? This is in <b>seconds!</b></p>
+              <p><b>Move Type</b>: What kind of move this is. Keep this on block/particle for now (no other moves supported)</p>
+              <p><b>Move Start</b>: How your move is activated. E.g. "Click" for moves like FireBlast, "Shift" for moves like Blaze</p>
+              <p><b>Source Selection</b>: How people select a source. <b>NOTE</b>: Moves that don't require sources will start from the selected location (think of AirBlast)</p>
+              <p><b>Speed</b>: The amount of blocks per second the ability moves at.</p>
+              <p><b>Range</b>: The number of blocks until the ability dissipates.</p>
+              <p><b>Redirect</b>: How the move can be redirected. Constant redirection means it will follow where the player is looking.</p>
+              <p><b>Damage</b>: The amount of damage this move does (in hearts).</p>
+              <p><b>Max Hits</b>: Like the config option in torrent that lets admins choose how many times the move hits before it won't hit anymore (from one blast).</p>
+              <p><b>Death Message</b>: The message that shows when players are killed by the ability.</p>
+              <p><b>Display</b>: How this move looks. Use the builder button on the right to configure this!</p>
+              <hr>
+              <h2>Advanced Fields</h2>
+              <p><b>Collision Radius</b>: The radius (in blocks) that mobs and players can be hit in. </p>
+              <p><b>Package Name</b>: A field for real developers. This field will do nothing in game and is just an option for a slight change in the code.</p>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="download_ability">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <!-- Footer -->
+        <footer class="less-height">
+            <div class="row">
+                <div class="col-lg-12">
+                    <hr>
+                	<p><span class="icon icon--github"></span> <a href="https://github.com/StrangeOne101/">My GitHub</a></p>
+                	<p><span class="icon icon--twitter"></span> <a href="https://twitter.com/StrangeOne101MC">My Twitter</a></p>
+                	<p><span class="icon icon--steam"></span> <a href="http://steamcommunity.com/id/strangeone101">Steam</a></p>
+                	<p><span class="icon icon--arrow"></span> <a href="http://projectkorra.com/members/strangeone101.3652/">ProjectKorra</a></p>
+                	<hr>
+                    <p>Copyright &copy; StrangeOne101 2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
