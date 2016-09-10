@@ -22,6 +22,22 @@ $(document).ready(function() {
 	$("span").tooltip({
 		   placement: "bottom"
 	 }); 
+	 $("#step_events").sortable({
+		 
+		 // Only make the .panel-heading child elements support dragging.
+	    // Omit this to make then entire <li>...</li> draggable.
+	     handle: '.glyphicon-resize-vertical', 
+	     /*update: function() {
+	    	 $('.panel', $("#step_events")).each(function(index, elem) {
+	         	var $listItem = $(elem),
+	            newIndex = $listItem.index();
+
+	                    
+	         });
+	     },*/
+	     axis: 'y',
+	    containment: '#step_events',
+	 });
 	
 	$('.element-selector').mouseup(function() {
 		$("#element-selected").children("img").attr("src", $(this).children("img").attr("src"));
