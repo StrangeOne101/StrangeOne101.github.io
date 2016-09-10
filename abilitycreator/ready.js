@@ -33,7 +33,7 @@ $(document).ready(function() {
 			$("#id_element_option").html("Require Avatar");
 		} else {
 			var s = "";
-			for (var i = 0; i < getSubs(v).length; i += 1) {
+			for (var i = 0; i < getSubs(val).length; i += 1) {
 				s = s + "<option value=\"" + i + "\">" + getSubs(val)[i] + "</option>";
 			}
 			$("#id_subelement").html(s);

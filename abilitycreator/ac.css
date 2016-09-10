@@ -22,8 +22,6 @@ ul.nav-tabs > li.active > a, ul.nav-tabs > li.active > a:hover {
 	border: 1px solid #D0D0D0;
 	padding: 32px 32px 32px 32px;
 	margin-top: -1px;
-	
-	max-height: 600px;
 }
 
 span.glyphicon {
@@ -67,6 +65,7 @@ padding-right: 0px;
 	text-align: center;
 	padding-top: 16px;
 	background-color: #f7f7f7;
+	margin-left: 10px;
 }
 
 #element-selected > img {

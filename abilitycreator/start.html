@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Allows users to create abilities for ProjectKorra 1.8.0 and above">
+    <meta name="author" content="StrangeOne101">
 
     <title>Strange's Site | Ability Creator</title>
 
@@ -149,76 +149,147 @@
    							<h3>General</h3>
     						<p>For stats that can be modified on the move, such as the element it is and the cooldown it gives.</p>
     						<hr>
-    						<div class="row">
-	    						<div class='form-group hidden'>
-	           	  					<label class="control-label col-lg-3" for="id_element">Element</label>
-	           	  					<div class="col-lg-6">
-	           	    					<select class='form-control' id='id_element'>
-	           	      						<option value="0">Air</option>
-	                  						<option value="1">Earth</option>
-	                  						<option value="2">Fire</option>
-							            	  <option value="3">Water</option>
-							                  <option value="4">Chi</option>
-							                  <option value="5">Avatar</option>
-	           	    					</select>
-	           	  					</div>
-	           					</div>
-	           					
-					           	<div class="row row-centered">
-					           		<div class="center-block">
-					           			<label class="radio-inline-btn active" id="element-selected" style="">
-					           				<img src="img/textures/fire.png" width="192px" height="192px"><br>
-					           				<span style="font-family: inherit; font-size: 32px; font-weight: 100">Fire</span>
-					           			</label>
-					           		</div>
-					           		<div class=''>
-              							<div class="btn-group control-label center-block" data-toggle="buttons" id="elementgroup" style="float: none">
-                							<label class="element-selector btn btn-default radio-inline-btn active" id="element_fire">
-           	      								<input type="radio" value="2" class="btn btn-default" title="Fire">
-           	      								<img src="img/textures/fire.png" width="32px" height="32px"><br>
-           	    							</label>
-           	    							<label class="element-selector btn btn-default radio-inline-btn" id="element_water">
-           	      								<input type="radio" value="3" class="btn btn-default" title="Water">
-           	      								<img src="img/textures/water.png" width="32px" height="32px"><br>
-           	    							</label>
-           	    							<label class="element-selector btn btn-default radio-inline-btn" id="element_earth" >
-							           	     	<input type="radio" value="1" class="btn btn-default" title="Earth">
-							           	      	<img src="img/textures/earth2.png" width="32px" height="32px"><br>
-							           	    </label>
-							           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_air" >
-							           	     	<input type="radio" value="0" class="btn btn-default" title="Air">
-							           	      	<img src="img/textures/air.png" width="32px" height="32px"><br>
-							           	    </label>
-							           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_chi" >
-							           	     	<input type="radio" value="4" class="btn btn-default" title="Chi">
-							           	      	<img src="img/textures/chi.png" width="32px" height="32px"><br>
-							           	    </label>
-							           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_avatar" >
-							           	     	<input type="radio" value="5" class="btn btn-default" title="Avatar">
-							           	      	<img src="img/textures/avatar.png" width="32px" height="32px"><br>
-							           	    </label>
-							           	</div>
-							        </div>
-           	    							
-					           	</div>
-					           	<div class='form-group'>
-					           	  	<label class="control-label col-lg-3" for="id_subelement" id="id_element_option">Subelement</label>
-					           	  	<div class="col-lg-6">
-					           	    	<select class='form-control' id='id_subelement'>
-						             	  	<option value="0">None</option>
-						             	  	<option value="1">Flight</option>
-						             	  	<option value="2">Spiritual Projection</option>
-						           	    </select>
-					           	  	</div>
-					           	</div>
-					           	<div class='form-group'>
-					           	  	<label class="control-label col-lg-3" for="id_cooldown">Cooldown</label>
-					           	  	<div class="col-lg-6">
-					           	    	<input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_cooldown' placeholder='Seconds' type='number' min="0" step="1" max="3600" >
-					        	  	</div>
-					        	</div>
-    						</div>
-  						</div>
+    						<div class="container">
+    							<div class="row">
+		    						<div class='form-group hidden'>
+		           	  					<label class="control-label col-lg-3" for="id_element">Element</label>
+		           	  					<div class="col-lg-6">
+		           	    					<select class='form-control' id='id_element'>
+		           	      						<option value="0">Air</option>
+		                  						<option value="1">Earth</option>
+		                  						<option value="2">Fire</option>
+								            	<option value="3">Water</option>
+								                <option value="4">Chi</option>
+								                <option value="5">Avatar</option>
+		           	    					</select>
+		           	  					</div>
+		           					</div>
+		           					
+						           	<div class="col-lg-7">
+						           		<div class='form-group'>
+							           	  	<label class="control-label col-lg-3" for="id_subelement" id="id_element_option">Subelement</label>
+							           	  	<div class="col-lg-9">
+							           	    	<select class='form-control' id='id_subelement'>
+								             	  	<option value="0">None</option>
+								             	  	<option value="1">Lightning</option>
+								             	  	<option value="2">Combustion</option>
+								           	    </select>
+							           	  	</div>
+						           		</div>
+							           	<div class='form-group'>
+							           	  	<label class="control-label col-lg-3" for="id_cooldown">Cooldown</label>
+							           	  	<div class="col-lg-9">
+							           	    	<input class='form-control not-empty' data-placement="bottom" data-toggle="tooltip" id='id_cooldown' placeholder='Seconds' type='number' min="0" step="1" max="3600" >
+							        	  	</div>
+							        	</div>
+							        	<div class='form-group'>
+							        	  	<label class="control-label col-lg-3" for="id_movementtype">Move Start</label>
+							           	  	<div class="btn-group col-lg-9" data-toggle="buttons" id="id_movementtype">
+							           	    	<label class="btn btn-default radio-inline-btn active col-lg-4 movementtype-start trigger-click" id="abilityMovement_Click">
+							           	      		<input type="radio" value="1" required="required">
+							           	      		Click
+							           	    	</label>
+							           	    	<label class="btn btn-default radio-inline-btn col-lg-4 trigger-sneak movementtype-start" id="abilityMovement_Sneak" >
+							           	      		<input type="radio" value="2" required="required">
+							           	      		Sneak
+							           	    	</label>
+							           	    	<label class="btn btn-default radio-inline-btn col-lg-4 trigger-click trigger-sneak movementtype-start" id="abilityMovement_Both" >
+							           	      		<input type="radio" value="3" required="required">
+							           	      		Sneak + Click
+							           	    	</label>
+							           	  	</div>
+							        	</div>
+							        	<div class='form-group'>
+							           	    <label class="control-label col-lg-3" for="id_movementspeed">Speed (BPS)</label>
+							           	    <div class="col-lg-9">
+							           	      	<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_movementspeed' placeholder='Blocks per second' type='number' min="0" step="0.5" max="20" value="5">
+							        	    </div>
+							        	</div>
+							        	<div class='form-group'>
+							           	    <label class="control-label col-lg-3" for="id_range">Range</label>
+							           	    <div class="col-lg-9">
+							           	      	<input class='form-control not-empty required' data-placement="bottom" data-toggle="tooltip" id='id_range' placeholder='20' type='number' min="0" step="1" max="60" value="20">
+							        	    </div>
+							        	</div>
+							        	<div class='form-group'>
+								       		<label class="control-label col-lg-3" for="id_redirect">Redirect*</label>
+								           	<div class="btn-group col-lg-9" data-toggle="buttons" id="id_redirect">
+								           		<label class="btn btn-default radio-inline-btn active col-lg-4 abilityredirect" id="abilityRedirect_Never">
+								           	    	<input type="radio" value="1" class="btn line1">
+								           	        Never
+								           	     </label>
+								           	     <label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Click" >
+								           	        <input type="radio" value="2" class="btn line1">
+								           	        On Click
+								           	     </label>
+								           	     <label class="btn btn-default radio-inline-btn col-lg-4 abilityredirect" id="abilityRedirect_Sneak" >
+								           	        <input type="radio" value="3" class="btn line1">
+								           	        On Sneak
+								           	     </label>
+								           	     <label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Both" >
+								           	        <input type="radio" value="4" class="btn line2">
+								           	        Sneak + Click
+								           	     </label>
+								           	     <label class="btn btn-default radio-inline-btn col-lg-6 abilityredirect" id="abilityRedirect_Always" >
+								           	        <input type="radio" value="5" class="btn line2">
+								           	        Constantly
+								           	     </label>
+								           	   	
+								           	</div>
+								        </div>
+						           	</div> <!-- Start of element segment -->
+						           	<div class="col-lg-5">
+						           		<div class="center-block">
+						           			<label class="radio-inline-btn active" id="element-selected" style="">
+						           				<img src="img/textures/fire.png" width="192px" height="192px"><br>
+						           				<span style="font-family: inherit; font-size: 32px; font-weight: 100">Fire</span>
+						           			</label>
+						           		</div>
+						           		<div class=''>
+	              							<div class="btn-group control-label center-block" data-toggle="buttons" id="elementgroup" style="float: none">
+	                							<label class="element-selector btn btn-default radio-inline-btn active" id="element_fire">
+	           	      								<input type="radio" value="2" class="btn btn-default" title="Fire">
+	           	      								<img src="img/textures/fire.png" width="32px" height="32px"><br>
+	           	    							</label>
+	           	    							<label class="element-selector btn btn-default radio-inline-btn" id="element_water">
+	           	      								<input type="radio" value="3" class="btn btn-default" title="Water">
+	           	      								<img src="img/textures/water.png" width="32px" height="32px"><br>
+	           	    							</label>
+	           	    							<label class="element-selector btn btn-default radio-inline-btn" id="element_earth" >
+								           	     	<input type="radio" value="1" class="btn btn-default" title="Earth">
+								           	      	<img src="img/textures/earth2.png" width="32px" height="32px"><br>
+								           	    </label>
+								           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_air" >
+								           	     	<input type="radio" value="0" class="btn btn-default" title="Air">
+								           	      	<img src="img/textures/air.png" width="32px" height="32px"><br>
+								           	    </label>
+								           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_chi" >
+								           	     	<input type="radio" value="4" class="btn btn-default" title="Chi">
+								           	      	<img src="img/textures/chi.png" width="32px" height="32px"><br>
+								           	    </label>
+								           	    <label class="element-selector btn btn-default radio-inline-btn" id="element_avatar" >
+								           	     	<input type="radio" value="5" class="btn btn-default" title="Avatar">
+								           	      	<img src="img/textures/avatar.png" width="32px" height="32px"><br>
+								           	    </label>
+								           	</div>
+								        </div>
+						           	</div> <!-- End of element segment -->
+						           	
+						           	
+						    	</div>	<!-- End of row -->
+    						</div> <!-- End of container -->
+    						<hr>
+    						<h3>Info</h3>
+    						<p><b>Cooldown</b>: Once the move is used, how long until they can use it again. Measured in seconds.<br>
+    						<b>Move Start</b>: What triggers the begging of a move. For a move like FireBlast, you'd use "Click"<br>
+    						<b>Move Speed</b>: How many <b>blocks per second</b> the move travels.<br>
+    						<b>Range</b>: How far the move can go before it dissipates. Measured in blocks.<br><br>
+    						
+    						<b>Require Avatar</b>: Whether the user needs to be an avatar OR if it's just a move that doesn't belong to any element. If this is the case, set to "No". (Only an option for avatar moves)
+    						
+    						
+    						</p>
+  						</div> <!-- End of tab -->
   						<div id="tab_sources" class="tab-pane fade">
     						<h3>Source Selection</h3>
     						<p>This tab allows you to control how sources work. For elements that don't require a source, you can choose whether or not to allow the move to come from a different location.</p>
