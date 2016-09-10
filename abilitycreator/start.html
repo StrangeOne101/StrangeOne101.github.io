@@ -17,12 +17,13 @@
  	
     <link href='../css/main.css' rel='stylesheet' type='text/css'>
     <link href='ac.css' rel='stylesheet' type='text/css'>
+    <link href='codemirror.css' rel='stylesheet' type='text/css'>
     <link rel='shortcut icon' href="http://strangeone101.github.io/img/avatar-favicon.png" style="border-radius: 50%;">
     <link rel='apple-touch-icon' href="http://strangeone101.github.io/img/avatar.png">
     <script src='http://strangeone101.github.io/lib/jquery.min.js' type='text/javascript'></script>
     <script src='http://strangeone101.github.io/lib/bootstrap.min.js' type='text/javascript'></script>
     <script src="http://strangeone101.github.io/lib/jquery-ui.min.js" type="text/javascript"></script>
-  
+ 	
 	<script src='http://strangeone101.github.io/easteregg.js' type='text/javascript'></script>
   	<script src='http://strangeone101.github.io/lib/bootstrap-switch.min.js' type='text/javascript'></script>
   	<!--  <script src="code.js" type='text/javascript'></script> These are commented out for now because the AC is being overhauled
@@ -30,6 +31,8 @@
   	<script src="export.js" type='text/javascript'></script>-->
   	<script src="beta.js" type='text/javascript'></script>
   	<script src="ready.js" type='text/javascript'></script>
+    <script src="codemirror.js" type='text/javascript'></script>
+    <script src="clike.js" type='text/javascript'></script>
     <!-- Custom CSS -->
     <link href="http://strangeone101.github.io/css/one-page-wonder.css" rel="stylesheet">
 
@@ -320,7 +323,15 @@
   								</div>
   								<div class="panel-body" style="padding: 0px 0px 0px 0px">
 	  								<ul id="step_events" style="padding-left: 0px; margin-bottom: 0px;">
-	  									<li class="stepevent SE_explosion"><span class="glyphicon glyphicon-resize-vertical"></span> Explosion</li>
+	  									<li class="stepevent SE_explosion">
+	  										<div class="col-lg-6">
+	  										
+	  										</div>
+	  										<div class="col-lg-6" style="float: right">
+	  											<div class="btn btn-primary">Edit</div>
+	  											<div class="btn btn-default moveable"><span class="glyphicon glyphicon-move"></span></div>
+	  										</div>
+	  									 Explosion</li>
 	  									<li>Second</li>
 	  									<li>Third</li>
 									</ul>
@@ -349,6 +360,27 @@
            				</div>
            			</div>
            		</form>
+           		<div class="hidden"> <!-- Modals -->
+           			<div class="modal fade" id="modal_event_script">
+					    <div class="modal-dialog">
+					      	<div class="modal-content">
+					        	<div class="modal-header">
+					         		<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+					          		<h4 class="modal-title">Run Java Script</h4>
+					        	</div>
+					        	<div class="modal-body">
+					          		<p>Allows you to run java code. Please note that although it checks syntax for you, it will not show errors.</p>
+					       	 		<hr>
+					       	 		<textarea id="java-editor" rows="" cols="" style="display: none;"></textarea>
+					       	 		
+					       	 	</div>
+					        	<div class="modal-footer">
+					          		<button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+					        	</div>
+					      	</div>
+					    </div>
+					</div>
+           		</div>
         	</div>
     	</div>
 	</div>

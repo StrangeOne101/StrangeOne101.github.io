@@ -26,7 +26,7 @@ $(document).ready(function() {
 		 
 		 // Only make the .panel-heading child elements support dragging.
 	    // Omit this to make then entire <li>...</li> draggable.
-	     handle: '.glyphicon-resize-vertical', 
+	     handle: '.moveable', 
 	     /*update: function() {
 	    	 $('.panel', $("#step_events")).each(function(index, elem) {
 	         	var $listItem = $(elem),
@@ -57,5 +57,10 @@ $(document).ready(function() {
 		}
 		
 	});
+	
+	var myCodeMirror = CodeMirror($("#java-editor")[0], {
+		  value: "//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'",
+		  mode:  "java"
+		});
 	
 });

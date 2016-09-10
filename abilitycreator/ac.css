@@ -102,11 +102,11 @@ body.dragging, body.dragging * {
   cursor: move !important;
 }
 
-li > span.glyphicon-resize-vertical:hover {
-	cursor: move !important;
+li > span.glyphicon-move:hover {
+	cursor: auto !important;
 }
-li > span.glyphicon-resize-vertical {
-	font-size: 20px;
+li > span.glyphicon-move {
+	font-size: 24px;
 }
 
 .dragged {

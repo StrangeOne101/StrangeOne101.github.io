@@ -1,4 +1,4 @@
-acversion = "Beta 1.1.1"
+acversion = "Beta 1.1.2"
 	
 	
 /**Returns the subelements in a list depending on the index of the element passed. Air is 0, 
@@ -11,4 +11,44 @@ function getSubs(elementValue) {
 	if (elementValue == "4") return ["None"];
 	if (elementValue == "5") return ["Yes", "No"];
 	return null;
+}
+
+class EventType {
+	
+	constructor(UUID, name, classname) {
+		this.name = name;
+		this.classname = classname;
+	}
+	
+	/**Get EventType from name*/
+	static getEventType(name) {
+		for (var i in instances) {
+			if (instances[i].name.toLowerCase() == name.toLowerCase()) {
+				return instances[i];
+			}
+		}
+		return null;
+	}
+	
+	/**Method to edit event from the data passed.*/
+	edit(data) {
+		
+	}
+	
+	/**Method to save event to the element passed.*/
+	save(element) {
+		
+	}
+	
+}
+
+/**Adds an event to either the step list or the collision list. Arguments are: 
+ * listType - The type of list it should be added to. "step" or "collision"
+ * type - Should be a type enum
+ * text - What the event should display for text
+ * value - Data of the event
+ * */
+
+function addEvent(listtype, type, text, value) {
+
 }
