@@ -1,3 +1,5 @@
+var myCodeMirror;
+
 $(document).ready(function() {
 	
 	$("#globalVersion").text(acversion.toUpperCase());
@@ -58,9 +60,58 @@ $(document).ready(function() {
 		
 	});
 	
-	var myCodeMirror = CodeMirror($("#java-editor")[0], {
+	$(".event-btn").mouseup(function(obj) {
+		var scriptType = $(this).attr("script-type");
+		if (scriptType != null) {
+			var event = EventType.getEventType(scriptType);
+			if (event != null) {
+				lastUsedEventElement = null;
+				lastUsedScriptType = scriptType;
+				lastUsedEventType = $(this).attr("event-type").toLowerCase();
+				event.edit("");
+			}
+		}
+	});
+	
+	$(".event-edit-btn").on("click", function(obj) {
+		var scriptType = $(this).parent().parent().attr("script-type");
+		console.log("Attr: " + scriptType + " | " + $(this).parent())
+		if (scriptType != null) {
+			var event = EventType.getEventType(scriptType);
+			if (event != null && $(this).parent().parent().get(0).hasAttribute("event-value")) {
+				lastUsedEventElement = $(this).parent().parent();
+				lastUsedScriptType = scriptType;
+				lastUsedEventType = $(this).parent().parent().attr("event-type").toLowerCase();
+				event.edit($(this).parent().parent().attr("event-value"));
+			}
+		}
+	});
+	
+	$(".event-save-btn").mouseup(function(obj) {
+		var scriptType = $(this).attr("script-type");
+		if (scriptType != null) {
+			var event = EventType.getEventType(scriptType);
+			if (event != null) {
+				if (lastUsedEventElement == null) {
+					lastUsedEventElement = addEvent(lastUsedEventType, lastUsedScriptType, "", "");
+					
+				}
+				event.save(lastUsedEventElement);
+			}
+		}
+	});
+	
+	/*var myCodeMirror = CodeMirror($("#java-editor")[0], {
 		  value: "//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'",
 		  mode:  "java"
-		});
+		});*/
+	
+	myCodeMirror = CodeMirror.fromTextArea($("#java-editor")[0], {
+		lineNumbers: true,
+	    mode: "text/x-java",
+	    indentWithTabs: true,
+	    lineWrapping: true,
+	});
+	myCodeMirror.refresh();
 	
 });

@@ -24,7 +24,7 @@ $(document).ready(function() {
 			clicked = 0;
 			$(this).fadeOut(1000, function() {
 				$(this).fadeIn(1000);
-			})
+			});
 			/*if ($(this).attr("party") != null) {
 				$(this).removeAttr("party");
 			} else {

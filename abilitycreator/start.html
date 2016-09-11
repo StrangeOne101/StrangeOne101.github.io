@@ -30,11 +30,16 @@
   	<script src="save.js" type='text/javascript'></script>
   	<script src="export.js" type='text/javascript'></script>-->
   	<script src="beta.js" type='text/javascript'></script>
+  	<script src="events.js" type='text/javascript'></script>
   	<script src="ready.js" type='text/javascript'></script>
     <script src="codemirror.js" type='text/javascript'></script>
     <script src="clike.js" type='text/javascript'></script>
     <!-- Custom CSS -->
     <link href="http://strangeone101.github.io/css/one-page-wonder.css" rel="stylesheet">
+    
+     <style type="text/css">
+    	.CodeMirror {border-top: 1px solid #888; border-bottom: 1px solid #888;}
+  	</style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,7 +54,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" style="color:#ffffff">
-        <div class="container">
+        <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -328,15 +333,16 @@
 	  										
 	  										</div>
 	  										<div class="col-lg-6" style="float: right">
-	  											<div class="btn btn-primary">Edit</div>
-	  											<div class="btn btn-default moveable"><span class="glyphicon glyphicon-move"></span></div>
+	  											<div class="btn btn-primary event-edit-btn">Edit</div>
+	  											<div class="btn btn-default moveable"><i class="glyphicon glyphicon-move"></i></div>
 	  										</div>
 	  									 Explosion</li>
 	  									<li>Second</li>
 	  									<li>Third</li>
 									</ul>
   								</div>
-  								
+  								<hr>
+  								<div class="btn btn-default event-btn" script-type="script" event-type="step">New Script...</div>
   							</div>
   							
   							
@@ -360,9 +366,9 @@
            				</div>
            			</div>
            		</form>
-           		<div class="hidden"> <!-- Modals -->
+           		<div class=""> <!-- Modals -->
            			<div class="modal fade" id="modal_event_script">
-					    <div class="modal-dialog">
+					    <div class="modal-dialog" style="width: 800px">
 					      	<div class="modal-content">
 					        	<div class="modal-header">
 					         		<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
@@ -371,11 +377,15 @@
 					        	<div class="modal-body">
 					          		<p>Allows you to run java code. Please note that although it checks syntax for you, it will not show errors.</p>
 					       	 		<hr>
-					       	 		<textarea id="java-editor" rows="" cols="" style="display: none;"></textarea>
+					       	 		<div id="java-editor2"></div>
+					       	 		<textarea id="java-editor" rows="" cols="" style="display: none;">//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'
+//Remember that this is in the progress() method so method creation will throw errors.
+</textarea>
 					       	 		
 					       	 	</div>
 					        	<div class="modal-footer">
-					          		<button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="script">Save</button>
+					          		<button type="button" class="btn btn-error" data-dismiss="modal" onclick="Events.SCRIPT.edit('');">Cancel</button>
 					        	</div>
 					      	</div>
 					    </div>
