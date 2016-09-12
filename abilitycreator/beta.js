@@ -31,6 +31,8 @@ function addEvent(listtype, type, text, value) {
 	}
 	
 	if (element != null) {
+		element.append("<li class='' event-type='" + listtype + "' script-type='" + type + "' event-value='" + value + "'><div class='col-lg-8 moveable'><span>" + text + "</span></div><div class='col-lg-4' style='float: right'>" +
+				"<div class='btn btn-primary event-edit-btn'><i class='glyphicon glyphicon-pencil'></i> Edit</div> <div class='btn btn-default moveable'><i class='glyphicon glyphicon-move'>" +
 				"</i> Move</div> <div class='btn btn-danger event-del-btn'><i class='glyphicon glyphicon-trash'></i> Delete</div></div></li>");
 		return element.children().get(element.children().length - 1);
 		
