@@ -36,8 +36,47 @@ Events = {};
 
 Events.EXPLOSION = new EventType(0, "Explosion", "Explosion");
 Events.EXPLOSION.edit = function(data) {
+	$('#modal_event_explosion').modal('show');
 	
+	if (data != null && data != "") {
+		var radius = data.substr(0, data.length - 2);
+		$("#modal_explosion_radius")[0].value = radius;
+		
+		if (data.substr(data.length - 2, 1) == "T") {
+			$("#modal_explosion_db_true").addClass("active");
+			$("#modal_explosion_db_false").removeClass("active");
+		} else {
+			$("#modal_explosion_db_false").addClass("active");
+			$("#modal_explosion_db_true").removeClass("active");
+		}
+		
+		if (data.substr(data.length - 1, 1) == "T") {
+			$("#modal_explosion_cf_true").addClass("active");
+			$("#modal_explosion_cf_false").removeClass("active");
+		} else {
+			$("#modal_explosion_cf_false").addClass("active");
+			$("#modal_explosion_cf_true").removeClass("active");
+		}
+	} else { //Restore defaults
+		$("#modal_explosion_db_true").addClass("active");
+		$("#modal_explosion_db_false").removeClass("active");
+		
+		$("#modal_explosion_cf_false").addClass("active");
+		$("#modal_explosion_cf_true").removeClass("active");
+		
+		$("#modal_explosion_radius")[0].value = "";
+	}
 };
+Events.EXPLOSION.save = function(element) {
+	if (element == null) return;
+	var value = $("#modal_explosion_radius")[0].value;
+	
+	value = value + ($("#modal_explosion_db_true").hasClass("active") ? "T" : "F");
+	value = value + ($("#modal_explosion_cf_true").hasClass("active") ? "T" : "F");
+	
+	$(element).attr("event-value", value);
+	$(element).children("div").children("span").text("Create Explosion (with a radius of " + $("#modal_explosion_radius")[0].value + " blocks)");
+}
 
 Events.SCRIPT = new EventType(1, "Script", "Script");
 Events.SCRIPT.edit = function(data) {

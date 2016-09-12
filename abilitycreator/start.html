@@ -328,11 +328,11 @@
   								</div>
   								<div class="panel-body" style="padding: 0px 0px 0px 0px">
 	  								<ul id="step_events" style="padding-left: 0px; margin-bottom: 0px; height: auto;">
-	  									<li class="stepevent SE_explosion" script-type="explosion" event-type="step" event-value="4T">
+	  									<li class="stepevent" script-type="explosion" event-type="step" event-value="3TF">
 	  										<div class="col-lg-8 moveable">
 	  										Explosion
 	  										</div>
-	  										<div class="col-lg-4" style="float: right">
+	  										<div class="col-lg-4 " style="float: right">
 	  											<div class="btn btn-primary event-edit-btn"><i class='glyphicon glyphicon-pencil'></i> Edit</div>
 	  											<div class="btn btn-default moveable"><i class="glyphicon glyphicon-move"></i> Move</div>
 	  											<div class="btn btn-danger event-del-btn"><i class="glyphicon glyphicon-trash"></i> Delete</div>
@@ -386,6 +386,67 @@
 					        	<div class="modal-footer">
 					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="script">Save</button>
 					          		<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Events.SCRIPT.edit('');">Cancel</button>
+					        	</div>
+					      	</div>
+					    </div>
+					</div>
+					<div class="modal fade" id="modal_event_explosion">
+					    <div class="modal-dialog" style="width: 800px">
+					      	<div class="modal-content">
+					        	<div class="modal-header">
+					          		<h4 class="modal-title">Create Explosion</h4>
+					        	</div>
+					        	<div class="modal-body">
+					          		<p>Creates an explosion at the ability's current location. </p>
+					       	 		<hr>
+					       	 		<div class="container-fluid">
+					        	  	<div class="row">
+					        	  		<div class='form-group'>
+						           	    	<label class="control-label col-lg-3" style="text-align: right;">Explosion Radius</label>
+						           	    	<div class="col-lg-7">
+						           	      		<input class='form-control' id="modal_explosion_radius" placeholder='3' type='number' min="0" step="0.5" max="8" value="3">
+						        	    	</div>
+						        	  	</div><br>
+						        	  	
+						        	  	<div class='form-group'>
+							        	    <label class="control-label col-lg-3" style="text-align: right;">Damage Blocks</label>
+							           	    <div class="btn-group col-lg-7" id="modal_explosion_db" data-toggle="buttons">
+							           	      	<label class="btn btn-default radio-inline-btn active col-lg-6" id="modal_explosion_db_true">
+							           	        	<input type="radio" value="T" class="btn form-control"> 
+							           	        	True
+							           	      	</label>
+							           	      	<label class="btn btn-default radio-inline-btn col-lg-6" id="modal_explosion_db_false">
+							           	        	<input type="radio" value="F" class="btn form-control">
+							           	        	False
+							           	      	</label>
+							           	    </div>
+							        	</div><br>
+							        	
+							        	<div class='form-group'>
+							        	    <label class="control-label col-lg-3" style="text-align: right;">Create Fire</label>
+							           	    <div class="btn-group col-lg-7" id="modal_explosion_cf" data-toggle="buttons">
+							           	      	<label class="btn btn-default radio-inline-btn col-lg-6" id="modal_explosion_cf_true">
+							           	        	<input type="radio" value="T" class="btn">
+							           	        	True
+							           	      	</label>
+							           	      	<label class="btn btn-default radio-inline-btn active col-lg-6" id="modal_explosion_cf_false">
+							           	        	<input type="radio" value="F" class="btn">
+							           	        	False
+							           	      	</label>
+							           	    </div>
+							        	</div><br>
+					        	  	</div>
+					        	  	</div>
+					        	  	
+						        	<hr>
+						        	<h3>Info</h3>
+    								<p><b>Explosion Radius</b>: The size of the explosion. For reference, TNT is 4.<br>
+    								<b>Destroy Blocks</b>: If the explosion should damage surrounding blocks. If false, it will just damage mobs/players.<br>
+    								<b>Create Fire</b>: If the explosion should create fire blocks when it explodes. Similar to ghast fireballs.<br>
+					       	 	</div>
+					        	<div class="modal-footer">
+					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="explosion">Save</button>
+					          		<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Events.EXPLOSION.edit('');">Cancel</button>
 					        	</div>
 					      	</div>
 					    </div>

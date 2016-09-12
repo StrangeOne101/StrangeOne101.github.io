@@ -128,6 +128,10 @@ $(document).ready(function() {
 	        	$(this).dialog("close");
 	        	if (lastUsedEventElement != null) {
 	        		lastUsedEventElement.remove();
+	        		
+	        		if ($("#step_events").children().length == 0) {
+	        			$("#step_events").append("<li id='step_event_empty' style='background-color: #eee'>Empty :(</li>");
+	        		}
 	        	} else {
 	        		alert("Error: Cannot delete null!");
 	        	}
