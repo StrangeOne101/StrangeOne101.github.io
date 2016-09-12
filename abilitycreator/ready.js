@@ -40,7 +40,6 @@ $(document).ready(function() {
 	     axis: 'y',
 	    containment: '#step_events',
 	 });
-	
 	$('.element-selector').mouseup(function() {
 		$("#element-selected").children("img").attr("src", $(this).children("img").attr("src"));
 		$("#element-selected").children("span").text($(this).children("input").attr("title"));
@@ -73,7 +72,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".event-edit-btn").on("click", function(obj) {
+	$(document).on("click", ".event-edit-btn", function(obj) {
 		var scriptType = $(this).parent().parent().attr("script-type");
 		console.log("Attr: " + scriptType + " | " + $(this).parent())
 		if (scriptType != null) {
@@ -83,6 +82,7 @@ $(document).ready(function() {
 				lastUsedScriptType = scriptType;
 				lastUsedEventType = $(this).parent().parent().attr("event-type").toLowerCase();
 				event.edit($(this).parent().parent().attr("event-value"));
+				
 			}
 		}
 	});
