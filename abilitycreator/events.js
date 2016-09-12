@@ -42,19 +42,27 @@ Events.EXPLOSION.edit = function(data) {
 Events.SCRIPT = new EventType(1, "Script", "Script");
 Events.SCRIPT.edit = function(data) {
 	$('#modal_event_script').modal('show');
-	myCodeMirror.refresh();
+	
 	if (data != null && data != "") {
 		var text = atob(data);
-		$("#java-editor")[0].innerHTML = data.replace("\\n", "\n");
+		myCodeMirror.setValue(text.replace("\\n", "\n"));
+	} else {
+		myCodeMirror.setValue("//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'\n//Remember that this is in the progress() method so method creation will throw errors.\n");
 	}
+	//myCodeMirror.save();
+	
+	setTimeout(function() {
+		myCodeMirror.refresh(); //Refresh after 200ms due to timing issues
+	}, 200);
 };
 
 Events.SCRIPT.save = function(element) {
 	$('#modal_event_script').modal('hide');
 	if (element != null) {
-		var text = btoa($("#java-editor")[0].innerHTML);
+		var text = btoa(myCodeMirror.getValue());
 		$(element).attr("event-value", text);
-		$(element).children("div").children("span").text("Run Java Script (" + $("#java-editor")[0].innerHTML.split("\n").length + " lines)");
+		$(element).children("div").children("span").text("Run Java Code (" + myCodeMirror.getValue().split("\n").length + " lines)");
 	}
-	$("#java-editor")[0].innerHTML = "";
+	myCodeMirror.setValue("");
+	myCodeMirror.save();
 };

@@ -13,7 +13,7 @@
     <!-- Bootstrap Core CSS -->
     <link href='http://strangeone101.github.io/lib/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='http://strangeone101.github.io/lib/bootstrap-switch.css' rel='stylesheet' type='text/css'>
- 	<link href='http://strangeone101.github.io/lib/jquery-ui.min.css' rel='stylesheet' type='text/css'>
+ 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
  	
     <link href='../css/main.css' rel='stylesheet' type='text/css'>
     <link href='ac.css' rel='stylesheet' type='text/css'>
@@ -22,7 +22,7 @@
     <link rel='apple-touch-icon' href="http://strangeone101.github.io/img/avatar.png">
     <script src='http://strangeone101.github.io/lib/jquery.min.js' type='text/javascript'></script>
     <script src='http://strangeone101.github.io/lib/bootstrap.min.js' type='text/javascript'></script>
-    <script src="http://strangeone101.github.io/lib/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
  	
 	<script src='http://strangeone101.github.io/easteregg.js' type='text/javascript'></script>
   	<script src='http://strangeone101.github.io/lib/bootstrap-switch.min.js' type='text/javascript'></script>
@@ -328,26 +328,27 @@
   								</div>
   								<div class="panel-body" style="padding: 0px 0px 0px 0px">
 	  								<ul id="step_events" style="padding-left: 0px; margin-bottom: 0px; height: auto;">
-	  									<li class="stepevent SE_explosion">
-	  										<div class="col-lg-6">
-	  										
+	  									<li class="stepevent SE_explosion" script-type="explosion" event-type="step" event-value="4T">
+	  										<div class="col-lg-8 moveable">
+	  										Explosion
 	  										</div>
-	  										<div class="col-lg-6" style="float: right">
-	  											<div class="btn btn-primary event-edit-btn">Edit</div>
-	  											<div class="btn btn-default moveable"><i class="glyphicon glyphicon-move"></i></div>
+	  										<div class="col-lg-4" style="float: right">
+	  											<div class="btn btn-primary event-edit-btn"><i class='glyphicon glyphicon-pencil'></i> Edit</div>
+	  											<div class="btn btn-default moveable"><i class="glyphicon glyphicon-move"></i> Move</div>
+	  											<div class="btn btn-danger event-del-btn"><i class="glyphicon glyphicon-trash"></i> Delete</div>
 	  										</div>
-	  									 Explosion</li>
-	  									<li>Second</li>
-	  									<li>Third</li>
+	  									 </li>
+	  									
 									</ul>
   								</div>
-  								<hr>
-  								<div class="btn btn-default event-btn" script-type="script" event-type="step">New Script...</div>
+  								
   							</div>
   							
   							
   							<hr>
   							
+  							<div class="btn btn-primary event-btn" script-type="script" event-type="step">New Script...</div>
+  							<div class="btn btn-primary event-btn" script-type="explosion" event-type="step">Explosion</div>
   						</div>
   						<div id="tab_collide_event" class="tab-pane fade">
     						<h3>Menu 2</h3>
@@ -371,8 +372,7 @@
 					    <div class="modal-dialog" style="width: 800px">
 					      	<div class="modal-content">
 					        	<div class="modal-header">
-					         		<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-					          		<h4 class="modal-title">Run Java Script</h4>
+					          		<h4 class="modal-title">Run Java Code</h4>
 					        	</div>
 					        	<div class="modal-body">
 					          		<p>Allows you to run java code. Please note that although it checks syntax for you, it will not show errors.</p>
@@ -385,11 +385,23 @@
 					       	 	</div>
 					        	<div class="modal-footer">
 					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="script">Save</button>
-					          		<button type="button" class="btn btn-error" data-dismiss="modal" onclick="Events.SCRIPT.edit('');">Cancel</button>
+					          		<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Events.SCRIPT.edit('');">Cancel</button>
 					        	</div>
 					      	</div>
 					    </div>
 					</div>
+           		</div>
+           		
+           		
+           		
+           		
+           		
+           		
+           		
+           		
+           		<!-- End of modals -->
+           		<div id="step-del-dialog" title="Warning">
+           			<p><span class="glyphicon glyphicon-alert" style="float:left; margin:12px 12px 20px 0; font-size:22px"></span>Are you sure you want to delete this event? You won't be able to undo this!</p>
            		</div>
         	</div>
     	</div>

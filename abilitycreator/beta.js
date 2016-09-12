@@ -1,4 +1,4 @@
-acversion = "Beta 1.1.4"
+acversion = "Beta 1.1.5"
 	
 	
 /**Returns the subelements in a list depending on the index of the element passed. Air is 0, 
@@ -31,8 +31,7 @@ function addEvent(listtype, type, text, value) {
 	}
 	
 	if (element != null) {
-		element.append("<li class='' event-type='" + listtype + "' script-type='" + type + "' event-value='" + value + "'><div class='col-lg-6'><span>" + text + "</span></div><div class='col-lg-6' style='float: right'><div class='btn btn-primary event-edit-btn'>Edit</div> <div class='btn btn-default moveable'><i class='glyphicon glyphicon-move'>" +
-				"</i></div></div></li>");
+				"</i> Move</div> <div class='btn btn-danger event-del-btn'><i class='glyphicon glyphicon-trash'></i> Delete</div></div></li>");
 		return element.children().get(element.children().length - 1);
 		
 	} else {

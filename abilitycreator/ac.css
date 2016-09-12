@@ -98,7 +98,7 @@ span.save-slot {
 	font-weight: normal;
 }
 
-body.dragging, body.dragging * {
+body.dragging, body.dragging *, .moveable:hover {
   cursor: move !important;
 }
 
@@ -134,5 +134,10 @@ li > span.glyphicon-move {
 	list-style-type: none;
 	vertical-align: middle;
 	display: block;
+}
+
+#step_events ul {
+	min-height: 45px;
+	
 }
 

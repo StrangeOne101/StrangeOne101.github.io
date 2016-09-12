@@ -38,6 +38,7 @@ $(document).ready(function() {
 	         });
 	     },*/
 	     axis: 'y',
+	     cursor: 'move',
 	    containment: '#step_events',
 	 });
 	$('.element-selector').mouseup(function() {
@@ -87,6 +88,21 @@ $(document).ready(function() {
 		}
 	});
 	
+	$(document).on("click", ".event-del-btn", function(obj) {
+		var scriptType = $(this).parent().parent().attr("script-type");
+		if (scriptType != null) {
+			var event = EventType.getEventType(scriptType);
+			if (event != null) {
+				lastUsedEventElement = $(this).parent().parent();
+				lastUsedScriptType = scriptType;
+				lastUsedEventType = $(this).parent().parent().attr("event-type").toLowerCase();
+				$("#step-del-dialog").dialog("open");
+			} else {
+				alert("Error: Cannot delete incomplete element!")
+			}
+		}
+	});
+	
 	$(".event-save-btn").mouseup(function(obj) {
 		var scriptType = $(this).attr("script-type");
 		if (scriptType != null) {
@@ -99,6 +115,27 @@ $(document).ready(function() {
 				event.save(lastUsedEventElement);
 			}
 		}
+	});
+	
+	$("#step-del-dialog").dialog({
+		autoOpen: false,
+		resizable: false,
+	    height: "auto",
+	    width: 400,
+	    modal: true,
+	    buttons: {
+	        "Confirm": function() {
+	        	$(this).dialog("close");
+	        	if (lastUsedEventElement != null) {
+	        		lastUsedEventElement.remove();
+	        	} else {
+	        		alert("Error: Cannot delete null!");
+	        	}
+	        },
+	        Cancel: function() {
+	        	$(this).dialog("close");
+	        }
+	    }
 	});
 	
 	/*var myCodeMirror = CodeMirror($("#java-editor")[0], {
