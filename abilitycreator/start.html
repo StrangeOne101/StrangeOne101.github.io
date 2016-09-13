@@ -349,6 +349,8 @@
   							
   							<div class="btn btn-primary event-btn" script-type="script" event-type="step">New Script...</div>
   							<div class="btn btn-primary event-btn" script-type="explosion" event-type="step">Explosion</div>
+  							<div class="btn btn-primary event-btn" script-type="remove" event-type="step">Remove Ability</div>
+  							<div class="btn btn-primary event-btn" script-type="cooldown" event-type="step">Cooldown</div>
   						</div>
   						<div id="tab_collide_event" class="tab-pane fade">
     						<h3>Menu 2</h3>
@@ -452,7 +454,47 @@
 					    </div>
 					</div>
            		</div>
-           		
+           		<div class="modal fade" id="modal_event_cooldown">
+					    <div class="modal-dialog" style="width: 600px">
+					      	<div class="modal-content">
+					        	<div class="modal-header">
+					          		<h4 class="modal-title">Apply Cooldown</h4>
+					        	</div>
+					        	<div class="modal-body">
+					          		<p>Apply a cooldown to the bender.</p>
+					       	 		<hr>
+					       	 		<div class="container-fluid">
+					        	  	<div class="row">
+					        	  		<div class='form-group'>
+							           	  	<label class="control-label col-lg-3" for="event_cooldown_type" id="id_element_option">Cooldown</label>
+							           	  	<div class="col-lg-9">
+							           	    	<select class='form-control' id='event_cooldown_type'>
+								             	  	<option value="0">Default</option>
+								             	  	<option value="1">Custom</option>
+								           	    </select>
+							           	  	</div>
+						           		</div><br>
+						        	  	<div class='form-group hidden' id="event_cooldown_div">
+							           	  	<label class="control-label col-lg-3" for="event_cooldown_custom">Cooldown Time</label>
+							           	  	<div class="col-lg-9">
+							           	    	<input class='form-control not-empty' id='event_cooldown_custom' placeholder='Seconds' type='number' min="0" step="0.5" max="600" >
+							        	  	</div>
+							        	</div>
+					        	  	</div>
+					        	  	
+						        	<hr>
+						        	<h3>Cooldown Info</h3>
+    								<p><b>Default</b>: Use the standard cooldown defined in the general tab<br>
+    								<b>Custom</b>: Use a different cooldown.<br>
+					       	 	</div>
+					        	<div class="modal-footer">
+					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="cooldown">Save</button>
+					          		<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Events.COOLDOWN.edit('');">Cancel</button>
+					        	</div>
+					      	</div>
+					    </div>
+					</div>
+           		</div>
            		
            		
            		

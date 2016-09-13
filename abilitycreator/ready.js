@@ -142,6 +142,15 @@ $(document).ready(function() {
 	    }
 	});
 	
+	$("#event_cooldown_type").change(function() {
+		var v = $("#event_cooldown_type")[0].value;
+		if (v == "1") {
+			$("#event_cooldown_div").removeClass("hidden")
+		} else {
+			$("#event_cooldown_div").addClass("hidden")
+		}
+	});
+	
 	/*var myCodeMirror = CodeMirror($("#java-editor")[0], {
 		  value: "//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'",
 		  mode:  "java"

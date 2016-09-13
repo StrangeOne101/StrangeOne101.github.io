@@ -5,9 +5,23 @@ lastUsedEventElement = "";
 
 class EventType {
 	
-	constructor(UUID, name, classname) {
+	constructor(UUID, name, classname, options) {
 		this.name = name;
 		this.classname = classname;
+		this.canEdit = true;
+		this.canMove = true;
+		if (typeof options !== "undefined") {
+			
+			
+			if (options.edit !== "undefined") {
+				this.canEdit = options.edit;
+				console.log(options.edit);
+			}
+			if (options.move !== "undefined") {
+				this.canMove = options.move;
+				console.log(options.move);
+			}
+		}
 		instances.push(this);
 	}
 	
@@ -21,14 +35,15 @@ class EventType {
 		return null;
 	}
 	
-	/**Method to edit event from the data passed.*/
-	edit(data) {
-		
-	}
-	
 	/**Method to save event to the element passed.*/
 	save(element) {
 		
+	}
+	
+	/**Method to edit event from the data passed.*/
+	edit(data) {
+		lastUsedEventElement = addEvent(lastUsedEventType, lastUsedScriptType, "", "");
+		this.save(lastUsedEventElement);
 	}
 }
 
@@ -105,3 +120,38 @@ Events.SCRIPT.save = function(element) {
 	myCodeMirror.setValue("");
 	myCodeMirror.save();
 };
+
+Events.REMOVE = new EventType(2, "Remove", "Remove", {edit: false});
+Events.REMOVE.save = function(element) {
+	if (element == null) return;
+	$(element).attr("event-value", "");
+	$(element).children("div").children("span").text("Remove Ability");
+}
+
+Events.COOLDOWN = new EventType(3, "Cooldown", "Cooldown");
+Events.COOLDOWN.save = function(element) {
+	if (element == null) return;
+	
+	var value = "";
+	if ($("#event_cooldown_type")[0].value == 1) {
+		value = $("#event_cooldown_custom")[0].value;
+	}
+	
+	$(element).attr("event-value", value);
+	$(element).children("div").children("span").text("Apply Cooldown (" + ($("#event_cooldown_type")[0].value == 0 ? "Default" : "Custom") + ")");
+	
+}
+
+Events.COOLDOWN.edit = function(data) {
+	$('#modal_event_cooldown').modal('show');
+	if (data == null || data == "") {
+		$("#event_cooldown_type")[0].value = 0;
+		$("#event_cooldown_div").addClass("hidden");
+		$("#event_cooldown_custom")[0].value = "";
+	} else {
+		$("#event_cooldown_type")[0].value = 1;
+		$("#event_cooldown_div").removeClass("hidden")
+		$("#event_cooldown_custom")[0].value = data;
+	}
+	
+}
