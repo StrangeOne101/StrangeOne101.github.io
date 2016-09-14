@@ -1,4 +1,4 @@
-acversion = "Beta 1.1.7"
+acversion = "Beta 1.1.8"
 	
 	
 /**Returns the subelements in a list depending on the index of the element passed. Air is 0, 
@@ -44,8 +44,8 @@ function addEvent(listtype, type, text, value) {
 		
 		var newElement = "<li class='' event-type='" + listtype + "' script-type='" + type + "' event-value='" + value + "'><div class='col-lg-8 " + mov + "'><span>" + text + "</span></div><div class='col-lg-4' style='float: right'>";
 		var mov = moveable ? "moveable" : "";
-		var mov_ = moveable ? "<div class='btn btn-default moveable'><i class='glyphicon glyphicon-move'></i> Move</div> " : "";
-		var edit = editable ? "<div class='btn btn-primary event-edit-btn'><i class='glyphicon glyphicon-pencil'></i> Edit</div> " : "";
+		var mov_ = "<div class='btn btn-default moveable" + (movable ? "" : " disabled") + "'><i class='glyphicon glyphicon-move'></i> Move</div> ";
+		var edit = "<div class='btn btn-primary event-edit-btn" + (editable ? "" : " disabled") + "'><i class='glyphicon glyphicon-pencil'></i> Edit</div> ";
 		
 		element.append(newElement + edit + mov_ + "<div class='btn btn-danger event-del-btn'><i class='glyphicon glyphicon-trash'></i> Delete</div></div></li>");
 		return element.children().get(element.children().length - 1);

@@ -13,11 +13,11 @@ class EventType {
 		if (typeof options !== "undefined") {
 			
 			
-			if (options.edit !== "undefined") {
+			if (typeof options.edit !== "undefined") {
 				this.canEdit = options.edit;
 				console.log(options.edit);
 			}
-			if (options.move !== "undefined") {
+			if (typeof options.move !== "undefined") {
 				this.canMove = options.move;
 				console.log(options.move);
 			}
