@@ -153,5 +153,9 @@ Events.COOLDOWN.edit = function(data) {
 		$("#event_cooldown_div").removeClass("hidden")
 		$("#event_cooldown_custom")[0].value = data;
 	}
-	
+}
+
+Events.PARTICLES = new EventType(4, "Particles", "Particles");
+Events.PARTICLES.edit = function(data) {
+	$('#modal_event_particles').modal('show');
 }
