@@ -57,7 +57,6 @@ $(document).ready(function() {
 			$("#id_subelement").html(s);
 			$("#id_element_option").html("Subelement");
 		}
-		
 	});
 	
 	$(".event-btn").mouseup(function(obj) {
@@ -149,6 +148,28 @@ $(document).ready(function() {
 		} else {
 			$("#event_cooldown_div").addClass("hidden")
 		}
+	});
+	
+	/**Particles Modal**/
+	
+	$("#modal_particles_typetoggle_pk").click(function() {
+		$("#event_particle_pk_div").removeClass("hidden");
+		$("#event_particle_vanilla_div").addClass("hidden");
+	});
+	
+	$("#modal_particles_typetoggle_vanilla").click(function() {
+		$("#event_particle_vanilla_div").removeClass("hidden");
+		$("#event_particle_pk_div").addClass("hidden");
+	});
+	
+	$('.particle-selector-pk').mouseup(function() {
+		$("#particles-selected-pk").children("img").attr("src", $(this).children("img").attr("src"));
+		$("#particles-selected-pk").children("span").text($(this).children("input").attr("title"));
+	});
+	
+	$('.particle-selector-vanilla').mouseup(function() {
+		$("#particles-selected-vanilla").children("img").attr("src", $(this).children("img").attr("src"));
+		$("#particles-selected-vanilla").children("span").text($(this).children("input").attr("title"));
 	});
 	
 	/*var myCodeMirror = CodeMirror($("#java-editor")[0], {

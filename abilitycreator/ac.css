@@ -54,7 +54,7 @@ padding-right: 0px;
 	padding-right: 0px;
 }
 
-#element-selected {
+#element-selected, #particles-selected-pk, #particles-selected-vanilla {
 	width: 256px;
 	height: 256px;
 	display: inline-block;
