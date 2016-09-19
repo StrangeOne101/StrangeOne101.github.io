@@ -68,6 +68,11 @@ padding-right: 0px;
 	margin-left: 10px;
 }
 
+#particles-selected-pk, #particles-selected-vanilla {
+	width: 192px;
+	height: 192px;
+}
+
 #element-selected > img {
 	padding-bottom: 4px;
 }
