@@ -71,6 +71,7 @@ padding-right: 0px;
 #particles-selected-pk, #particles-selected-vanilla {
 	width: 192px;
 	height: 192px;
+	margin-left: calc(50% - 96px);
 }
 
 #element-selected > img {

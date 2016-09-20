@@ -507,118 +507,132 @@
 					       	 		<hr>
 					       	 		<div class="container-fluid">
 					        	  	<div class="row">
-					        	  		<div class='form-group'>
-							        	    <div class="btn-group col-lg-6 col-lg-3-offset" id="modal_particles_typetoggle" data-toggle="buttons">
-							           	      	<label class="btn btn-default radio-inline-btn active col-lg-6" id="modal_particles_typetoggle_pk">
-							           	        	<input type="radio" class="btn">
-							           	        	PK Particles
-							           	      	</label>
-							           	      	<label class="btn btn-default radio-inline-btn col-lg-6" id="modal_particles_typetoggle_vanilla">
-							           	        	<input type="radio" class="btn">
-							           	        	Vanilla Particles
-							           	      	</label>
-							           	    </div>
-							        	</div><br>
-						        	  	<div class='form-group' id="event_particle_pk_div">
-							           	  	<div class="center-block">
-						           				<label class="radio-inline-btn active" id="particles-selected-pk" style="">
-						           					<img src="img/textures/flame.png" width="128px" height="128px"><br>
-						           					<span style="font-family: inherit; font-size: 28px; font-weight: 100">Firebending</span>
-						           				</label>
-						           			</div>
-							           		<div class=''>
-		              							<div class="btn-group control-label center-block" data-toggle="buttons" style="float: none">
-		                							<label class="particle-selector-pk btn btn-default radio-inline-btn active" id="particle_select_firebending">
-		           	      								<input type="radio" value="0" class="btn btn-default" title="Firebending">
-		           	      								<img src="img/textures/flame.png" width="32px" height="32px"><br>
-		           	    							</label>
-		           	    							<label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_airbending">
-		           	      								<input type="radio" value="1" class="btn btn-default" title="Airbending">
-		           	      								<img src="img/textures/cloud.png" width="32px" height="32px"><br>
-		           	    							</label>
-		           	    							<label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_lightning" >
-									           	     	<input type="radio" value="2" class="btn btn-default" title="Lightning">
-									           	      	<img src="img/textures/lightning.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_sandbending" >
-									           	     	<input type="radio" value="3" class="btn btn-default" title="Sandbending">
-									           	      	<img src="img/textures/sand.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	</div>
-								       	 	</div>
-								       	 </div>
-								       	 <div class='form-group hidden' id="event_particle_vanilla_div">
-							           	  	<div class="center-block">
-						           				<label class="radio-inline-btn active" id="particles-selected-vanilla" style="">
-						           					<img src="img/textures/flame.png" width="128px" height="128px"><br>
-						           					<span style="font-family: inherit; font-size: 28px; font-weight: 100">Flame</span>
-						           				</label>
-						           			</div>
-							           		<div class=''>
-		              							<div class="btn-group control-label center-block" data-toggle="buttons" style="float: none; width: 400px; height: 60px">
-		                							<label class="particle-selector-vanilla btn btn-default radio-inline-btn active" id="particle_select_flame">
-		           	      								<input type="radio" value="0" class="btn btn-default" title="Flame">
-		           	      								<img src="img/textures/flame.png" width="32px" height="32px"><br>
-		           	    							</label>
-		           	    							<label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_cloud">
-		           	      								<input type="radio" value="1" class="btn btn-default" title="Cloud">
-		           	      								<img src="img/textures/cloud.png" width="32px" height="32px"><br>
-		           	    							</label>
-		           	    							<label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_withmagic" >
-									           	     	<input type="radio" value="2" class="btn btn-default" title="Magic">
-									           	      	<img src="img/textures/witchMagic.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_reddust" >
-									           	     	<input type="radio" value="3" class="btn btn-default" title="Magic Crit Hits">
-									           	      	<img src="img/textures/magicCrit2.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_reddust" >
-									           	     	<input type="radio" value="4" class="btn btn-default" title="Redstone Dust">
-									           	      	<img src="img/textures/reddust.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_hearts" >
-									           	     	<input type="radio" value="5" class="btn btn-default" title="Hearts">
-									           	      	<img src="img/textures/hearts.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_happyVillager" >
-									           	     	<input type="radio" value="6" class="btn btn-default" title="Happy Villager">
-									           	      	<img src="img/textures/happyVillager.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_smoke" >
-									           	     	<input type="radio" value="7" class="btn btn-default" title="Smoke">
-									           	      	<img src="img/textures/smoke.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_largesmoke" >
-									           	     	<input type="radio" value="8" class="btn btn-default" title="Large Smoke">
-									           	      	<img src="img/textures/smokeLarge.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_snowballpoof" >
-									           	     	<input type="radio" value="9" class="btn btn-default" title="Snowball">
-									           	      	<img src="img/textures/snowballpoof.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_splash" >
-									           	     	<input type="radio" value="10" class="btn btn-default" title="Water Splash">
-									           	      	<img src="img/textures/splash.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_explosion" >
-									           	     	<input type="radio" value="11" class="btn btn-default" title="Explosion">
-									           	      	<img src="img/textures/explosion.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_slime" >
-									           	     	<input type="radio" value="12" class="btn btn-default" title="Slime">
-									           	      	<img src="img/textures/slime.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_crit" >
-									           	     	<input type="radio" value="13" class="btn btn-default" title="Critical Hits">
-									           	      	<img src="img/textures/crit.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_fireworkSpark" >
-									           	     	<input type="radio" value="14" class="btn btn-default" title="Firework Spark">
-									           	      	<img src="img/textures/fireworkSpark.png" width="32px" height="32px"><br>
-									           	    </label>
-									           	</div>
-								       	 	</div>
-								       	 </div>
+					        	  		<div class="col-lg-7">
+					        	  			<div class='form-group'>
+								           	  	<label class="control-label col-lg-3" for="particle_spawnloc">Spawn Location</label>
+								           	  	<div class="col-lg-9">
+								           	    	<select class='form-control' id='particle_spawnloc'>
+									             	  	<option value="0">At Current Location</option>
+									             	  	<option value="1">Around Player</option>
+									           	    </select>
+								           	  	</div>
+							           		</div><br>
+					        	  		</div>
+					        	  		<div class="col-lg-5">
+					        	  			<div class='form-group'>
+								        	    <div class="btn-group" id="modal_particles_typetoggle" data-toggle="buttons" style="width: 100%">
+								           	      	<label class="btn btn-default radio-inline-btn active col-lg-6" id="modal_particles_typetoggle_pk">
+								           	        	<input type="radio" class="btn">
+								           	        	PK Particles
+								           	      	</label>
+								           	      	<label class="btn btn-default radio-inline-btn col-lg-6" id="modal_particles_typetoggle_vanilla">
+								           	        	<input type="radio" class="btn">
+								           	        	Vanilla Particles
+								           	      	</label>
+								           	    </div>
+								        	</div><br>
+							        	  	<div class='form-group' id="event_particle_pk_div">
+								           	  	<div class="center-block">
+							           				<label class="radio-inline-btn active" id="particles-selected-pk" style="">
+							           					<img src="img/textures/flame.png" width="128px" height="128px"><br>
+							           					<span style="font-family: inherit; font-size: 28px; font-weight: 100">Firebending</span>
+							           				</label>
+							           			</div>
+								           		<div class=''>
+			              							<div class="btn-group control-label center-block" data-toggle="buttons" style="float: none">
+			                							<label class="particle-selector-pk btn btn-default radio-inline-btn active" id="particle_select_firebending">
+			           	      								<input type="radio" value="0" class="btn btn-default" title="Firebending">
+			           	      								<img src="img/textures/flame.png" width="32px" height="32px"><br>
+			           	    							</label>
+			           	    							<label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_airbending">
+			           	      								<input type="radio" value="1" class="btn btn-default" title="Airbending">
+			           	      								<img src="img/textures/cloud.png" width="32px" height="32px"><br>
+			           	    							</label>
+			           	    							<label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_lightning" >
+										           	     	<input type="radio" value="2" class="btn btn-default" title="Lightning">
+										           	      	<img src="img/textures/lightning.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-pk btn btn-default radio-inline-btn" id="particle_select_sandbending" >
+										           	     	<input type="radio" value="3" class="btn btn-default" title="Sandbending">
+										           	      	<img src="img/textures/sand.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	</div>
+									       	 	</div>
+									       	 </div>
+									       	 <div class='form-group hidden' id="event_particle_vanilla_div">
+								           	  	<div class="center-block">
+							           				<label class="radio-inline-btn active" id="particles-selected-vanilla" style="">
+							           					<img src="img/textures/flame.png" width="128px" height="128px"><br>
+							           					<span style="font-family: inherit; font-size: 28px; font-weight: 100">Flame</span>
+							           				</label>
+							           			</div>
+								           		<div class=''>
+			              							<div class="btn-group control-label center-block" data-toggle="buttons">
+			                							<label class="particle-selector-vanilla btn btn-default radio-inline-btn active" id="particle_select_flame">
+			           	      								<input type="radio" value="0" class="btn btn-default" title="Flame">
+			           	      								<img src="img/textures/flame.png" width="32px" height="32px"><br>
+			           	    							</label>
+			           	    							<label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_cloud">
+			           	      								<input type="radio" value="1" class="btn btn-default" title="Cloud">
+			           	      								<img src="img/textures/cloud.png" width="32px" height="32px"><br>
+			           	    							</label>
+			           	    							<label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_withmagic" >
+										           	     	<input type="radio" value="2" class="btn btn-default" title="Magic">
+										           	      	<img src="img/textures/witchMagic.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_reddust" >
+										           	     	<input type="radio" value="3" class="btn btn-default" title="Magic Crit Hits">
+										           	      	<img src="img/textures/magicCrit2.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_reddust" >
+										           	     	<input type="radio" value="4" class="btn btn-default" title="Redstone Dust">
+										           	      	<img src="img/textures/reddust.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_hearts" >
+										           	     	<input type="radio" value="5" class="btn btn-default" title="Hearts">
+										           	      	<img src="img/textures/hearts.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_happyVillager" >
+										           	     	<input type="radio" value="6" class="btn btn-default" title="Happy Villager">
+										           	      	<img src="img/textures/happyVillager.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_smoke" >
+										           	     	<input type="radio" value="7" class="btn btn-default" title="Smoke">
+										           	      	<img src="img/textures/smoke.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_largesmoke" >
+										           	     	<input type="radio" value="8" class="btn btn-default" title="Large Smoke">
+										           	      	<img src="img/textures/smokeLarge.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_snowballpoof" >
+										           	     	<input type="radio" value="9" class="btn btn-default" title="Snowball">
+										           	      	<img src="img/textures/snowballpoof.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_splash" >
+										           	     	<input type="radio" value="10" class="btn btn-default" title="Water Splash">
+										           	      	<img src="img/textures/splash.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_explosion" >
+										           	     	<input type="radio" value="11" class="btn btn-default" title="Explosion">
+										           	      	<img src="img/textures/explosion.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_slime" >
+										           	     	<input type="radio" value="12" class="btn btn-default" title="Slime">
+										           	      	<img src="img/textures/slime.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_crit" >
+										           	     	<input type="radio" value="13" class="btn btn-default" title="Critical Hits">
+										           	      	<img src="img/textures/crit.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	    <label class="particle-selector-vanilla btn btn-default radio-inline-btn" id="particle_select_fireworkSpark" >
+										           	     	<input type="radio" value="14" class="btn btn-default" title="Firework Spark">
+										           	      	<img src="img/textures/fireworkSpark.png" width="32px" height="32px"><br>
+										           	    </label>
+										           	</div>
+									       	 	</div>
+									       	 </div>
+					        	  		</div>
+					        	  		
 					        	  	</div>
 					        	  	
 						        	<hr>

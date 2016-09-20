@@ -170,6 +170,9 @@ $(document).ready(function() {
 	$('.particle-selector-vanilla').mouseup(function() {
 		$("#particles-selected-vanilla").children("img").attr("src", $(this).children("img").attr("src"));
 		$("#particles-selected-vanilla").children("span").text($(this).children("input").attr("title"));
+		var px = $(this).children("input").attr("title").length;
+		px = px > 12 ? "22px" : (px > 10 ? "24px" : "28px");
+		$("#particles-selected-vanilla").children("span").attr("style", "font-family: inherit; font-weight: 100; font-size: " + px);
 	});
 	
 	/*var myCodeMirror = CodeMirror($("#java-editor")[0], {
