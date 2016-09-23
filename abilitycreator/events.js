@@ -65,6 +65,7 @@ Events.EXPLOSION.edit = function(data) {
 			$("#modal_explosion_db_true").removeClass("active");
 		}
 		
+		
 		if (data.substr(data.length - 1, 1) == "T") {
 			$("#modal_explosion_cf_true").addClass("active");
 			$("#modal_explosion_cf_false").removeClass("active");

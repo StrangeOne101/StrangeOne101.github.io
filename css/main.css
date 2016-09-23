@@ -6,6 +6,11 @@ ul.navbar-nav a:hover, a.navbar-brand:hover  {
 	background-color: #000000 !important; 
 }
 
+#large-avatar {
+	height: 120px;
+	width: 120px;
+}
+
 .navbar-default .navbar-brand {
   color: #f9f9f9;
 }
