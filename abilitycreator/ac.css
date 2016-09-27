@@ -142,6 +142,22 @@ li > span.glyphicon-move {
 	display: block;
 }
 
+.btn-condition {
+	color: #fff;
+    background-color: #7834b6;
+    border-color: #702ea5;
+}
+
+.btn-condition:hover {
+	color: #fff;
+    background-color: #5b278b;
+    border-color: #522279;
+}
+
+div.btn:not([event-type='']) {
+	margin-bottom: 2px;
+}
+
 #step_events ul {
 	min-height: 45px;
 	

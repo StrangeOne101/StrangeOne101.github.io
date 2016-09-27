@@ -1,5 +1,7 @@
 var myCodeMirror;
 
+var e;
+
 $(document).ready(function() {
 	
 	$("#globalVersion").text(acversion.toUpperCase());
@@ -179,6 +181,43 @@ $(document).ready(function() {
 		  value: "//Run a custom script. This runs in the 'progress()' method so you can still use objects like 'player' and 'bPlayer'",
 		  mode:  "java"
 		});*/
+	
+	$("#event_if_condition").change(function() {
+		var index = $("#event_if_condition")[0].selectedIndex;
+		e = this;
+		var ifvalue = this.options[index].getAttribute("if-value");
+		var split1 = ifvalue.split(":")[0];
+		var split2 = ifvalue.split(":")[1];
+		$("#event_if_select_div").addClass("hidden");
+		$("#event_if_field_div").addClass("hidden");
+		if (split1 == "field") {
+			$("#event_if_field_div").removeClass("hidden");
+			$("#event_if_field").text(split2);
+		} else if (split1 == "select") {
+			$("#event_if_select_div").removeClass("hidden");
+			var splits = split2.split("|");
+			var s = "";
+			for (var s1 in splits) {
+				s = s + "<option value='" + s1 + "' >" + splits[s1] + "</option>" + "\n";
+			}
+			$("#event_if_select_value")[0].innerHTML = s;
+		} else if (split1 == "selectfield") {
+			$("#event_if_select_div").removeClass("hidden");
+			$("#event_if_field_div").removeClass("hidden");
+			var fieldText = split2.split("||")[1];
+			var splits = split2.split("||")[0].split("|");
+			var s = "";
+			for (var s1 in splits) {
+				s = s + "<option value='" + s1 + "' >" + splits[s1] + "</option>" + "\n";
+			}
+			$("#event_if_select_value")[0].innerHTML = s;
+			$("#event_if_field").text(fieldText);
+		}
+		console.log(ifvalue);
+	});
+	
+	//Force update
+	$("#event_if_condition").change();
 	
 	myCodeMirror = CodeMirror.fromTextArea($("#java-editor")[0], {
 		lineNumbers: true,

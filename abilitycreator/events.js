@@ -160,3 +160,8 @@ Events.PARTICLES = new EventType(4, "Particles", "Particles");
 Events.PARTICLES.edit = function(data) {
 	$('#modal_event_particles').modal('show');
 }
+
+Events.IF = new EventType(5, "If", "If condition...");
+Events.IF.edit = function(data) {
+	$('#modal_event_if').modal('show');
+}

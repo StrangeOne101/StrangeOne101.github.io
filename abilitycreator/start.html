@@ -353,6 +353,8 @@
   							<div class="btn btn-primary event-btn" script-type="remove" event-type="step">Remove Ability</div>
   							<div class="btn btn-primary event-btn" script-type="cooldown" event-type="step">Cooldown</div>
   							<div class="btn btn-primary event-btn" script-type="particles" event-type="step">Display Particles</div>
+  							<br><!-- Start of conditional buttons -->
+  							<div class="btn btn-condition event-btn" script-type="if" event-type="step">IF...</div>
   						</div>
   						<div id="tab_collide_event" class="tab-pane fade">
     						<h3>Menu 2</h3>
@@ -455,8 +457,7 @@
 					      	</div>
 					    </div>
 					</div>
-           		</div>
-           		<div class="modal fade" id="modal_event_cooldown">
+           			<div class="modal fade" id="modal_event_cooldown">
 					    <div class="modal-dialog" style="width: 600px">
 					      	<div class="modal-content">
 					        	<div class="modal-header">
@@ -466,28 +467,29 @@
 					          		<p>Apply a cooldown to the bender.</p>
 					       	 		<hr>
 					       	 		<div class="container-fluid">
-					        	  	<div class="row">
-					        	  		<div class='form-group'>
-							           	  	<label class="control-label col-lg-3" for="event_cooldown_type" id="id_element_option">Cooldown</label>
-							           	  	<div class="col-lg-9">
-							           	    	<select class='form-control' id='event_cooldown_type'>
-								             	  	<option value="0">Default</option>
-								             	  	<option value="1">Custom</option>
-								           	    </select>
-							           	  	</div>
-						           		</div><br>
-						        	  	<div class='form-group hidden' id="event_cooldown_div">
-							           	  	<label class="control-label col-lg-3" for="event_cooldown_custom">Cooldown Time</label>
-							           	  	<div class="col-lg-9">
-							           	    	<input class='form-control not-empty' id='event_cooldown_custom' placeholder='Seconds' type='number' min="0" step="0.5" max="600" >
-							        	  	</div>
-							        	</div>
-					        	  	</div>
-					        	  	
-						        	<hr>
-						        	<h3>Cooldown Info</h3>
-    								<p><b>Default</b>: Use the standard cooldown defined in the general tab<br>
-    								<b>Custom</b>: Use a different cooldown.<br>
+						        	  	<div class="row">
+						        	  		<div class='form-group'>
+								           	  	<label class="control-label col-lg-3" for="event_cooldown_type" id="id_element_option">Cooldown</label>
+								           	  	<div class="col-lg-9">
+								           	    	<select class='form-control' id='event_cooldown_type'>
+									             	  	<option value="0">Default</option>
+									             	  	<option value="1">Custom</option>
+									           	    </select>
+								           	  	</div>
+							           		</div><br>
+							        	  	<div class='form-group hidden' id="event_cooldown_div">
+								           	  	<label class="control-label col-lg-3" for="event_cooldown_custom">Cooldown Time</label>
+								           	  	<div class="col-lg-9">
+								           	    	<input class='form-control not-empty' id='event_cooldown_custom' placeholder='Seconds' type='number' min="0" step="0.5" max="600" >
+								        	  	</div>
+								        	</div>
+						        	  	</div>
+						        	  	
+							        	<hr>
+							        	<h3>Cooldown Info</h3>
+	    								<p><b>Default</b>: Use the standard cooldown defined in the general tab<br>
+	    								<b>Custom</b>: Use a different cooldown.<br>
+					       	 		</div>
 					       	 	</div>
 					        	<div class="modal-footer">
 					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="cooldown">Save</button>
@@ -496,9 +498,66 @@
 					      	</div>
 					    </div>
 					</div>
-           		</div>
-           		<div class="modal fade" id="modal_event_particles">
-					    <div class="modal-dialog" style="width: 800px">
+					
+					<div class="modal fade" id="modal_event_if">
+					    <div class="modal-dialog" style="width: 600px">
+					      	<div class="modal-content">
+					        	<div class="modal-header">
+					          		<h4 class="modal-title">If Condition is Met</h4>
+					        	</div>
+					        	<div class="modal-body">
+					          		<p>Check if the following condition is met. If so, execute all things nested.</p>
+					       	 		<hr>
+					       	 		<div class="container-fluid">
+						        	  	<div class="row">
+						        	  		<div class='form-group'>
+								           	  	<label class="control-label col-lg-2" for="event_cooldown_type" id="id_element_option">IF</label>
+								           	  	<div class="col-lg-10">
+								           	    	<select class='form-control col-lg-5' id='event_if_basetype' style="width: 30%;">
+									             	  	<option value="0">Player</option>
+									           	    </select>
+									           	    <select class='form-control col-lg-7' id='event_if_condition' style="width: 70%;">
+									             	  	<option value="0" if-value="selectfield:Greater Than|Less Than|Equal To||Value">Health</option>
+									             	  	<option value="1" if-value="select:Ability Element|Air|Earth|Fire|Water|Chi|Avatar">Has Element</option>
+									             	  	<option value="2" if-value="field:Ability">Can Bend</option>
+									             	  	<option value="3" if-value="select:Survial|Creative|Adventure|Spectator">Gamemode</option>
+									             	  	<option value="4" if-value="field:Equals">Name</option>
+									             	  	<option value="5" if-value="field:Equals">UUID</option>
+									           	    </select>
+								           	  	</div>
+							           		</div><br>
+							        	  	<div class='form-group hidden' id="event_if_select_div">
+								           	  	<label class="control-label col-lg-2" id="event_if_select">Is...</label>
+								           	  	<div class="col-lg-10">
+								           	    	<select class='form-control' id='event_if_select_value'>
+								           	    		
+								           	    	</select>
+								        	  	</div>
+								        	</div>
+								        	<div class='form-group hidden' id="event_if_field_div">
+								           	  	<label class="control-label col-lg-2" id="event_if_field">...</label>
+								           	  	<div class="col-lg-10">
+								           	    	<input class='form-control not-empty' id='event_if_field'>
+								        	  	</div>
+								        	</div>
+						        	  	</div>
+						        	  	
+							        	<hr>
+							        	<h3>Nested Functions</h3>
+	    								<p>Nested functions are everything that will be run if all the conditions </p>
+	    								<b>Custom</b>: Use a different cooldown.<br>
+					       	 		</div>
+					       	 	</div>
+					        	<div class="modal-footer">
+					          		<button type="button" class="btn btn-success event-save-btn" data-dismiss="modal" event-type="step" script-type="cooldown">Save</button>
+					          		<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Events.COOLDOWN.edit('');">Cancel</button>
+					        	</div>
+					      	</div>
+					    </div>
+					</div>
+           		
+           			<div class="modal fade" id="modal_event_particles">
+						<div class="modal-dialog" style="width: 800px">
 					      	<div class="modal-content">
 					        	<div class="modal-header">
 					          		<h4 class="modal-title">Show particles</h4>
@@ -649,7 +708,7 @@
 					    </div>
 					</div>
            		</div>
-           		
+           		</div>
            		
            		
            		
