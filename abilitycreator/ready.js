@@ -44,8 +44,8 @@ $(document).ready(function() {
 	    containment: '#step_events',
 	 });
 	$('.element-selector').mouseup(function() {
-		$("#element-selected").children("img").attr("src", $(this).children("img").attr("src"));
-		$("#element-selected").children("span").text($(this).children("input").attr("title"));
+		$(".element-selected").children("img").attr("src", $(this).children("img").attr("src"));
+		$(".element-selected").children("span").text($(this).children("input").attr("title"));
 		
 		var val = $(this).children("input").attr("value");
 		if (val == "5") {
@@ -169,10 +169,12 @@ $(document).ready(function() {
 		$("#particles-selected-pk").children("span").text($(this).children("input").attr("title"));
 	});
 	
-	$('.particle-selector-vanilla').mouseup(function() {
-		$("#particles-selected-vanilla").children("img").attr("src", $(this).children("img").attr("src"));
-		$("#particles-selected-vanilla").children("span").text($(this).children("input").attr("title"));
-		var px = $(this).children("input").attr("title").length;
+	$('#particle_vanilla_selected').change(function() {
+		var selected = $("#particle_vanilla_selected").children().get(this.value);
+		console.log("Testing! Bananananananas! " + selected);
+		$("#particles-selected-vanilla").children("img").attr("src", $(selected).attr("img"));
+		$("#particles-selected-vanilla").children("span").text($(selected).text());
+		var px = $(selected).text().length;
 		px = px > 12 ? "22px" : (px > 10 ? "24px" : "28px");
 		$("#particles-selected-vanilla").children("span").attr("style", "font-family: inherit; font-weight: 100; font-size: " + px);
 	});
@@ -226,5 +228,70 @@ $(document).ready(function() {
 	    lineWrapping: true,
 	});
 	myCodeMirror.refresh();
+	
+	$("#particle_spawnCount").change(function() {
+		var count = $("#particle_spawnCount")[0].value;
+		if (count == "1") {
+			$("#particle_spawnRadiusGroup").addClass("hidden");
+			$("#particle_spawnVelocityGroup").removeClass("hidden");
+		} else {
+			$("#particle_spawnRadiusGroup").removeClass("hidden");
+			$("#particle_spawnVelocityGroup").addClass("hidden");
+		}
+	});
+	
+	$("select.spigot-materials").each(function() {
+		var s = "";
+		var blocks = Materials.getBlocks();
+		for (var i in blocks) {
+			s = s + "<option value=\"" + blocks[i] + "\">" + blocks[i] + "</option>\n"; 
+		}
+		
+		var s1 = "";
+		var items = Materials.getItems();
+		for (var i in items) {
+			s1 = s1 + "<option value=\"" + items[i] + "\">" + items[i] + "</option>\n"; 
+		}
+		
+		this.innerHTML = "<option></option><optgroup label=\"Blocks\">" + s + "</optgroup>" + "<optgroup label=\"Items\">" + s1 + "</optgroup>";
+	});
+	
+	$("select.spigot-materials").select2({
+		placeholder: "STONE",
+		allowClear: true
+	});
+	
+	$("select.spigot-blocks").each(function() {
+		var s = "";
+		var blocks = Materials.getBlocks();
+		for (var i in blocks) {
+			s = s + "<option value=\"" + blocks[i] + "\">" + blocks[i] + "</option>\n"; 
+		}
+		this.innerHTML = "<option></option><optgroup label=\"Blocks\">" + s + "</optgroup>";
+	});
+	
+	$("select.spigot-blocks").select2();
+	
+	$("select.spigot-items").each(function() {
+		var s = "";
+		var items = Materials.getItems();
+		for (var i in items) {
+			s = s + "<option value=\"" + items[i] + "\">" + items[i] + "</option>\n"; 
+		}
+		this.innerHTML = "<option></option><optgroup label=\"Items\">" + s + "</optgroup>";
+	});
+	
+	$("select.spigot-items").select2();
+	
+	
+	$("select.spigot-sounds").each(function() {
+		var s = "";
+		for (var i in Materials.keys()) {
+			s = s + "<option value=\"" + Sounds.keys()[i] + "\">" + Sounds.keys()[i] + "</option>\n"; 
+		}
+		this.innerHTML = s;
+	});
+	
+	$("select.spigot-sounds").select2();
 	
 });

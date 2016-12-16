@@ -159,9 +159,29 @@ Events.COOLDOWN.edit = function(data) {
 Events.PARTICLES = new EventType(4, "Particles", "Particles");
 Events.PARTICLES.edit = function(data) {
 	$('#modal_event_particles').modal('show');
+	
+	
 }
+Events.PARTICLES.save = new function(element) {
+	
+	var data = $("#modal_particles_typetoggle_pk").hasClass("active") ? "P" : "V";
+	
+	if ($("#modal_particles_typetoggle_pk").hasClass("active")) { //PK particles
+		var particle = "";
+		
+		if ($("#particle_select_firebending").hasClass("active")) particle = ""
+		data = data + $("#particle_select_firebending")[0].value;
+	} else {
+		data = data + $("#particle_select_firebending")[0].value;
+	}
+	
+	$(element).attr("event-value", value);
+	$(element).children("div").children("span").text("Spawn Particles (" + ($("#event_cooldown_type")[0].value == 0 ? "Default" : "Custom") + ")");
+};
 
-Events.IF = new EventType(5, "If", "If condition...");
+Events.SOUND = new EventType(5, "Play Sound", "Play Sound");
+
+Events.IF = new EventType(6, "If", "If condition...");
 Events.IF.edit = function(data) {
 	$('#modal_event_if').modal('show');
 }
