@@ -43,6 +43,19 @@
     	}
     }
     
+    function generateHash(string) {
+    	var hash = 0;
+    	if (string.length == 0) return hash;
+    	for (i = 0; i < string.length; i++) {
+    		char = string.charCodeAt(i);
+    		hash = ((hash<<5)-hash)+char;
+    		hash = hash & hash; // Convert to 32bit integer
+    	}
+    	return hash;
+    }
+    
+    
+    
     </script>
 
 </head>
@@ -121,7 +134,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class='form-group'>
-					<div class="btn-group col-lg-4" style="width: 100%; display: block;" data-toggle="buttons" id="id_encodedecode">
+					<!-- <div class="btn-group col-lg-4" style="display: block;" data-toggle="buttons" id="id_encodedecode">
            	    		<label class="btn btn-default radio-inline-btn col-lg-4 active sourceselection" id="sourceNone">
            	      			<input type="radio" value="1" required="required">
            	      			Encode
@@ -130,15 +143,41 @@
            	      			<input type="radio" value="2" required="required">
            	      			Decode
            	    		</label>
-           	    	</div>
-           	    	<input type="button" class="btn btn-default" id="encodedecode_button" value="Go">
-					<label class="control-label col-lg-2 col-xs-12" for="chunkdiv" style="padding-left: 0px">Output</label>
-					<div class="">
-						<input class="form-control" id="chunkdiv" type="text" height="5" draggable="true" >
+           	    	</div> -->
+
+					<div class="form-group">
+						<div class="col-lg-5">
+							<input class="form-control" id="base64input" type="text" height="5" style="height: 150px; width: 100%" >
+						</div>
+						<div class="col-lg-2">
+							<input type="button" class="btn btn-default form-control" size="10" id="encode_button" value="> Encode >" onclick="document.getElementById('base64output').value = btoa(document.getElementById('base64input').value)"><br><br>
+							<input type="button" class="btn btn-default form-control" height="10" id="decode_button" value="< Decode <" onclick="document.getElementById('base64input').value = atob(document.getElementById('base64output').value)">
+						</div>
+						<div class="col-lg-5">
+							<input class="form-control" id="base64output" type="text" height="5" style="height: 150px; width: 100%" >
+						</div>
+						
+					</div><br>
+				</div>
+			</div>
+		</div>
+		<h3>Hashcode Generator</h3>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p>Used to hash a phrase. Is character sensitive and cannot be reversed.</p>
+				
+				<div class='form-group'>
+					<label class="control-label col-lg-1" for="hashcode_in" style="padding-left: 0px">Text: </label>
+					<div class="col-lg-3 col-xs-12" style="padding-left: 0px">
+						<input class="form-control" id="hashcode_in" type="text">
+					</div><br><br>
+					<label class="control-label col-lg-1" for="hashcode_out" style="padding-left: 0px">HashCode: </label>
+					<div class="col-lg-3 col-xs-12" style="padding-left: 0px">
+						<input class="form-control" id="hashcode_out" readonly="readonly" type="text">
 					</div><br>
 				</div>
 				<div style="height: 0px; margin-top: 20px; margin-bottom: 5px;"><b id="chunkSize" style="vertical-align: middle;"></b></div>
-				<br><a href="#" onclick="getChunks(parseInt($('#chunkdiv')[0].value));" class="btn btn-default">Calculate</a>
+				<br><input type="button" class="btn btn-default" onclick="document.getElementById('hashcode_out').value = generateHash(document.getElementById('hashcode_in').value) + ''" class="btn btn-default" value="Hash!">
 			</div>
 		</div>
        
