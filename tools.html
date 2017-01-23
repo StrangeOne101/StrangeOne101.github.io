@@ -115,43 +115,17 @@
     <!-- Page Content -->
     <div class="container" style="">
 		<h1 class="page-header">Tools</h1>
-		<h3>Chunks in Render Distance Calculator</h3>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p>Used to calculate how many chunks are shown within a render distance. <br>Note: This is for server render distances.</p>
-				
-				<div class='form-group'>
-					<label class="control-label col-lg-2 col-xs-12" for="chunkdiv" style="padding-left: 0px">Render Distance: </label>
-					<div class="col-lg-3 col-xs-12" style="padding-left: 0px">
-						<input class="form-control" id="chunkdiv" type="number" placeholder="10" min="0" step="1" max="32">
-					</div><br>
-				</div>
-				<div style="height: 0px; margin-top: 20px; margin-bottom: 5px;"><b id="chunkSize" style="vertical-align: middle;"></b></div>
-				<br><a href="#" onclick="getChunks(parseInt($('#chunkdiv')[0].value));" class="btn btn-default">Calculate</a>
-			</div>
-		</div>
 		<h3>Base64 Encoder/Decoder</h3>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class='form-group'>
-					<!-- <div class="btn-group col-lg-4" style="display: block;" data-toggle="buttons" id="id_encodedecode">
-           	    		<label class="btn btn-default radio-inline-btn col-lg-4 active sourceselection" id="sourceNone">
-           	      			<input type="radio" value="1" required="required">
-           	      			Encode
-           	    		</label>
-           	    		<label class="btn btn-default radio-inline-btn col-lg-4 sourceselection trigger-sneak" id="sourceShift" >
-           	      			<input type="radio" value="2" required="required">
-           	      			Decode
-           	    		</label>
-           	    	</div> -->
-
 					<div class="form-group">
 						<div class="col-lg-5">
 							<input class="form-control" id="base64input" type="text" height="5" style="height: 150px; width: 100%" >
 						</div>
 						<div class="col-lg-2">
-							<input type="button" class="btn btn-default form-control" size="10" id="encode_button" value="> Encode >" onclick="document.getElementById('base64output').value = btoa(document.getElementById('base64input').value)"><br><br>
-							<input type="button" class="btn btn-default form-control" height="10" id="decode_button" value="< Decode <" onclick="document.getElementById('base64input').value = atob(document.getElementById('base64output').value)">
+							<input type="button" class="btn btn-default form-control" size="10" id="encode_button" value=">>> Encode >>>" onclick="document.getElementById('base64output').value = btoa(document.getElementById('base64input').value)"><br><br>
+							<input type="button" class="btn btn-default form-control" height="10" id="decode_button" value="<<< Decode <<<" onclick="document.getElementById('base64input').value = atob(document.getElementById('base64output').value)">
 						</div>
 						<div class="col-lg-5">
 							<input class="form-control" id="base64output" type="text" height="5" style="height: 150px; width: 100%" >
@@ -178,6 +152,29 @@
 				</div>
 				<div style="height: 0px; margin-top: 20px; margin-bottom: 5px;"><b id="chunkSize" style="vertical-align: middle;"></b></div>
 				<br><input type="button" class="btn btn-default" onclick="document.getElementById('hashcode_out').value = generateHash(document.getElementById('hashcode_in').value) + ''" class="btn btn-default" value="Hash!">
+			</div>
+		</div>
+		
+		<h3>Secret Code Generator</h3>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p>Used to encode and decode text. Unique to only this site but can still be cracked by professionals very easily. </p>
+				
+				<div class='form-group'>
+					<div class="form-group">
+						<div class="col-lg-5">
+							<input class="form-control" id="secretcodeinput" type="text" height="5" style="height: 150px; width: 100%" >
+						</div>
+						<div class="col-lg-2">
+							<input type="button" class="btn btn-default form-control" size="10" id="secretencode_button" value=">>> Secreify >>>" onclick="document.getElementById('base64output').value = btoa(document.getElementById('base64input').value)"><br><br>
+							<input type="button" class="btn btn-default form-control" height="10" id="secretdecode_button" value="<<< De-secreify <<<" onclick="document.getElementById('base64input').value = atob(document.getElementById('base64output').value)">
+						</div>
+						<div class="col-lg-5">
+							<input class="form-control" id="secretcodeoutput" type="text" height="5" style="height: 150px; width: 100%" >
+						</div>
+						
+					</div><br>
+				</div>
 			</div>
 		</div>
        

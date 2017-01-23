@@ -163,23 +163,52 @@ Events.PARTICLES.edit = function(data) {
 	
 }
 Events.PARTICLES.save = new function(element) {
+	//Format: "XYZ|A|B|C|D|E|F
+	//X = P or V
+	//Y = index of particle selected
+	//Z = Spawn location value. 0 or 1
+	//A = Spawn count
+	//B = Spawn radius
+	//C = Speed
+	//D = Velocity
+	//E = Color
+	//F = Material
 	
-	var data = $("#modal_particles_typetoggle_pk").hasClass("active") ? "P" : "V";
+	var data = $("#modal_particles_typetoggle_pk").hasClass("active") ? "P" : "V"; //Add P or V
 	
-	if ($("#modal_particles_typetoggle_pk").hasClass("active")) { //PK particles
-		var particle = "";
-		
-		if ($("#particle_select_firebending").hasClass("active")) particle = ""
-		data = data + $("#particle_select_firebending")[0].value;
+	if ($("#modal_particles_typetoggle_pk").hasClass("active")) { 
+		//If it's vanilla, loop through all of the possible particles and get the active one
+		$("#particle_select_PK").children("label").each(function() {
+			if ($(this).hasClass("active")) { //If it's active, put the ID of it in the data
+				data = data + $(this).children("input")[0]
+			}
+		});
 	} else {
-		data = data + $("#particle_select_firebending")[0].value;
+		data = data + $("#particle_vanilla_selected")[0].value;
 	}
 	
-	$(element).attr("event-value", value);
+	data = data + $("#particle_spawnloc")[0].value; //Add the spawn location
+	data = data + "|"; //First split
+	data = data + $("#particle_spawnCount")[0].value; //Add the spawn count
+	data = data + "|"; //Second split
+	data = data + $("#particle_spawnRadius")[0].value; //Add the spawn radius
+	data = data + "|"; //Third split 
+	data = data + $("#particle_spawnSpeed")[0].value; //Spawn speed particle_spawnVelX
+	data = data + "|"; //4th split and velocity bellow
+	data = data + $("#particle_spawnVelX")[0].value + "/" + $("#particle_spawnVelY")[0].value + "/" + $("#particle_spawnVelZ")[0].value;
+	data = data + "|"; //5th split 
+	data = data + $("#particle_color")[0].value; //Particle color
+	data = data + "|"; //6th split 
+	data = data + $("#particle_material")[0].value; //Particle material
+	
+	
+	
+	$(element).attr("event-value", data);
 	$(element).children("div").children("span").text("Spawn Particles (" + ($("#event_cooldown_type")[0].value == 0 ? "Default" : "Custom") + ")");
 };
 
 Events.SOUND = new EventType(5, "Play Sound", "Play Sound");
+
 
 Events.IF = new EventType(6, "If", "If condition...");
 Events.IF.edit = function(data) {

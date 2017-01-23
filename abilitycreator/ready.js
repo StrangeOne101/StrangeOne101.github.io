@@ -234,12 +234,62 @@ $(document).ready(function() {
 		if (count == "1") {
 			$("#particle_spawnRadiusGroup").addClass("hidden");
 			$("#particle_spawnVelocityGroup").removeClass("hidden");
+			$("#particle_spawnSpeedGroup").removeClass("hidden");
 		} else {
 			$("#particle_spawnRadiusGroup").removeClass("hidden");
 			$("#particle_spawnVelocityGroup").addClass("hidden");
+			$("#particle_spawnSpeedGroup").addClass("hidden");
 		}
 	});
 	
+	$("#particle_vanilla_selected").change(function() {
+		var option = $($("#particle_vanilla_selected")[0].selectedOptions[0]);
+		console.log(option.attr("req"));
+		
+		if ($("#particle_vanilla_selected")[0].selectedIndex == 5) {
+			$("#particle_spawnCount")[0].value = 1;
+			$("#particle_spawnCount").change();
+			$("#particle_spawnVelX").attr("disabled", true);
+			$("#particle_spawnVelY").attr("disabled", true);
+			$("#particle_spawnVelZ").attr("disabled", true);
+		} else {
+			$("#particle_spawnVelX").removeAttr("disabled");
+			$("#particle_spawnVelY").removeAttr("disabled");
+			$("#particle_spawnVelZ").removeAttr("disabled");
+		}
+		if (typeof option.attr("req") !== typeof undefined) {
+			if (option.attr("req") == "color") {
+				$("#particle_colorGroup").removeClass("hidden");
+			} else {
+				$("#particle_colorGroup").addClass("hidden");
+			}
+			
+			if (option.attr("req") == "item") {
+				$("#particle_blockGroup").removeClass("hidden");
+				$("#particle_material").removeClass("spigot-blocks");
+				$("#particle_material").addClass("spigot-item");
+				updateSpigotFields();
+			} else if (option.attr("req") == "block"){
+				$("#particle_blockGroup").removeClass("hidden");
+				$("#particle_material").removeClass("spigot-items");
+				$("#particle_material").addClass("spigot-blocks");
+				updateSpigotFields();
+			} else {
+				$("#particle_blockGroup").addClass("hidden");
+				$("#particle_material").removeClass("spigot-items");
+				$("#particle_material").removeClass("spigot-blocks");
+			}
+		}  else {
+			$("#particle_colorGroup").addClass("hidden");
+			$("#particle_blockGroup").addClass("hidden");
+		}
+	});
+	
+	updateSpigotFields();
+	
+});
+
+function updateSpigotFields() {
 	$("select.spigot-materials").each(function() {
 		var s = "";
 		var blocks = Materials.getBlocks();
@@ -293,5 +343,4 @@ $(document).ready(function() {
 	});
 	
 	$("select.spigot-sounds").select2();
-	
-});
+}
