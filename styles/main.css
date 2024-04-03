@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Stardew Valley';
+    src: url(StardewValley.ttf);
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Stardew Valley', sans-serif;
+    color: #7D4734;
+    font-size: 33px;
+    text-shadow: #E2A667 -2px 2px;
+
+    background-image: url("bg.jpg");
+    background-size: cover;
+}
+
+#bgm-container {
+    display: inline-block;
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.hidden {
+    display: none;
+    height: 0;
+    width: 0;
+    z-index: -1;
+}
+
+#container {
+    position: relative;
+}
+
+#scaler {
+    width: 500px;
+    height: 500px;
+    transition: transform 300ms;
+}
+
+#gift {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    transition: transform 0.3s;
+
+}
+
+#letter {
+    width: 979px;
+    height: 587px;
+    background-image: url(letter.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    image-rendering: pixelated;
+    padding: 2px 36px 2px 36px;
+    cursor: pointer;
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes scaleAnim {
+    0% {
+        transform: translateY(0) scale(1.5);
+    }
+    50% {
+        transform: translateY(-50px) scale(1.5);
+    }
+    100% {
+        transform: translateY(0) scale(1.5);
+    }
+}
+
+#gift {
+    animation: moveUpDown 5s infinite alternate-reverse;
+}
+
+#scaler:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    
+}
