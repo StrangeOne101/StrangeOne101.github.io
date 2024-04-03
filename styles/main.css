@@ -75,20 +75,33 @@ body {
         transform: translateY(0);
     }
 }
-@keyframes scaleAnim {
+
+@keyframes jukeboxClickMe {
     0% {
-        transform: translateY(0) scale(1.5);
+        transform: rotate(0deg)
+    }
+    25% {
+        transform: rotate(5deg)
     }
     50% {
-        transform: translateY(-50px) scale(1.5);
+        transform: rotate(0deg)
+    }
+    75% {
+        transform: rotate(-5deg)
     }
     100% {
-        transform: translateY(0) scale(1.5);
+        transform: rotate(0deg)
     }
 }
 
 #gift {
-    animation: moveUpDown 5s infinite alternate-reverse;
+    animation: moveUpDown 5s infinite;
+}
+
+#playbutton {
+    animation: jukeboxClickMe 2s infinite;
+    transition: transform 0.05s;
+    vertical-align: super;
 }
 
 #scaler:hover {
