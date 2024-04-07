@@ -2,7 +2,7 @@
 
 //Listen for when the element with ID "gift" is clicked
 
-var redirectURL = "https://store.steampowered.com";
+var redirectURL = "https://steamcommunity.com/sharedfiles/filedetails/?id=3215057720";
 var canRedirect = false;
 
 function ready() {
